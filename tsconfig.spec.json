@@ -13,6 +13,6 @@
   ],
   "include": [
     "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts", "projects/skyline/src/lib/service/color.service.spec.ts"
   ]
 }

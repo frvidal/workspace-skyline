@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { SkylineModule } from 'skyline';
+import { SkylineComponent } from '../../projects/skyline/src/lib/skyline.component';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, SkylineComponent
   ],
   imports: [
-    BrowserModule,
-    SkylineModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

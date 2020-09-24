@@ -1,0 +1,33 @@
+div.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 400px;
+}
+
+div.scrolling-wrapper > div.card {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}  
+
+div.scrolling-wrapper > button {
+    position: absolute;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+#zoomIn {
+    top: 10px;
+}
+
+#zoomOut {
+    top: 40px;
+}
+
+:root {
+    --color-selected: #28a745;
+    --color-error: darkred;
+}
+  
