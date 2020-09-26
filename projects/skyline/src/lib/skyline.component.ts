@@ -23,11 +23,32 @@ export class SkylineComponent implements OnInit, AfterViewInit {
    */
   @Input() height: number;
 
-  constructor(private colorService: ColorService) { }
+  /** 
+   * The starting color
+   * 
+   * The building is drawn between 2 colors : This color is the starting one.
+   */
+  @Input() startingColor: string;
 
+  /** 
+   * The ending color
+
+   * The building is drawn between 2 colors : This color is the ending one.
+   */
+  @Input() endingColor: string;
+
+  private DEBUG = true;
+
+  constructor(private colorService: ColorService) { 
+  }
+  
   ngOnInit(): void {
+    if (this.DEBUG) {
+      console.log ('Colors start from %s to %s', this.startingColor, this.endingColor);
+    }
+    this.colorService.initBoundaryColors(this.startingColor, this.endingColor);
     for (let i = 0; i < 20; i++) {
-      this.skyline.push(new Building(i, 40, 20 + (i%5)*30, (i%10)));
+      this.skyline.push(new Building(i, 40, 20 + (i%5)*30, i*5));
     }
   }
   
@@ -42,7 +63,7 @@ export class SkylineComponent implements OnInit, AfterViewInit {
   }
 
   color(risk: number) {
-    return '#' + ColorService.red(risk) + ColorService.green(risk) + ColorService.blue(risk);
+    return '#' + this.colorService.red(risk) + this.colorService.green(risk) + this.colorService.blue(risk);
   }
 
   zoomIn() {
@@ -61,7 +82,6 @@ export class SkylineComponent implements OnInit, AfterViewInit {
 
   skylineStyle() {
     const style = 'width:'+this.width+'px; height:'+this.height+'px';
-    console.log (style);
     return style;
   }
 }

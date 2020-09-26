@@ -9,7 +9,12 @@ describe('ColorService', () => {
     service = TestBed.inject(ColorService);
   });
 
-  it('should be created', () => {
+  it('should correctly handle the gradiant from #FFFFFF to #000000', () => {
     expect(service).toBeTruthy();
+    service.initBoundaryColors('#FFFFFF', '#000000');
+    expect(service.red(0)).toBe('FF');
+    expect(service.red(100)).toBe('00');
+    expect(service.red(50)).toBe('80');
   });
+
 });
