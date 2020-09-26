@@ -1,7 +1,9 @@
 import { BoundAttribute } from '@angular/compiler/src/render3/r3_ast';
 import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
 import { AfterContentInit, AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import {Building} from './data/building';
+import {Skyline} from './data/skyline';
 import {ColorService} from './service/color.service';
 
 @Component({
@@ -10,8 +12,6 @@ import {ColorService} from './service/color.service';
 	styleUrls: ['./skyline.component.css']
 })
 export class SkylineComponent implements OnInit, AfterViewInit {
-
-  public skyline: Building[] = [];
 
   /** 
    * The width of the container
@@ -22,6 +22,11 @@ export class SkylineComponent implements OnInit, AfterViewInit {
    * The height of the container
    */
   @Input() height: number;
+
+  /** 
+   * The height of the container
+   */
+  @Input() skyline$;
 
   /** 
    * The starting color
@@ -37,7 +42,12 @@ export class SkylineComponent implements OnInit, AfterViewInit {
    */
   @Input() endingColor: string;
 
+  /**
+   * Component is setup in DEBUG mode
+   */
   private DEBUG = true;
+
+  private buildings: Building[] = [];
 
   constructor(private colorService: ColorService) { 
   }
@@ -47,9 +57,9 @@ export class SkylineComponent implements OnInit, AfterViewInit {
       console.log ('Colors start from %s to %s', this.startingColor, this.endingColor);
     }
     this.colorService.initBoundaryColors(this.startingColor, this.endingColor);
-    for (let i = 0; i < 20; i++) {
-      this.skyline.push(new Building(i, 40, 20 + (i%5)*30, i*5));
-    }
+    this.skyline$.subscribe({
+      next: buildings => this.buildings = buildings
+    });
   }
   
   ngAfterViewInit() {    
@@ -67,14 +77,14 @@ export class SkylineComponent implements OnInit, AfterViewInit {
   }
 
   zoomIn() {
-    this.skyline.forEach(building => {
+    this.buildings.forEach(building => {
       building.width = building.width * 1.1;
       building.height = building.height * 1.1;
     });
   }
 
   zoomOut() {
-    this.skyline.forEach(building => {
+    this.buildings.forEach(building => {
       building.width = building.width / 1.1;
       building.height = building.height / 1.1;
     });

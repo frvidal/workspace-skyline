@@ -1,6 +1,6 @@
 <div class="container" [style]="skylineStyle()">
   <div class="scrolling-wrapper">
-    <div *ngFor="let building of skyline; index as index" class="card" 
+    <div *ngFor="let building of skyline$|async; index as index" class="card" 
       [style]="style(building)">
       {{building.width}}
     </div>
