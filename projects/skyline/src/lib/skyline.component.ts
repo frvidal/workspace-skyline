@@ -82,20 +82,6 @@ export class SkylineComponent implements OnInit, AfterViewInit {
     return '#' + this.colorService.red(risk) + this.colorService.green(risk) + this.colorService.blue(risk);
   }
 
-  zoomIn() {
-    this.skylineService.history.forEach(building => {
-      building.width = building.width * 1.1;
-      building.height = building.height * 1.1;
-    });
-  }
-
-  zoomOut() {
-    this.skylineService.history.forEach(building => {
-      building.width = building.width / 1.1;
-      building.height = building.height / 1.1;
-    });
-  }
-
   skylineStyle() {
     const style = 'width:'+this.width+'px; height:'+this.height+'px';
     return style;

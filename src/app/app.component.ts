@@ -13,7 +13,7 @@ export class AppComponent  {
   
   public skyline$ = new BehaviorSubject<Building[]>([]);
   
-  private DEBUG = true;
+  private DEBUG = false;
 
   constructor(public datePipe: DatePipe) {
     
