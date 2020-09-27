@@ -1,9 +1,7 @@
-import { BoundAttribute } from '@angular/compiler/src/render3/r3_ast';
-import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
 import { AfterContentInit, AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import {Building} from './data/building';
 import {ColorService} from './service/color.service';
+import {SkylineService} from './skyline.service';
 
 @Component({
 	selector: 'rising-skyline',
@@ -46,11 +44,11 @@ export class SkylineComponent implements OnInit, AfterViewInit {
    */
   private DEBUG = true;
 
-  private buildings$ = new BehaviorSubject<Building[]>([]);
+  private intervalId: number;
 
-  private buildings:Building[] = [];
-
-  constructor(private colorService: ColorService) { 
+  constructor(
+    private colorService: ColorService,
+    public skylineService: SkylineService) { 
   }
   
   ngOnInit(): void {
@@ -58,26 +56,18 @@ export class SkylineComponent implements OnInit, AfterViewInit {
       console.log ('Colors start from %s to %s', this.startingColor, this.endingColor);
     }
     this.colorService.initBoundaryColors(this.startingColor, this.endingColor);
-
-    const year = 2018;
-    const week = 10;
-    function floor(building: Building) {
-      return (building.year === year) && (building.week === week)    
-    }
     
     this.skyline$.subscribe({
       next: buildings => {
         if (buildings.length !== 0) {
-          this.buildings = buildings.filter(floor);
-          if (this.DEBUG) {
-            console.log ('The skyline contains ' + this.buildings.length + ' buildings.');
-          }
-          this.buildings$.next(this.buildings);
+          this.skylineService.history = buildings;
+          this.skylineService.riseBuilding();
         }
       }
     });
   }
-  
+
+
   ngAfterViewInit() {    
   }
 
@@ -93,14 +83,14 @@ export class SkylineComponent implements OnInit, AfterViewInit {
   }
 
   zoomIn() {
-    this.buildings.forEach(building => {
+    this.skylineService.history.forEach(building => {
       building.width = building.width * 1.1;
       building.height = building.height * 1.1;
     });
   }
 
   zoomOut() {
-    this.buildings.forEach(building => {
+    this.skylineService.history.forEach(building => {
       building.width = building.width / 1.1;
       building.height = building.height / 1.1;
     });
