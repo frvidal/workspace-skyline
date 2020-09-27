@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { SkylineComponent } from '../../projects/skyline/src/lib/skyline.component';
 
 import { AppComponent } from './app.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
