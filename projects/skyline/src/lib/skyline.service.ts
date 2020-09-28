@@ -95,12 +95,18 @@ export class SkylineService {
       return ( (building.year * 100 + building.week) < (eligibleBuilding.year * 100 + eligibleBuilding.week) ) ?
         building : eligibleBuilding;
       
-      });
+    });
+    const lastBuilding = this.history.reduce((eligibleBuilding, building) => {
+      return ( (building.year * 100 + building.week) > (eligibleBuilding.year * 100 + eligibleBuilding.week) ) ?
+        building : eligibleBuilding;
+      
+    });
     if (this.DEBUG) {
-      console.log ('Nope')
-      console.log ('First Building has begun on week %d year %d', firstBuilding.week, firstBuilding.year);
+      console.log ('FIRST Building has been placed on week %d year %d', firstBuilding.week, firstBuilding.year);
+      console.log ('LAST Building has been placed on week %d year %d', lastBuilding.week, lastBuilding.year);
     }
     this.firstDate = this.getDateOfWeek(firstBuilding.year, firstBuilding.week);
+    this.lastDate = this.getDateOfWeek(lastBuilding.year, lastBuilding.week);
   }
 
 

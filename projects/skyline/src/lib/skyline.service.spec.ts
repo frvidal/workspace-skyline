@@ -46,6 +46,7 @@ describe('SkylineService', () => {
 
     service.takeInAccount(buildings);
     expect(service.firstDate).toEqual(service.getDateOfWeek(2019, 21));
+    expect(service.lastDate).toEqual(service.getDateOfWeek(2021, 1));
   });
 
 });

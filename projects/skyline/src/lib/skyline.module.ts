@@ -7,7 +7,7 @@ import { SkylineService } from './skyline.service';
 
 @NgModule({
   declarations: [SkylineComponent],
-  imports: [
+  providers: [
     ColorService,
     SkylineService,
   ],
