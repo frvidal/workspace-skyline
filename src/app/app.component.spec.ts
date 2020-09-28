@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
@@ -6,6 +7,11 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
+
+        
+      ],
+      providers: [
+        DatePipe
       ],
     }).compileComponents();
   }));

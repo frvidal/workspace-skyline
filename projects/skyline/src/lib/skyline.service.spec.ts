@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { Building } from './data/building';
 
 import { SkylineService } from './skyline.service';
 
@@ -32,6 +33,19 @@ describe('SkylineService', () => {
     expect(service).toBeTruthy();
     const d = service.getDateOfWeek(2019, 1);
     expect(d).toEqual(new Date('2018-12-31 00:00:00'));
+  });
+
+  it('should correctly "takeInAccount()" a skyline', () => {
+    expect(service).toBeTruthy();
+
+    const buildings = [];
+    buildings.push(new Building(1, 2019, 42, 1, 1, 1));
+    buildings.push(new Building(1, 2020, 12, 1, 1, 1));
+    buildings.push(new Building(1, 2019, 21, 1, 1, 1));
+    buildings.push(new Building(1, 2021, 1, 1, 1, 1));
+
+    service.takeInAccount(buildings);
+    expect(service.firstDate).toEqual(service.getDateOfWeek(2019, 21));
   });
 
 });

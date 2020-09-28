@@ -89,16 +89,34 @@ export class SkylineService {
     });
   }
 
+  public takeInAccount(buildings: Building[]) {
+    this.history = buildings;
+    const firstBuilding = this.history.reduce((eligibleBuilding, building) => {
+      return ( (building.year * 100 + building.week) < (eligibleBuilding.year * 100 + eligibleBuilding.week) ) ?
+        building : eligibleBuilding;
+      
+      });
+    if (this.DEBUG) {
+      console.log ('Nope')
+      console.log ('First Building has begun on week %d year %d', firstBuilding.week, firstBuilding.year);
+    }
+    this.firstDate = this.getDateOfWeek(firstBuilding.year, firstBuilding.week);
+  }
+
+
   /**
    * Return the date of the first week day : a **MONDAY** in this implementation.
+   * 
+   * **Should you use later :** const todayFormated = this.datepipe.transform(today, 'w');.
+   * 
    * @param year the year of the date
    * @param week the week the week of the date 
    */
   public getDateOfWeek(year: number, week: number) {
     // The week number 1 of a year, has to contain the first civil thursday of this year.
-    const newYearsDayOffset =  (new Date(year, 0, 1).getDay() <= 4) ? 0 : 1;
+    const firstWeekOffset =  (new Date(year, 0, 1).getDay() <= 4) ? 0 : 1;
 
-    let date = new Date(year, 0, (1 + (newYearsDayOffset + week - 1) * 7)); 
+    let date = new Date(year, 0, (1 + (firstWeekOffset + week - 1) * 7)); 
     date.setDate(date.getDate() + (1 - date.getDay())); // 0 - Sunday, 1 - Monday etc
     return date;
   }

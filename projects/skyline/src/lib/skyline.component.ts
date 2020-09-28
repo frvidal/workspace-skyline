@@ -58,7 +58,7 @@ export class SkylineComponent implements OnInit, AfterViewInit {
     this.skyline$.subscribe({
       next: buildings => {
         if (buildings.length !== 0) {
-          this.skylineService.history = buildings;
+          this.skylineService.takeInAccount(buildings);
           this.skylineService.riseBuilding();
         }
       }
