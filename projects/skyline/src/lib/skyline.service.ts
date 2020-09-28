@@ -89,4 +89,17 @@ export class SkylineService {
     });
   }
 
+  /**
+   * Return the date of the first week day : a **MONDAY** in this implementation.
+   * @param year the year of the date
+   * @param week the week the week of the date 
+   */
+  public getDateOfWeek(year: number, week: number) {
+    // The week number 1 of a year, has to contain the first civil thursday of this year.
+    const newYearsDayOffset =  (new Date(year, 0, 1).getDay() <= 4) ? 0 : 1;
+
+    let date = new Date(year, 0, (1 + (newYearsDayOffset + week - 1) * 7)); 
+    date.setDate(date.getDate() + (1 - date.getDay())); // 0 - Sunday, 1 - Monday etc
+    return date;
+  }
 }

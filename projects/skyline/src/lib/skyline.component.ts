@@ -44,8 +44,6 @@ export class SkylineComponent implements OnInit, AfterViewInit {
    */
   private DEBUG = true;
 
-  private intervalId: number;
-
   constructor(
     private colorService: ColorService,
     public skylineService: SkylineService) { 
@@ -66,7 +64,6 @@ export class SkylineComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
 
   ngAfterViewInit() {    
   }
