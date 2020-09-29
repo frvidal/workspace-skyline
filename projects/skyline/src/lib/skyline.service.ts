@@ -48,8 +48,8 @@ export class SkylineService {
    * Produce the rising of the skyline.
    */
   riseBuilding() {
-    const year = 2018;
-    const week = 10;
+    let year = this.firstDate.getFullYear();
+    let week = this.firstDate.getWeek();
     function floor(building: Building) {
       return (building.year === year) && (building.week === week)    
     }
@@ -58,8 +58,16 @@ export class SkylineService {
       if (this.DEBUG) {
         console.log ('The skyline contains ' + this.skyline.length + ' buildings.');
       }
-      this.skyline$.next(this.skyline);
-      setTimeout(() => clearInterval(this.intervalId), 0);
+
+      const date = this.getDateOfWeek(year, week);
+      const dateNextWeek = date.addDays(7); 
+      if (dateNextWeek > dateNextWeek) {
+        setTimeout(() => clearInterval(this.intervalId), 0);
+      } else {
+        year = dateNextWeek.getFullYear();
+        week = dateNextWeek.addDays(7).getWeek();        
+        this.skyline$.next(this.skyline);
+      }
     }, 1000);
   }
 
