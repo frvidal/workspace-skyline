@@ -43,6 +43,11 @@ export class SkylineService {
    */
   private intervalId: number;
 
+  /**
+   * the Level of zoom.
+   */
+  private levelOfZoom: number = 1;
+
   constructor() { }
   
   /**
@@ -56,6 +61,7 @@ export class SkylineService {
     }
     this.intervalId = setInterval( () => {
       this.skyline = this.history.filter(floor);
+      this.zoom(this.skyline);
       if (this.DEBUG) {
         console.log ('The skyline contains ' + this.skyline.length + ' buildings.');
       }
@@ -73,16 +79,22 @@ export class SkylineService {
   }
 
   /**
+   * Zoom IN or OUT the skyline
+   * @param buildings the skyline
+   */
+  zoom(buildings: Building[]) {
+    buildings.forEach(building => building.zoom(this.levelOfZoom));
+  }
+
+
+  /**
    * Zoom-in the graph.
    */
   public zoomIn() {
     if (this.DEBUG) {
       console.log ('Zoom IN');
     }
-    this.skyline.forEach(building => {
-      building.width = building.width * 1.1;
-      building.height = building.height * 1.1;
-    });
+    this.levelOfZoom = this.levelOfZoom * 1.1;
   }
 
   /**
@@ -92,10 +104,7 @@ export class SkylineService {
     if (this.DEBUG) {
       console.log ('Zoom OUT');
     }
-    this.skyline.forEach(building => {
-      building.width = building.width / 1.1;
-      building.height = building.height / 1.1;
-    });
+    this.levelOfZoom = this.levelOfZoom / 1.1;
   }
 
   public takeInAccount(buildings: Building[]) {

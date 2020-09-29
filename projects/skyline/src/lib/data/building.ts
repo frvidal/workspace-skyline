@@ -1,3 +1,5 @@
+import { TitleCasePipe } from '@angular/common';
+
 export class Building {
 
     constructor(
@@ -8,4 +10,12 @@ export class Building {
         public height: number,
         public index: number) {}
 
+    /**
+     * Zoom this level to the given level.
+     * @param level the level of zoom
+     */
+    public zoom(level: number) {
+        this.height = this.height * level;
+        this.width = this.width * level;
+    }
 }
