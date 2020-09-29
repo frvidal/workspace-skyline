@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Building } from './data/building';
+import './date.extension';
 
 @Injectable({
   providedIn: 'root'
