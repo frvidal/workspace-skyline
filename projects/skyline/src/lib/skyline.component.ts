@@ -25,6 +25,11 @@ export class SkylineComponent implements OnInit, AfterViewInit {
    */
   @Input() skyline$;
 
+  /**
+   * Animation speed in milliseconds
+   */
+  @Input() speed;
+
   /** 
    * The starting color
    * 
@@ -58,7 +63,9 @@ export class SkylineComponent implements OnInit, AfterViewInit {
     this.skyline$.subscribe({
       next: buildings => {
         if (buildings.length !== 0) {
+          this.skylineService.injectSpeed(this.speed);
           this.skylineService.takeInAccount(buildings);
+          this.skylineService.fillTheHoles();
           this.skylineService.riseBuilding();
         }
       }
@@ -74,9 +81,12 @@ export class SkylineComponent implements OnInit, AfterViewInit {
       '; margin-left: 2px; position: relative;top:'+ (this.height*0.94-building.height) + 'px'; 
     return style;
   }
-
-  color(risk: number) {
-    return '#' + this.colorService.red(risk) + this.colorService.green(risk) + this.colorService.blue(risk);
+  /**
+   * Each DIV is drawn in a color corresponding to a level in a range of colors.
+   * @param level the level of the measure
+   */
+  color(level: number) {
+    return '#' + this.colorService.red(level) + this.colorService.green(level) + this.colorService.blue(level);
   }
 
   skylineStyle() {

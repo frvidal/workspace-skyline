@@ -1,3 +1,4 @@
+import { compileNgModuleFromRender2 } from '@angular/compiler/src/render3/r3_module_compiler';
 import { TestBed } from '@angular/core/testing';
 import { Building } from './data/building';
 
@@ -49,4 +50,50 @@ describe('SkylineService', () => {
     expect(service.lastDate).toEqual(service.getDateOfWeek(2021, 1));
   });
 
+  it('should correctly "FillTheHoles()" in the skyline.', () => {
+    expect(service).toBeTruthy();
+
+    const buildings = [];
+    buildings.push(new Building(1, 2019, 22, 10, 4, 1));
+    buildings.push(new Building(1, 2019, 21, 10, 2, 1));
+    buildings.push(new Building(2, 2020, 30, 10, 1, 1));
+    buildings.push(new Building(1, 2019, 20, 10, 1, 1));
+    buildings.push(new Building(2, 2020, 31, 10, 10, 1));
+
+    service.takeInAccount(buildings);
+    service.fillTheHoles();
+    expect(service.firstDate).toEqual(service.getDateOfWeek(2019, 20));
+    expect(service.lastDate).toEqual(service.getDateOfWeek(2020, 31));
+
+    expect(floor(2, 2020, 20)).toBeDefined();
+    expect(floor(2, 2020, 20).height).toBe(0);
+
+    let previousFloor = null;
+    service.sortedHistory().forEach(floor => {
+      if (previousFloor) {
+        if ((previousFloor.year === floor.year) && (previousFloor.week === floor.week)) {
+          throw new Error('Doublon record for ' + floor.id + ' ' + floor.year + ' ' + floor.week);
+        }
+      }
+      previousFloor = floor;
+    })
+
+  });
+
+  /**
+   * Return the floor associated to a week. 
+   * @param id the project identifier
+   * @param year the given year
+   * @param week the given week
+   */
+  function floor(id: number, year: number, week: number):Building {
+    console.log ('nope');
+    const floor = service.history
+      .filter(
+        floor => ((floor.id === id) && (floor.year === year) && (floor.week === week)));
+    if (!floor) {
+      throw new Error('Floor (' + id + ',' + year + ',' + week + ') not found');
+    }
+    return floor[0];
+  }
 });

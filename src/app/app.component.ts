@@ -59,7 +59,7 @@ export class AppComponent  {
       }
      
       for (let d = startDate.clone(), stepHeight = 1; d <= endDate; d.addDays(7), stepHeight++) {
-        buildings.push(new Building(id, d.getFullYear(), d.getWeek(), 40, stepHeight*3, randomInteger(0, 100)));
+        buildings.push(new Building(id, d.getFullYear(), d.getWeek(), 40, stepHeight*2, randomInteger(0, 100)));
       }
 
     }

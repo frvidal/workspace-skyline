@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, using } from 'rxjs';
 import { Building } from './data/building';
 import './date.extension';
 
@@ -46,10 +46,25 @@ export class SkylineService {
   /**
    * the Level of zoom.
    */
-  private levelOfZoom: number = 1;
+  private levelOfZoom: number = 0.5;
+
+  /**
+   * Default speed of the animation.
+   */
+  private speed = 1000;
 
   constructor() { }
   
+  /**
+   * Inject the speed of the animation, received by the component. 
+   * @param speed the speed of the animation
+   */
+  injectSpeed(speed: number) {
+    if (speed) {
+      this.speed = speed;
+    }
+  }
+
   /**
    * Produce the rising of the skyline.
    */
@@ -72,10 +87,58 @@ export class SkylineService {
         setTimeout(() => clearInterval(this.intervalId), 0);
       } else {
         year = dateNextWeek.getFullYear();
-        week = dateNextWeek.addDays(7).getWeek();        
+        week = dateNextWeek.getWeek();        
         this.skyline$.next(this.skyline);
       }
-    }, 1000);
+    }, this.speed);
+  }
+
+  /**
+   * Complete the skyline perspective by filling the holes.
+   */
+  public fillTheHoles() {
+    const ids = [... new Set(this.history.map(building => building.id))];
+    const buildings = this.history.sort((a, b) => {
+      return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
+    });
+    ids.forEach(id => {
+
+      const firstFloor = this.history
+        .filter(building => building.id === id)
+        .reduce((eligibleBuilding, building) => {
+          return ( (building.year * 100 + building.week) < (eligibleBuilding.year * 100 + eligibleBuilding.week) ) ?
+            building : eligibleBuilding;
+      });
+      const startDate = this.getDateOfWeek(firstFloor.year, firstFloor.week);
+      
+      const lastFloor = this.history
+        .filter(building => building.id === id)
+        .reduce((eligibleBuilding, building) => {
+          return ( (building.year * 100 + building.week) > (eligibleBuilding.year * 100 + eligibleBuilding.week) ) ?
+            building : eligibleBuilding;
+      });
+      const lastDate = this.getDateOfWeek(lastFloor.year, lastFloor.week).addDays(7);
+
+      for (let d = this.firstDate.clone(); d < startDate; d.addDays(7)) {
+        this.history.push(new Building(id, d.getFullYear(), d.getWeek(), 40, 0, 0));
+      }
+      for (let d = lastDate.clone(); d < this.lastDate; d.addDays(7)) {
+        this.history.push(new Building(id, d.getFullYear(), d.getWeek(), 40, lastFloor.height, lastFloor.index));
+      }
+    });
+    this.history = this.history.sort((a, b) => {
+      return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
+    });
+  }
+
+  /**
+   * Return the order history of skylines by id, year & week
+   * Sort in ascending order the history of skylines by id, year & week
+   */
+  sortedHistory(): Building[] {
+    return this.history.sort((a, b) => {
+      return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
+    });
   }
 
   /**
@@ -85,7 +148,6 @@ export class SkylineService {
   zoom(buildings: Building[]) {
     buildings.forEach(building => building.zoom(this.levelOfZoom));
   }
-
 
   /**
    * Zoom-in the graph.
