@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, using } from 'rxjs';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Building } from './data/building';
+import { YearWeek } from './data/year-week';
+
 import './date.extension';
 
 @Injectable({
@@ -13,7 +15,7 @@ export class SkylineService {
   /**
    * Activate or Inactivate the Debug mode for this service __True__ or __False__
    */
-  private DEBUG = true;
+  private DEBUG = false;
 
   /**
    * Date when the first floor of the first building has been created.
@@ -76,8 +78,8 @@ export class SkylineService {
    * Produce the rising of the skyline.
    */
   riseSkyline() {
-    let year = this.getWeek(this.firstDate).year;
-    let week = this.getWeek(this.firstDate).week;
+    let year = this.toYearWeek(this.firstDate).year;
+    let week = this.toYearWeek(this.firstDate).week;
     function floor(building: Building) {
       return (building.year === year) && (building.week === week)    
     }
@@ -92,12 +94,12 @@ export class SkylineService {
       const dateNextWeek = date.addDays(7); 
       if (dateNextWeek > this.lastDate) {
         if (this.DEBUG) {
-          console.log ('Rising ends at ' + this.getWeek(dateNextWeek).year + ' ' + this.getWeek(dateNextWeek).week);
+          console.log ('Rising ends at ' + this.toYearWeek(dateNextWeek).year + ' ' + this.toYearWeek(dateNextWeek).week);
         }
         setTimeout(() => clearInterval(this.intervalId), 0);
       } else {
-        week = this.getWeek(dateNextWeek).week;        
-        year = this.getWeek(dateNextWeek).year;
+        week = this.toYearWeek(dateNextWeek).week;        
+        year = this.toYearWeek(dateNextWeek).year;
         this.skyline$.next(this.skyline);
       }
     }, this.speed);
@@ -130,11 +132,11 @@ export class SkylineService {
       const lastDate = this.getDateOfWeek(lastFloor.year, lastFloor.week).addDays(7);
 
       for (let d = this.firstDate.clone(); d < startDate; d.addDays(7)) {
-        this.history.push(new Building(id, this.getWeek(d).year, this.getWeek(d).week, 40, 0, 0));
+        this.history.push(new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, 0, 0));
       }
       // console.log ('--> lastDate', lastDate);
       for (let d = lastDate.clone(); d <= this.lastDate; d.addDays(7, true)) {
-        const b = new Building(id, this.getWeek(d).year, this.getWeek(d).week, 40, lastFloor.height, lastFloor.index);
+        const b = new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, lastFloor.height, lastFloor.index);
         // console.log ('.............................>' + b.id + ' ' + b.year + ' ' + b.week);
         this.history.push(b);
       }
@@ -220,26 +222,30 @@ export class SkylineService {
     return date;
   }
 
-  public getWeek(dt: Date) {
+  /**
+   * Return the couple year/week corresponding to the given date
+   * @param date the given date
+   */
+  public toYearWeek(date: Date): YearWeek {
 
-    const week =  Number(this.datePipe.transform(dt, 'w'));
+    const week =  Number(this.datePipe.transform(date, 'w'));
 
     // This is a bug from datePipe, and this is a possible turnaround
     // https://github.com/angular/angular/issues/33961
     if (week === 53) {
-      const day = dt.getDay();
+      const day = date.getDay();
       //
       // The turnaround :
       //  If the thursday on the same week as the given date is new year, 
       //  then we are exactly in the case of the bug, and we return '1' instead of '53'
       //
       if (day < 4) {
-        const d = dt.clone().addDays(4 - dt.getDay(), false);
-        if (d.getFullYear() > dt.getFullYear()) {
-          return {'year': d.getFullYear(), 'week': 1}
+        const d = date.clone().addDays(4 - date.getDay(), false);
+        if (d.getFullYear() > date.getFullYear()) {
+          return new YearWeek(d.getFullYear(), 1);
         }
       }
     }
-    return {'year': dt.getFullYear(), 'week': week};
+    return new YearWeek(date.getFullYear(), week);
   }
 }

@@ -8,7 +8,7 @@ import {SkylineService} from './skyline.service';
 	templateUrl: './skyline.component.html',
 	styleUrls: ['./skyline.component.css']
 })
-export class SkylineComponent implements OnInit, AfterViewInit {
+export class SkylineComponent implements OnInit {
 
   /** 
    * The width of the container
@@ -47,7 +47,7 @@ export class SkylineComponent implements OnInit, AfterViewInit {
   /**
    * Component is setup in DEBUG mode
    */
-  private DEBUG = true;
+  private DEBUG = false;
 
   constructor(
     private colorService: ColorService,
@@ -71,22 +71,12 @@ export class SkylineComponent implements OnInit, AfterViewInit {
       }
     });
     
-    this.skylineService.skyline$.subscribe({
-      next: floors => {
-        floors.forEach(
-          floor => console.log (floor.id + ' ' + floor.year + ' ' + floor.week + ' ' + floor.height)
-        )
-      } 
-    });
-  }
-
-  ngAfterViewInit() {    
   }
 
   style(building: Building) {
     const style = 'width:' + building.width + 'px; height:' + building.height + 'px;' + 
       'background-color: ' + this.color(building.index) + 
-      '; margin-left: 2px; position: relative;top:'+ (this.height*0.94-building.height) + 'px'; 
+      '; margin-left: 2px; position: relative;top:'+ (this.height*0.99-building.height) + 'px'; 
     return style;
   }
   /**

@@ -40,8 +40,8 @@ describe('SkylineService', () => {
 
   it('should correctly calculate the week 1 for the date 2019-12-30', () => {
     expect(service).toBeTruthy();
-    expect(service.getWeek(new Date('2019-12-30')).week).toBe(1);
-    expect(service.getWeek(new Date('2019-12-30')).year).toBe(2020);
+    expect(service.toYearWeek(new Date('2019-12-30')).week).toBe(1);
+    expect(service.toYearWeek(new Date('2019-12-30')).year).toBe(2020);
   });
 
   it('should correctly "takeInAccount()" a skyline', () => {

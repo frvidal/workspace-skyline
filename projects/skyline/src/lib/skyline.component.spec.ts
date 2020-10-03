@@ -18,7 +18,7 @@ describe('SkylineComponent', () => {
             <rising-skyline
               [height] = 370
               [width] = 1200
-              [speed] = 1000
+              [speed] = 100
               [skyline$] = skyline$
               [startingColor] = "'#FFFFFF'"
               [endingColor] = "'#000000'"

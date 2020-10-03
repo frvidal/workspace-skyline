@@ -1,5 +1,3 @@
-import { TitleCasePipe } from '@angular/common';
-
 export class Building {
 
     constructor(
