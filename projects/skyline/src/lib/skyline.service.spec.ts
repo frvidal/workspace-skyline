@@ -1,4 +1,4 @@
-import { compileNgModuleFromRender2 } from '@angular/compiler/src/render3/r3_module_compiler';
+import { DatePipe } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { Building } from './data/building';
 
@@ -8,7 +8,9 @@ describe('SkylineService', () => {
   let service: SkylineService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [DatePipe]
+    });
     service = TestBed.inject(SkylineService);
   });
 
@@ -36,6 +38,12 @@ describe('SkylineService', () => {
     expect(d).toEqual(new Date('2018-12-31 00:00:00'));
   });
 
+  it('should correctly calculate the week 1 for the date 2019-12-30', () => {
+    expect(service).toBeTruthy();
+    expect(service.getWeek(new Date('2019-12-30')).week).toBe(1);
+    expect(service.getWeek(new Date('2019-12-30')).year).toBe(2020);
+  });
+
   it('should correctly "takeInAccount()" a skyline', () => {
     expect(service).toBeTruthy();
 
@@ -49,8 +57,37 @@ describe('SkylineService', () => {
     expect(service.firstDate).toEqual(service.getDateOfWeek(2019, 21));
     expect(service.lastDate).toEqual(service.getDateOfWeek(2021, 1));
   });
+  
+  it ('should "FillTheHoles()" in this FIRST example of skyline', () => {
+    const buildings = [];
+    
+    buildings.push(new Building(1, 2019, 51, 10, 5, 1));
+    buildings.push(new Building(1, 2019, 52, 10, 10, 1));
 
-  it('should correctly "FillTheHoles()" in the skyline.', () => {
+    let step = 1;
+    buildings.push(new Building(2, 2019, 49, 10, 5  * step++, 1));
+    buildings.push(new Building(2, 2019, 50, 10, 5  * step++, 1));
+    buildings.push(new Building(2, 2019, 51, 10, 5  * step++, 1));
+    buildings.push(new Building(2, 2019, 52, 10, 5  * step++, 1));
+    buildings.push(new Building(2, 2020, 1, 10, 5  * step++, 1));
+    buildings.push(new Building(2, 2020, 2, 10, 5  * step++, 1));
+
+    expect(service).toBeTruthy();
+    expect(buildings.length).toBe(8);
+    service.takeInAccount(buildings);
+    service.fillTheHoles();
+
+    console.groupCollapsed('history content');
+    service.history.forEach(floor => {
+      console.log (floor.id + ' ' + floor.year + ' ' + floor.week + ' ' + floor.height);
+    });
+    console.groupEnd();
+
+    expect(service.history.length).toBe(12);
+
+  }); 
+
+  it('should correctly "FillTheHoles()" in this SECOND skyline.', () => {
     expect(service).toBeTruthy();
 
     const buildings = [];
@@ -87,7 +124,6 @@ describe('SkylineService', () => {
    * @param week the given week
    */
   function floor(id: number, year: number, week: number):Building {
-    console.log ('nope');
     const floor = service.history
       .filter(
         floor => ((floor.id === id) && (floor.year === year) && (floor.week === week)));

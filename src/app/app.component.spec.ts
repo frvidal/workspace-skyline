@@ -7,8 +7,6 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
-
-        
       ],
       providers: [
         DatePipe

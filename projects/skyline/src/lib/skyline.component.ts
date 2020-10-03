@@ -21,7 +21,7 @@ export class SkylineComponent implements OnInit, AfterViewInit {
   @Input() height: number;
 
   /** 
-   * The height of the container
+   * The partial, or complete, history of the skyline rising
    */
   @Input() skyline$;
 
@@ -66,9 +66,17 @@ export class SkylineComponent implements OnInit, AfterViewInit {
           this.skylineService.injectSpeed(this.speed);
           this.skylineService.takeInAccount(buildings);
           this.skylineService.fillTheHoles();
-          this.skylineService.riseBuilding();
+          this.skylineService.riseSkyline();
         }
       }
+    });
+    
+    this.skylineService.skyline$.subscribe({
+      next: floors => {
+        floors.forEach(
+          floor => console.log (floor.id + ' ' + floor.year + ' ' + floor.week + ' ' + floor.height)
+        )
+      } 
     });
   }
 

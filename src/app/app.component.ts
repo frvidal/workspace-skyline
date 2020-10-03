@@ -15,6 +15,29 @@ export class AppComponent  {
   
   private DEBUG = false;
 
+  public getWeek(dt: Date) {
+
+    const week =  Number(this.datePipe.transform(dt, 'w'));
+
+    // This is a bug from datePipe, and this is a possible turnaround
+    // https://github.com/angular/angular/issues/33961
+    if (week === 53) {
+      const day = dt.getDay();
+      //
+      // The turnaround :
+      //  If the thursday on the same week as the given date is new year, 
+      //  then we are exactly in the case of the bug, and we return '1' instead of '53'
+      //
+      if (day < 4) {
+        const d = dt.clone().addDays(4 - dt.getDay(), false);
+        if (d.getFullYear() > dt.getFullYear()) {
+          return {'year': d.getFullYear(), 'week': 1}
+        }
+      }
+    }
+    return {'year': dt.getFullYear(), 'week': week};
+  }
+
   constructor(public datePipe: DatePipe) {
     
     const upperYear = 2020;
@@ -46,20 +69,20 @@ export class AppComponent  {
       // The building ends its rising on this date
       const endDate = new Date(randomInteger(2019, 2020), randomInteger(1,12), randomInteger(1, 27))
       if (this.DEBUG) {
-        console.groupCollapsed ('Project starts from %s (week %d) to %s (week %d) for id %d',
+        console.groupCollapsed ('Project starts from %s (week %s) to %s (week %s) for id %d',
           this.datePipe.transform(startDate, 'yyyy/MM/dd'), 
-          startDate.getWeek(), 
+          this.datePipe.transform(startDate, 'w'), 
           this.datePipe.transform(endDate, 'yyyy/MM/dd'), 
-          endDate.getWeek(), 
+          this.datePipe.transform(endDate, 'w'), 
           id);
         for (let d = startDate.clone(); d < endDate; d.addDays(7)) {
-          console.log (startDate.getFullYear() + ' ' + startDate.getWeek());
+          console.log (this.getWeek(startDate).year + ' ' + this.getWeek(startDate).week);
         }
         console.groupEnd();
       }
      
       for (let d = startDate.clone(), stepHeight = 1; d <= endDate; d.addDays(7), stepHeight++) {
-        buildings.push(new Building(id, d.getFullYear(), d.getWeek(), 40, stepHeight*2, randomInteger(0, 100)));
+        buildings.push(new Building(id, this.getWeek(d).year, this.getWeek(d).week, 40, stepHeight*2, randomInteger(0, 100)));
       }
 
     }
