@@ -7,21 +7,4 @@
   </div>
   <button id="zoomIn" (click)="skylineService.zoomIn()">&uarr;</button>
   <button id="zoomOut" (click)="skylineService.zoomOut()">&darr;</button>
-  <div class="footer" *ngIf="(skylineService.skyline$|async).length > 0">
-    <span>
-      {{skylineService.toYearWeek(skylineService.firstDate).toString()}}
-    </span>
-
-    <span>
-      {{(skylineService.skyline$|async)[0].year}}
-    </span>
-    <span>
-      {{(skylineService.skyline$|async)[0].week}}
-    </span>
-
-    <span>
-      {{skylineService.toYearWeek(skylineService.lastDate).toString()}}
-    </span>
-
-  </div>
 </div>

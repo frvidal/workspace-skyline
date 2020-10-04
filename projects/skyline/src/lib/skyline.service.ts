@@ -15,7 +15,7 @@ export class SkylineService {
   /**
    * Activate or Inactivate the Debug mode for this service __True__ or __False__
    */
-  private DEBUG = false;
+  private DEBUG = true;
 
   /**
    * Date when the first floor of the first building has been created.
@@ -62,6 +62,16 @@ export class SkylineService {
    */
   private speed = 1000;
 
+  /**
+   * Number of floors currently present in the history.
+   */
+  public countFloors: number;
+
+  /**
+   * Curent floor index currently handled in **riseSkyline**.
+   */
+  public currentFloor: number = 0;
+
   constructor(private datePipe: DatePipe) { }
   
   /**
@@ -84,6 +94,7 @@ export class SkylineService {
       return (building.year === year) && (building.week === week)    
     }
     this.intervalId = setInterval( () => {
+      this.currentFloor++;
       this.skyline = this.history.filter(floor);
       this.zoom(this.skyline);
       if (this.DEBUG) {
@@ -106,9 +117,23 @@ export class SkylineService {
   }
 
   /**
+   * Number of floors present in the history.
+   */
+  numberOfFloors(): number {
+    const floors = new Set(this.history.map(floor => floor.year * 100 + floor.week));
+    if (this.DEBUG) {
+      console.log ('History contains %d floors.', floors.size);
+    }
+    return floors.size;
+  }
+
+  /**
    * Complete the skyline perspective by filling the holes.
    */
   public fillTheHoles() {
+    if (this.DEBUG) {
+      console.log ('Entering fillTheHoles()');
+    }
     const ids = [... new Set(this.history.map(building => building.id))];
     const buildings = this.history.sort((a, b) => {
       return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
@@ -144,6 +169,9 @@ export class SkylineService {
     this.history = this.history.sort((a, b) => {
       return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
     });
+    // The save the number of floors in the history. 
+    this.countFloors = this.numberOfFloors();
+    this.currentFloor = 0;
   }
 
   /**
