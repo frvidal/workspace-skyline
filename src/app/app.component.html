@@ -10,7 +10,11 @@
 
   <div class="one">
     <span>
-      {{skylineService.toYearWeek(skylineService.firstDate).toString()}}
+      {{skylineService.toYearWeek(skylineService.firstDate).year}}
+    </span>
+    /
+    <span>
+      {{skylineService.toYearWeek(skylineService.firstDate).week | number : '2.0-0'}}
     </span>
   </div>
 
@@ -18,8 +22,9 @@
     <span>
       {{(skylineService.skyline$|async)[0].year}}
     </span>
+    /
     <span>
-      {{(skylineService.skyline$|async)[0].week}}
+      {{(skylineService.skyline$|async)[0].week | number : '2.0-0'}}
     </span>
   </div>
 
@@ -29,7 +34,11 @@
 
   <div class="four">
     <span>
-      {{skylineService.toYearWeek(skylineService.lastDate).toString()}}
+      {{skylineService.toYearWeek(skylineService.lastDate).year}}
+    </span>
+    /
+    <span>
+      {{skylineService.toYearWeek(skylineService.lastDate).week  | number : '2.0-0'}}
     </span>
   </div>
 
