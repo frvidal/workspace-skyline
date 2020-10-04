@@ -10,7 +10,7 @@ import { take } from 'rxjs/operators';
 	templateUrl: './skyline.component.html',
 	styleUrls: ['./skyline.component.css']
 })
-export class SkylineComponent implements OnInit, OnDestroy {
+export class SkylineComponent implements OnInit {
 
   /** 
    * The width of the container
