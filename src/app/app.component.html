@@ -7,35 +7,30 @@
     [endingColor] = "'#8B0000'">
 </rising-skyline>
 <div class="footer" *ngIf="(skylineService.skyline$|async).length > 0">
-    <div style="width:10%">
-      <span>
-        {{skylineService.toYearWeek(skylineService.firstDate).toString()}}
-      </span>
-    </div>
-    <div style="width:10%">
-      <span>
+
+  <div class="one">
+    <span>
+      {{skylineService.toYearWeek(skylineService.firstDate).toString()}}
+    </span>
+  </div>
+
+  <div class="two">
+    <span>
       {{(skylineService.skyline$|async)[0].year}}
-      </span>
-      <span>
-        {{(skylineService.skyline$|async)[0].week}}
-      </span>
-    </div>
+    </span>
+    <span>
+      {{(skylineService.skyline$|async)[0].week}}
+    </span>
+  </div>
 
-    <div style="width:20%">
-      <span>
-        {{skylineService.currentFloor}}
-      </span>
-      <span>
-        {{skylineService.countFloors}}
-      </span>
-    </div>
+  <div class="three">
+    <mat-slider min="1" max="skylineService.countFloors" [value]="skylineService.currentFloor/2"></mat-slider>
+  </div>
 
-    <mat-slider min="0" max="skylineService.countFloors" step="2" thumbLabel [value]="skylineService.currentFloor"></mat-slider>
-
-    <div style="width:10%">
-      <span>
-        {{skylineService.toYearWeek(skylineService.lastDate).toString()}}
-      </span>
+  <div class="four">
+    <span>
+      {{skylineService.toYearWeek(skylineService.lastDate).toString()}}
+    </span>
   </div>
 
   </div>

@@ -1,13 +1,39 @@
 div.footer {
     width: 100%;
-    height: 40px;
+    height: 50px;
     background-color: lightgray;
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);   
 }
 
+div.one {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    margin-top: 10px;
+    margin-left: 10px;
+}
 
-.mat-slider {
-    width: 50%;
+div.two {
+    grid-column: 1 / 11;
+    grid-row: 1;
+    text-align: right;
+}
+
+div.three {
+    grid-column: 6 / 15;
+    grid-row: 1;
+}
+
+div.four {
+    grid-column: 16 / 20;
+    grid-row: 1;
+    margin-top: 10px;
+}
+
+div.three .mat-slider {
+    width: 100%;
     min-width: 100px;
     height: 50%;
 }
