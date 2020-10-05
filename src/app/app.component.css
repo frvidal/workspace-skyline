@@ -9,7 +9,7 @@ div.footer {
 }
 
 div.one {
-    grid-column: 1 / 4;
+    grid-column: 1 / 6;
     grid-row: 1;
     margin-top: 10px;
     margin-left: 10px;
@@ -22,12 +22,18 @@ div.two {
 }
 
 div.three {
-    grid-column: 6 / 15;
+    grid-column: 6 / 16;
     grid-row: 1;
 }
 
 div.four {
-    grid-column: 16 / 20;
+    grid-column: 16;
+    grid-row: 1;
+    margin-top: 10px;
+}
+
+div.five {
+    grid-column: 17 / 20;
     grid-row: 1;
     margin-top: 10px;
 }
@@ -36,4 +42,9 @@ div.three .mat-slider {
     width: 100%;
     min-width: 100px;
     height: 50%;
+}
+
+button.pause {
+        height: 30px;
+        width: 30px;
 }

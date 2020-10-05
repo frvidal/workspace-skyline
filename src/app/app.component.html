@@ -8,7 +8,7 @@
 </rising-skyline>
 <div class="footer" *ngIf="(skylineService.skyline$|async).length > 0">
 
-  <div class="one">
+  <div class="one" style="text-align: right;">
     <span>
       {{skylineService.toYearWeek(skylineService.firstDate).year}}
     </span>
@@ -42,4 +42,10 @@
     </span>
   </div>
 
+  <div class="five">
+    <button class="pause">
+      <em class="fas fa-pause"></em>
+    </button>
   </div>
+
+</div>
