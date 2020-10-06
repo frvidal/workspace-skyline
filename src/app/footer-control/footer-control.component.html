@@ -1,0 +1,44 @@
+<div class="footer" *ngIf="(skylineService.skyline$|async).length > 0">
+
+    <div class="one" style="text-align: right;">
+      <span>
+        {{skylineService.toYearWeek(skylineService.firstDate).year}}
+      </span>
+      /
+      <span>
+        {{skylineService.toYearWeek(skylineService.firstDate).week | number : '2.0-0'}}
+      </span>
+    </div>
+  
+    <div class="two">
+      <span>
+        {{(skylineService.skyline$|async)[0].year}}
+      </span>
+      /
+      <span>
+        {{(skylineService.skyline$|async)[0].week | number : '2.0-0'}}
+      </span>
+    </div>
+  
+    <div class="three">
+      <mat-slider min="1" max="skylineService.countFloors" [value]="skylineService.currentFloor/2"></mat-slider>
+    </div>
+  
+    <div class="four">
+      <span>
+        {{skylineService.toYearWeek(skylineService.lastDate).year}}
+      </span>
+      /
+      <span>
+        {{skylineService.toYearWeek(skylineService.lastDate).week  | number : '2.0-0'}}
+      </span>
+    </div>
+  
+    <div class="five">
+      <button class="pause">
+        <em class="fas fa-pause"></em>
+      </button>
+    </div>
+  
+  </div>
+  

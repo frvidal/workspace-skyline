@@ -6,10 +6,11 @@ import { SkylineComponent } from '../../projects/skyline/src/lib/skyline.compone
 import { AppComponent } from './app.component';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterControlComponent } from './footer-control/footer-control.component';
 
 @NgModule({
   declarations: [
-    AppComponent, SkylineComponent
+    AppComponent, SkylineComponent, FooterControlComponent
   ],
   imports: [
     BrowserModule,

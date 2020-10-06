@@ -32,7 +32,9 @@ export class AppComponent implements OnInit, OnDestroy  {
   private subscriptionSkyline: Subscription;
 
 
-  constructor(public datePipe: DatePipe, public skylineService: SkylineService) {
+  constructor(
+    public datePipe: DatePipe, 
+    public skylineService: SkylineService) {
     
     const upperYear = 2020;
     const upperWeek = 45;
