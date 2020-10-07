@@ -72,6 +72,16 @@ export class SkylineService {
    */
   public currentFloor: number = 0;
 
+  /**
+   * Curent year processed in **riseSkyline**.
+   */
+  public currentYear: number = 0;
+
+    /**
+   * Curent week processed in **riseSkyline**.
+   */
+  public currentWeek: number = 0;
+
   constructor(private datePipe: DatePipe) { }
   
   /**
@@ -96,6 +106,14 @@ export class SkylineService {
     this.intervalId = setInterval( () => {
       this.currentFloor++;
       this.skyline = this.history.filter(floor);
+
+      // We memorize the current year and week displayed.
+      if (this.skyline.length > 0) {
+        this.currentYear = this.skyline[0].year;
+        this.currentWeek = this.skyline[0].week;
+      }
+
+
       this.zoom(this.skyline);
       if (this.DEBUG) {
         console.log ('The skyline contains %d buildings for year %s & week %s', this.skyline.length, year, week);

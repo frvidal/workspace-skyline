@@ -1,6 +1,8 @@
-<div class="footer" *ngIf="(skylineService.skyline$|async).length > 0">
+<div class="container footer" *ngIf="(skylineService.skyline$|async).length > 0">
 
-    <div class="one" style="text-align: right;">
+  <div class="row">
+
+    <div class="col-2">
       <span>
         {{skylineService.toYearWeek(skylineService.firstDate).year}}
       </span>
@@ -9,8 +11,8 @@
         {{skylineService.toYearWeek(skylineService.firstDate).week | number : '2.0-0'}}
       </span>
     </div>
-  
-    <div class="two">
+
+    <div class="col-1">
       <span>
         {{(skylineService.skyline$|async)[0].year}}
       </span>
@@ -18,13 +20,14 @@
       <span>
         {{(skylineService.skyline$|async)[0].week | number : '2.0-0'}}
       </span>
+    </div>  
+
+    <div class="col-6">
+      <mat-slider min="1" max="100" [value]="this.skylineService.currentFloor * 100 / this.skylineService.countFloors"  class="cdk-focused"
+       thumbLabel [displayWith]="formatYearWeek" tickInterval="1"></mat-slider>
     </div>
-  
-    <div class="three">
-      <mat-slider min="1" max="skylineService.countFloors" [value]="skylineService.currentFloor/2"></mat-slider>
-    </div>
-  
-    <div class="four">
+
+    <div class="col-1">
       <span>
         {{skylineService.toYearWeek(skylineService.lastDate).year}}
       </span>
@@ -33,12 +36,13 @@
         {{skylineService.toYearWeek(skylineService.lastDate).week  | number : '2.0-0'}}
       </span>
     </div>
-  
-    <div class="five">
-      <button class="pause">
+
+    <div class="col-2">
+      <button class="pause rounded">
         <em class="fas fa-pause"></em>
       </button>
     </div>
-  
+
   </div>
-  
+
+</div>

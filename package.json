@@ -23,7 +23,9 @@
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/router": "~10.0.4",
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "bootstrap": "^4.5.2",
     "chrome-headless-launcher": "^0.1.5",
+    "jquery": "^3.5.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
