@@ -2,28 +2,19 @@
 
   <div class="row">
 
-    <div class="col-2">
-      <span>
-        {{skylineService.toYearWeek(skylineService.firstDate).year}}
-      </span>
-      /
-      <span>
-        {{skylineService.toYearWeek(skylineService.firstDate).week | number : '2.0-0'}}
-      </span>
+    <div class="col-1"></div>
+
+    <div id="firstDate" class="col-1">
+        {{skylineService.toYearWeek(skylineService.firstDate).year}}/{{skylineService.toYearWeek(skylineService.firstDate).week | number : '2.0-0'}}
     </div>
 
-    <div class="col-6">
+    <div id="slider" class="col-6">
       <mat-slider class="cdk-focused" min="1" max="100" [value]="this.skylineService.currentFloor * 100 / this.skylineService.countFloors"  
       thumbLabel [displayWith]="formatYearWeek" ></mat-slider>
     </div>
-    <div class="col-1">
-      <span>
-        {{skylineService.toYearWeek(skylineService.lastDate).year}}
-      </span>
-      /
-      <span>
-        {{skylineService.toYearWeek(skylineService.lastDate).week  | number : '2.0-0'}}
-      </span>
+
+    <div id="lastDate" class="col-1">
+        {{skylineService.toYearWeek(skylineService.lastDate).year}}/{{skylineService.toYearWeek(skylineService.lastDate).week  | number : '2.0-0'}}
     </div>
 
     <div class="col-2">

@@ -7,6 +7,8 @@ div.footer {
 .mat-slider {
     width: 100%;
     margin-top: 2px;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 :host /deep/ .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
@@ -36,6 +38,24 @@ div.footer {
 }
 
 button.pause {
+    margin-top: 15px;
     height: 30px;
     width: 30px;
+}
+
+#slider {
+    padding-right: 5;
+    padding-left: 5;
+}
+
+#firstDate {
+    padding-right: 0;
+    text-align: right;
+    margin-top: 15px;
+}
+
+#lastDate {
+    padding-left: 0;
+    text-align: left;
+    margin-top: 15px;
 }
