@@ -45,4 +45,12 @@ export class ColorService {
         return (s.length === 1) ? '0' + s : s;
     }
 
+  /**
+   * Return a color associated to the given level of risk.
+   * @param level the level of the measure
+   */
+  color(level: number) {
+    return '#' + this.red(level) + this.green(level) + this.blue(level);
+  }
+
 }

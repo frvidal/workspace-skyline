@@ -15,7 +15,7 @@ export class SkylineService {
   /**
    * Activate or Inactivate the Debug mode for this service __True__ or __False__
    */
-  private DEBUG = true;
+  private DEBUG = false;
 
   /**
    * Date when the first floor of the first building has been created.
@@ -177,16 +177,17 @@ export class SkylineService {
       for (let d = this.firstDate.clone(); d < startDate; d.addDays(7)) {
         this.history.push(new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, 0, 0));
       }
-      // console.log ('--> lastDate', lastDate);
+
       for (let d = lastDate.clone(); d <= this.lastDate; d.addDays(7, true)) {
         const b = new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, lastFloor.height, lastFloor.index);
-        // console.log ('.............................>' + b.id + ' ' + b.year + ' ' + b.week);
         this.history.push(b);
       }
+
     });
     this.history = this.history.sort((a, b) => {
       return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
     });
+    
     // The save the number of floors in the history. 
     this.countFloors = this.numberOfFloors();
     this.currentFloor = 0;

@@ -17,4 +17,12 @@ describe('ColorService', () => {
     expect(service.red(50)).toBe('80');
   });
 
+  it('should correctly execute the method "color"', () => {
+    expect(service).toBeTruthy();
+    service.initBoundaryColors('#FFFFFF', '#000000');
+    expect(service.color(0)).toBe('#FFFFFF');
+    expect(service.color(100)).toBe('#000000');
+    expect(service.color(50)).toBe('#808080');
+  });
+
 });
