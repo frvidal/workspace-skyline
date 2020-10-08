@@ -12,7 +12,8 @@ export class FooterControlComponent implements OnInit {
   constructor(public skylineService: SkylineService) { }
 
   formatYearWeek = (value: number) => {
-    return this.skylineService.currentYear + ' ' + this.skylineService.currentWeek;
+    return this.skylineService.currentYear + '/' 
+          + ((this.skylineService.currentWeek < 10) ? '0' + this.skylineService.currentWeek : this.skylineService.currentWeek);
   }
 
   ngOnInit(): void {

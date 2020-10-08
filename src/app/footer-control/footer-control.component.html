@@ -12,21 +12,10 @@
       </span>
     </div>
 
-    <div class="col-1">
-      <span>
-        {{(skylineService.skyline$|async)[0].year}}
-      </span>
-      /
-      <span>
-        {{(skylineService.skyline$|async)[0].week | number : '2.0-0'}}
-      </span>
-    </div>  
-
     <div class="col-6">
-      <mat-slider min="1" max="100" [value]="this.skylineService.currentFloor * 100 / this.skylineService.countFloors"  class="cdk-focused"
-       thumbLabel [displayWith]="formatYearWeek" tickInterval="1"></mat-slider>
+      <mat-slider class="cdk-focused" min="1" max="100" [value]="this.skylineService.currentFloor * 100 / this.skylineService.countFloors"  
+      thumbLabel [displayWith]="formatYearWeek" ></mat-slider>
     </div>
-
     <div class="col-1">
       <span>
         {{skylineService.toYearWeek(skylineService.lastDate).year}}
