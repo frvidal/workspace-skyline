@@ -18,8 +18,11 @@
     </div>
 
     <div class="col-2 my-auto">
-      <button class="btn btn-outline-primary btn-circle action-button">
+      <button *ngIf="!skylineService.pause" class="btn btn-outline-primary btn-circle action-button" (click)="skylineService.pauseRising()">
         <em class="fas fa-pause"></em>
+      </button>
+      <button *ngIf="skylineService.pause" class="btn btn-outline-primary btn-circle action-button" (click)="skylineService.playRising()">
+        <i class="fas fa-play"></i>
       </button>
     </div>
 

@@ -69,7 +69,7 @@ export class SkylineComponent implements OnInit {
           this.skylineService.takeInAccount(buildings);
           this.skylineService.fillTheHoles();
           
-          this.skylineService.riseSkyline();
+          this.skylineService.startSkylineRising();
         }
       }
     });

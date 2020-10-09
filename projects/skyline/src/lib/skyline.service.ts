@@ -1,7 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, using } from 'rxjs';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Building } from './data/building';
 import { YearWeek } from './data/year-week';
 
@@ -15,7 +14,7 @@ export class SkylineService {
   /**
    * Activate or Inactivate the Debug mode for this service __True__ or __False__
    */
-  private DEBUG = false;
+  private DEBUG = true;
 
   /**
    * Date when the first floor of the first building has been created.
@@ -82,6 +81,11 @@ export class SkylineService {
    */
   public currentWeek: number = 0;
 
+  /**
+   * This boolean is set to true when the animation is paused. 
+   */
+  public pause = false;
+
   constructor(private datePipe: DatePipe) { }
   
   /**
@@ -94,15 +98,21 @@ export class SkylineService {
     }
   }
 
+  startSkylineRising() {
+    this.currentYear = this.toYearWeek(this.firstDate).year;
+    this.currentWeek = this.toYearWeek(this.firstDate).week;
+    this.riseSkyline();
+  }
+
   /**
    * Produce the rising of the skyline.
    */
   riseSkyline() {
-    let year = this.toYearWeek(this.firstDate).year;
-    let week = this.toYearWeek(this.firstDate).week;
-    function floor(building: Building) {
-      return (building.year === year) && (building.week === week)    
-    }
+    
+    const floor = (building: Building) => {
+      return (building.year === this.currentYear) && (building.week === this.currentWeek);
+    };
+
     this.intervalId = setInterval( () => {
       this.currentFloor++;
       this.skyline = this.history.filter(floor);
@@ -113,22 +123,21 @@ export class SkylineService {
         this.currentWeek = this.skyline[0].week;
       }
 
-
       this.zoom(this.skyline);
       if (this.DEBUG) {
-        console.log ('The skyline contains %d buildings for year %s & week %s', this.skyline.length, year, week);
+        console.log ('The skyline contains %d buildings for year %s & week %s', this.skyline.length, this.currentYear, this.currentWeek);
       }
 
-      const date = this.getDateOfWeek(year, week);
+      const date = this.getDateOfWeek(this.currentYear, this.currentWeek);
       const dateNextWeek = date.addDays(7); 
-      if (dateNextWeek > this.lastDate) {
+      if ((dateNextWeek > this.lastDate) || (this.pause)) {
         if (this.DEBUG) {
           console.log ('Rising ends at ' + this.toYearWeek(dateNextWeek).year + ' ' + this.toYearWeek(dateNextWeek).week);
         }
         setTimeout(() => clearInterval(this.intervalId), 0);
       } else {
-        week = this.toYearWeek(dateNextWeek).week;        
-        year = this.toYearWeek(dateNextWeek).year;
+        this.currentWeek = this.toYearWeek(dateNextWeek).week;        
+        this.currentYear = this.toYearWeek(dateNextWeek).year;
         this.skyline$.next(this.skyline);
       }
     }, this.speed);
@@ -295,4 +304,26 @@ export class SkylineService {
     }
     return new YearWeek(date.getFullYear(), week);
   }
+
+  /**
+   * Pause the skyline rising 
+   */
+  public pauseRising() {
+    if (this.DEBUG) {
+      console.log ('Rising is paused');
+    }
+    this.pause = true;
+  }
+
+  /**
+   * Re-play the skyline rising from when it has been paused.
+   */
+  public playRising() {
+    if (this.DEBUG) {
+      console.log ('Rising is restarted...');
+    }
+    this.pause = false;
+    this.riseSkyline();
+  }
+
 }
