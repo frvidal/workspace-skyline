@@ -42,7 +42,8 @@ button.pause {
 }
 
 #slider {
-    padding: 0;
+    padding-left: 15px;
+    padding-right: 13px;
 }
 
 #firstDate {
