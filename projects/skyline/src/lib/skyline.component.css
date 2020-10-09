@@ -38,5 +38,4 @@ div.container > button {
 ::-webkit-scrollbar {
     height: 0px;
     background:-webkit-linear-gradient(0, green, red);
-
 }
