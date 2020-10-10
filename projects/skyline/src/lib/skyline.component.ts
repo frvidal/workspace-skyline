@@ -10,7 +10,7 @@ import { take } from 'rxjs/operators';
 	templateUrl: './skyline.component.html',
 	styleUrls: ['./skyline.component.css']
 })
-export class SkylineComponent implements OnInit {
+export class SkylineComponent implements OnInit, OnDestroy {
 
   /** 
    * The width of the container
@@ -51,6 +51,11 @@ export class SkylineComponent implements OnInit {
    */
   private DEBUG = false;
 
+  /**
+   * The subscription reading the flow of floors.
+   */
+  private subscription: Subscription;
+
   constructor(
     private colorService: ColorService,
     public skylineService: SkylineService) { 
@@ -62,7 +67,7 @@ export class SkylineComponent implements OnInit {
     }
     this.colorService.initBoundaryColors(this.startingColor, this.endingColor);
     
-    this.skyline$.pipe(take(1)).subscribe({
+    this.subscription = this.skyline$.subscribe({
       next: buildings => {
         if (buildings.length !== 0) {
           this.skylineService.injectSpeed(this.speed);
@@ -101,6 +106,12 @@ export class SkylineComponent implements OnInit {
   skylineStyle() {
     const style = 'width:'+this.width+'px; height:'+this.height+'px';
     return style;
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

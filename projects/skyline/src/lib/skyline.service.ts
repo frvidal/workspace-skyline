@@ -115,7 +115,13 @@ export class SkylineService {
 
     this.intervalId = setInterval( () => {
       this.currentFloor++;
-      this.skyline = this.history.filter(floor);
+
+      //
+      // We filter & clone the subset of the history.
+      // We'll probably change the scale of the building, and we don't want to override the orginal data 
+      // 
+      this.skyline = [];
+      this.history.filter(floor).forEach(building => this.skyline.push(building.clone()));
 
       // We memorize the current year and week displayed.
       if (this.skyline.length > 0) {

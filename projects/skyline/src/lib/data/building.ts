@@ -8,6 +8,10 @@ export class Building {
         public height: number,
         public index: number) {}
 
+    public clone(): Building {
+        return new Building(this.id, this.year, this.week, this.width, this.height, this.index);
+    }
+
     /**
      * Zoom this level to the given level.
      * @param level the level of zoom
