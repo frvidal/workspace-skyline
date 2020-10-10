@@ -76,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy  {
     this.skyline$.next(buildings);
   }
   ngOnInit(): void {
-    this.subscriptionSkyline = this.skylineService.skyline$.subscribe(floors => {
+    this.subscriptionSkyline = this.skylineService.episode$.subscribe(floors => {
       this.positionOfFloor++;
     });
   }

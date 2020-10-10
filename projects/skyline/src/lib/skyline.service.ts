@@ -15,7 +15,7 @@ export class SkylineService {
   /**
    * Activate or Inactivate the Debug mode for this service __True__ or __False__
    */
-  private DEBUG = true;
+  private DEBUG = false;
 
   /**
    * Date when the first floor of the first building has been created.
@@ -33,14 +33,14 @@ export class SkylineService {
   public history$ = new BehaviorSubject<Building[]>([]);
 
   /**
-   * **BehaviorSubject** emitting the skyline to be drawn
+   * **BehaviorSubject** emitting an episode of the rising skyline to be drawn
    */
-  public skyline$ = new BehaviorSubject<Building[]>([]);
+  public episode$ = new BehaviorSubject<Building[]>([]);
 
   /**
-   * The active skyline for the current year/week.
+   * The active episode of the rising skyline for the current year/week.
    */
-  public skyline: Building[] = [];
+  public episode: Building[] = [];
   
  /**
    * For performance purpose :
@@ -132,18 +132,18 @@ export class SkylineService {
       // We filter & clone the subset of the history.
       // We'll probably change the scale of the building, and we don't want to override the orginal data 
       // 
-      this.skyline = [];
-      this.history.filter(floor).forEach(building => this.skyline.push(building.clone()));
+      this.episode = [];
+      this.history.filter(floor).forEach(building => this.episode.push(building.clone()));
 
       // We memorize the current year and week displayed.
-      if (this.skyline.length > 0) {
-        this.currentYear = this.skyline[0].year;
-        this.currentWeek = this.skyline[0].week;
+      if (this.episode.length > 0) {
+        this.currentYear = this.episode[0].year;
+        this.currentWeek = this.episode[0].week;
       }
 
-      this.zoom(this.skyline);
+      this.zoom(this.episode);
       if (this.DEBUG) {
-        console.log ('The skyline contains %d buildings for year %s & week %s', this.skyline.length, this.currentYear, this.currentWeek);
+        console.log ('The skyline contains %d buildings for year %s & week %s', this.episode.length, this.currentYear, this.currentWeek);
       }
 
       const date = this.getDateOfWeek(this.currentYear, this.currentWeek);
@@ -156,7 +156,7 @@ export class SkylineService {
       } else {
         this.currentWeek = this.toYearWeek(dateNextWeek).week;        
         this.currentYear = this.toYearWeek(dateNextWeek).year;
-        this.skyline$.next(this.skyline);
+        this.episode$.next(this.episode);
       }
     }, this.speed);
   }
@@ -170,7 +170,7 @@ export class SkylineService {
       console.log ('The episode contains %d building', episode.length);
     }
     this.zoom(episode);
-    this.skyline$.next(episode);
+    this.episode$.next(episode);
   }
 
   /**

@@ -19,7 +19,7 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
   /**
    * Debug mode YES/NO.
    */
-  private DEBUG = true;
+  private DEBUG = false;
 
   constructor(public skylineService: SkylineService, public colorService: ColorService) { }
 
@@ -33,7 +33,7 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
 
 
   ngAfterViewInit(): void {
-    this.skylineService.skyline$.subscribe(
+    this.skylineService.episode$.subscribe(
       floors => {
         if (floors.length > 0) {
           const allIndex = floors.filter(floor => floor.height > 0).map(floor => floor.index).reduce((theSum, index) => { return theSum + index; }, 0 );
