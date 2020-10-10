@@ -153,6 +153,8 @@ export class SkylineService {
           console.log ('Rising ends at ' + this.toYearWeek(dateNextWeek).year + ' ' + this.toYearWeek(dateNextWeek).week);
         }
         setTimeout(() => clearInterval(this.intervalId), 0);
+        // We set to TRUE pause if we reached the end of the history (> lastDate). 
+        this.pause = true;
       } else {
         this.currentWeek = this.toYearWeek(dateNextWeek).week;        
         this.currentYear = this.toYearWeek(dateNextWeek).year;

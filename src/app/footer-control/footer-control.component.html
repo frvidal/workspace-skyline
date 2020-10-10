@@ -15,15 +15,14 @@
       (change)="onSliderChange($event)" ></mat-slider>
     </div>
 
-    <div id="lastDate" class="col-1 my-auto">
+    <div id="lastDate" class="col-2 my-auto">
+      <span>
         {{skylineService.toYearWeek(skylineService.lastDate).year}}/{{skylineService.toYearWeek(skylineService.lastDate).week  | number : '2.0-0'}}
-    </div>
-
-    <div class="col-2 my-auto">
-      <button *ngIf="!skylineService.pause" class="btn btn-outline-primary btn-circle action-button" (click)="skylineService.pauseRising()">
+      </span>
+      <button *ngIf="!skylineService.pause" class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.pauseRising()">
         <em class="fas fa-pause"></em>
       </button>
-      <button *ngIf="skylineService.pause" class="btn btn-outline-primary btn-circle action-button" (click)="skylineService.playRising()">
+      <button *ngIf="skylineService.pause" class="btn btn-outline-primary btn-circle conrol-button" (click)="skylineService.playRising()">
         <i class="fas fa-play"></i>
       </button>
     </div>

@@ -54,10 +54,11 @@ button.pause {
 
 #lastDate {
     padding-left: 0;
+    padding-right: 0;
     text-align: left;
 }
 
-button.action-button {
+button.control-button {
     border-radius: 50%;
     border-color: grey;
 }
