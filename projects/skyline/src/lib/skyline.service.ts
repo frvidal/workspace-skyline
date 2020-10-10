@@ -107,6 +107,9 @@ export class SkylineService {
     }
   }
 
+  /**
+   * Start the rising animation from the first day in history.
+   */
   startSkylineRising() {
     this.currentYear = this.toYearWeek(this.firstDate).year;
     this.currentWeek = this.toYearWeek(this.firstDate).week;
@@ -114,7 +117,7 @@ export class SkylineService {
   }
 
   /**
-   * Produce the rising of the skyline.
+   * Produce the stupendous rising of skyline.
    */
   riseSkyline() {
     
@@ -159,6 +162,32 @@ export class SkylineService {
   }
 
   /**
+   * Draw the given episode.
+   * @param episode the given epise
+   */
+  public drawEpisode(episode: Building[]) {
+    if (this.DEBUG) {
+      console.log ('The episode contains %d building', episode.length);
+    }
+    this.zoom(episode);
+    this.skyline$.next(episode);
+  }
+
+  /**
+   * Extract and return an episode of the skyline for a given week
+   * @param year the year of the week
+   * @param week the week 
+   */
+  extractSkylineEpisode(year: number, week: number): Building[] {
+    const floor = (building: Building) => {
+      return (building.year === year) && (building.week === week);
+    };
+    const skyline = [];
+    this.history.filter(floor).forEach(building => skyline.push(building.clone()));
+    return skyline;
+  }
+
+  /**
    * Number of floors present in the history.
    */
   numberOfFloors(): number {
@@ -169,6 +198,11 @@ export class SkylineService {
     return floors.size;
   }
 
+  /**
+   * Initiliaze the content of an array of __Year/Weeks__
+   * 
+   * This array is synchronized with the position of the coin moving on the slider.
+   */
   initArrayYearWeeks() {
     const setYearWeeks = new Set(this.history.map(building => building.year*100+building.week))
     this.yearWeeks = [];

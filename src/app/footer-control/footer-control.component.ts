@@ -17,9 +17,9 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
   private skylineSubscription: Subscription = null;
 
   /**
-   * 
+   * Debug mode YES/NO.
    */
-  private debug = false;
+  private DEBUG = true;
 
   constructor(public skylineService: SkylineService, public colorService: ColorService) { }
 
@@ -38,14 +38,14 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
         if (floors.length > 0) {
           const allIndex = floors.filter(floor => floor.height > 0).map(floor => floor.index).reduce((theSum, index) => { return theSum + index; }, 0 );
           const meanIndex = Math.floor(allIndex / floors.filter(floor => floor.height > 0).length);
-          if (this.debug) {
+          if (this.DEBUG) {
             console.log ('Index of color used for the thumb coin', meanIndex);
           }
 
           const htmlThumbLabelCoin = document.getElementsByClassName('mat-slider-thumb-label').item(0);
           if (htmlThumbLabelCoin) {
             const color =  this.colorService.color(meanIndex);
-            if (this.debug) {
+            if (this.DEBUG) {
               console.log ('Index of color used for the thumb coin %d is processing the color', meanIndex, color);
             }
             htmlThumbLabelCoin.setAttribute('style', 'background-color:'+color);
@@ -61,9 +61,13 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   onSliderChange($event: MatSliderChange) {
-    console.log ('$event.value', $event.value);
-    const yw = this.skylineService.yearWeeks[$event.value];
+    const yw = this.skylineService.yearWeeks[Math.max(0, $event.value-2)];
     this.skylineService.currentYear = yw.year;
     this.skylineService.currentWeek = yw.week;
+    if (this.DEBUG) {
+      console.log ('Position %d points to (%d; %d)', $event.value, yw.year, yw.week);
+    }
+    const episode = this.skylineService.extractSkylineEpisode(yw.year, yw.week);
+    this.skylineService.drawEpisode(episode);
   }
 }

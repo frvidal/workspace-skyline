@@ -8,8 +8,9 @@
         {{skylineService.toYearWeek(skylineService.firstDate).year}}/{{skylineService.toYearWeek(skylineService.firstDate).week | number : '2.0-0'}}
     </div>
 
+    <!--  max="100" [value]="this.skylineService.currentFloor * 100 / this.skylineService.countFloors"   -->
     <div id="slider" class="col-6 my-auto">
-      <mat-slider class="cdk-focused" min="1" max="100" [value]="this.skylineService.currentFloor * 100 / this.skylineService.countFloors"  
+      <mat-slider class="cdk-focused" min="1" max="{{this.skylineService.countFloors}}" [value]="this.skylineService.currentFloor"
       thumbLabel [displayWith]="formatYearWeek"
       (change)="onSliderChange($event)" ></mat-slider>
     </div>
