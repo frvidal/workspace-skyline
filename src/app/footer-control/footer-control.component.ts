@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { MatSliderChange } from '@angular/material/slider';
 import { ColorService } from 'projects/skyline/src/lib/service/color.service';
 import { SkylineService } from 'projects/skyline/src/lib/skyline.service';
 import { Subscription } from 'rxjs';
@@ -59,4 +60,10 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
     }
   }
 
+  onSliderChange($event: MatSliderChange) {
+    console.log ('$event.value', $event.value);
+    const yw = this.skylineService.yearWeeks[$event.value];
+    this.skylineService.currentYear = yw.year;
+    this.skylineService.currentWeek = yw.week;
+  }
 }

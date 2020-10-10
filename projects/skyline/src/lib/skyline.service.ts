@@ -1,4 +1,5 @@
 import { DatePipe } from '@angular/common';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, using } from 'rxjs';
 import { Building } from './data/building';
@@ -41,6 +42,14 @@ export class SkylineService {
    */
   public skyline: Building[] = [];
   
+ /**
+   * For performance purpose :
+   * 
+   * This array contains an ordered list of YearWeek object. 
+   * Its prime goal is to synchronize the slider position and the corresponding YearWeek location
+   */
+  public yearWeeks: YearWeek[] = []; 
+
   /**
    * The complete history of the skyline : all floors by year/week are stored in this array.
    */
@@ -160,6 +169,17 @@ export class SkylineService {
     return floors.size;
   }
 
+  initArrayYearWeeks() {
+    const setYearWeeks = new Set(this.history.map(building => building.year*100+building.week))
+    this.yearWeeks = [];
+    setYearWeeks.forEach(item => this.yearWeeks.push(new YearWeek(Math.floor(item/100), item%100)));
+    if (this.DEBUG) {
+      console.groupCollapsed ('Array of year/weeks contains %d entries', this.yearWeeks.length);
+      this.yearWeeks.forEach(yw => console.log (yw.toString()));
+      console.groupEnd();
+    }
+  }
+
   /**
    * Complete the skyline perspective by filling the holes.
    */
@@ -205,6 +225,7 @@ export class SkylineService {
     
     // The save the number of floors in the history. 
     this.countFloors = this.numberOfFloors();
+    this.initArrayYearWeeks();
     this.currentFloor = 0;
   }
 
