@@ -23,9 +23,10 @@
       <button *ngIf="!skylineService.pause" class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.pauseRising()">
         <em class="fas fa-pause"></em>
       </button>
-      <button *ngIf="skylineService.pause" class="btn btn-outline-primary btn-circle conrol-button" (click)="skylineService.playRising()">
+      <button *ngIf="skylineService.pause" class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.playRising()">
         <i class="fas fa-play"></i>
       </button>
+      <a class="speed" href="#"><span class="speed number">{{skylineService.variation}}</span><span class="speed x">x</span></a>
     </div>
 
   </div>

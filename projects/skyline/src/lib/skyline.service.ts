@@ -71,6 +71,13 @@ export class SkylineService {
   private speed = 1000;
 
   /**
+   * Variation of speed. 
+   * 
+   * This variation number increase, or decrease, the speed of the animation. 
+   */
+  public variation = 1;
+  
+  /**
    * Number of floors currently present in the history.
    */
   public countFloors: number;
