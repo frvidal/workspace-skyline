@@ -10,13 +10,26 @@ div.footer {
     padding-left: 0;
 }
 
+
+:host /deep/ .mat-slider-horizontal .mat-slider-thumb-label {
+    width: 42px;
+    height: 42px;
+    transform: translateY(20px) scale(1) rotate(45deg);
+}
+
+:host /deep/ .mat-slider-thumb-label-text {
+    opacity: 1;
+    font-size: 10px;
+}
+
 :host /deep/ .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
     width: 42px;
     height: 42px;
-    background-color: darkgreen;
     margin-top: 20px;
     right: -20px;
+    background-color: darkgreen;
 }
+
 
 :host /deep/ .mat-slider.mat-slider-horizontal .mat-slider-track-background,
   .mat-slider.mat-slider-horizontal .mat-slider-track-fill {

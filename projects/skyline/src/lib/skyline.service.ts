@@ -126,6 +126,7 @@ export class SkylineService {
     };
 
     this.intervalId = setInterval( () => {
+      // We add one floor in the animation.
       this.currentFloor++;
 
       //
@@ -139,6 +140,9 @@ export class SkylineService {
       if (this.episode.length > 0) {
         this.currentYear = this.episode[0].year;
         this.currentWeek = this.episode[0].week;
+        if (this.DEBUG) {
+          console.log ('Week', this.currentYear + '/' + this.currentWeek)
+        }
       }
 
       this.zoom(this.episode);

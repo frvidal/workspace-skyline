@@ -46,10 +46,10 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
           if (htmlThumbLabelCoin) {
             const color =  this.colorService.color(meanIndex);
             if (this.DEBUG) {
-              console.log ('Index of color used for the thumb coin %d is processing the color', meanIndex, color);
+              console.log ('Index of color used for the thumb coin %d is processing the color %s', meanIndex, color);
             }
             htmlThumbLabelCoin.setAttribute('style', 'background-color:'+color);
-          }
+          } 
       } 
       });
   }
@@ -70,5 +70,8 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
     }
     const episode = this.skylineService.extractSkylineEpisode(yw.year, yw.week);
     this.skylineService.drawEpisode(episode);
+    setTimeout(() => {
+      document.getElementById('slider').click();
+    }, 0);
   }
 }
