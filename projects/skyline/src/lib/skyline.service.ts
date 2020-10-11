@@ -11,7 +11,7 @@ import './date.extension';
   providedIn: 'root'
 })
 export class SkylineService {
-  
+
   /**
    * Activate or Inactivate the Debug mode for this service __True__ or __False__
    */
