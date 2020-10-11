@@ -74,23 +74,15 @@ button.pause {
 button.control-button {
     border-radius: 50%;
     border-color: grey;
+    margin-left: 4px;
 }
 
-a.speed {
-    color: black;
-    text-decoration: none;
-}
-
-a.speed:hover {
-    color: blue;
+button.control-button:hover {
+    color: white;
 }
 
 span.speed {
-    font-size: 18px;
-}
-
-span.number {
-    padding-left: 5px;
+    font-size: 13px;
 }
 
 span.x {
