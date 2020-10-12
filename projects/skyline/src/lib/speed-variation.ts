@@ -1,17 +1,23 @@
-  export class SpeedVariation {
+import {Variation} from './variation';
 
-    public static VARIATIONS = [
-        { 'title':'1', speed: 1},
-        { 'title':'2', speed: 2},
-        { 'title':'4', speed: 4},
-        { 'title':'1/4', speed: 0.25},
-        { 'title':'1/2', speed: 0.5},
+export class SpeedVariation {
+
+    public static VARIATIONS: Variation[] = [
+        { 'title':'1', acceleration: 1},
+        { 'title':'2', acceleration: 2},
+        { 'title':'4', acceleration: 4},
+        { 'title':'&frac14;', acceleration: 0.25},
+        { 'title':'&#189;', acceleration: 0.5},
     ];
 
-    public static next(currentVariation: any): any {
+    public static first(): Variation {
+        return SpeedVariation.VARIATIONS[0];
+    }
+
+    public static next(currentVariation: Variation): Variation {
         let variationFound = -1;
         for (let i = 0; (i < SpeedVariation.VARIATIONS.length) && (variationFound < 0); i++) {
-            if (SpeedVariation.VARIATIONS[i].speed === currentVariation.speed) {
+            if (SpeedVariation.VARIATIONS[i].acceleration === currentVariation.acceleration) {
                 variationFound = (i === 4) ? 0 : i+1;
             }
         }

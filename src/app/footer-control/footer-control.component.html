@@ -26,8 +26,8 @@
       <button *ngIf="skylineService.pause" class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.playRising()">
         <i class="fas fa-play"></i>
       </button>
-      <button class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.rotateSpeed()">
-        <span class="speed number">{{skylineService.variation}}</span><span class="speed x">x</span>
+      <button class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.rotateVariation()">
+        <span class="speed number" innerHTML = "{{skylineService.variation.title}}"></span><span class="speed x">x</span>
       </button>
     </div>
 

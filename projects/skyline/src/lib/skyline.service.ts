@@ -1,9 +1,10 @@
 import { DatePipe } from '@angular/common';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, using } from 'rxjs';
 import { Building } from './data/building';
 import { YearWeek } from './data/year-week';
+import { Variation } from './variation';
+import { SpeedVariation } from './speed-variation';
 
 import './date.extension';
 
@@ -15,7 +16,7 @@ export class SkylineService {
   /**
    * Activate or Inactivate the Debug mode for this service __True__ or __False__
    */
-  private DEBUG = false;
+  private DEBUG = true;
 
   /**
    * Date when the first floor of the first building has been created.
@@ -68,14 +69,19 @@ export class SkylineService {
   /**
    * Default speed of the animation.
    */
-  private speed = 1000;
+  private static DEFAULT_SPEED = 1000;
+
+  /**
+   * Current speed of the animation.
+   */
+  private speed = SkylineService.DEFAULT_SPEED;
 
   /**
    * Variation of speed. 
    * 
    * This variation number increase, or decrease, the speed of the animation. 
    */
-  public variation = 1;
+  public variation: Variation = SpeedVariation.first(); 
   
   /**
    * Number of floors currently present in the history.
@@ -110,7 +116,8 @@ export class SkylineService {
    */
   injectSpeed(speed: number) {
     if (speed) {
-      this.speed = speed;
+      SkylineService.DEFAULT_SPEED = speed;
+      this.speed = SkylineService.DEFAULT_SPEED;
     }
   }
 
@@ -153,9 +160,11 @@ export class SkylineService {
       }
 
       this.zoom(this.episode);
+      /*
       if (this.DEBUG) {
         console.log ('The skyline contains %d buildings for year %s & week %s', this.episode.length, this.currentYear, this.currentWeek);
       }
+      */
 
       const date = this.getDateOfWeek(this.currentYear, this.currentWeek);
       const dateNextWeek = date.addDays(7); 
@@ -400,4 +409,15 @@ export class SkylineService {
     this.riseSkyline();
   }
 
+  public rotateVariation() {
+    this.variation = SpeedVariation.next(this.variation);
+    this.speed = SkylineService.DEFAULT_SPEED * this.variation.acceleration;
+      if (this.DEBUG) {
+        console.log ('New variation %s produces the speed %d', this.variation.title, this.speed);
+      }
+  }
+
+  getSpeed() {
+    return this.speed;
+  }
 }

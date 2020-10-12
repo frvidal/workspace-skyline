@@ -2,6 +2,7 @@
   <div class="scrolling-wrapper">
     <div *ngFor="let building of skylineService.episode$|async; index as index" class="card" 
       [style]="style(building)">
+      &nbsp;
     </div>
   </div>
   <button id="zoomIn" (click)="skylineService.zoomIn()">&uarr;</button>

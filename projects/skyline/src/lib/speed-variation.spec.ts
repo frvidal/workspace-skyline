@@ -8,13 +8,13 @@ describe('SpeedVariation', () => {
   });
 
   it('should handle the next (for variation = 1)', () => {    
-    const val = SpeedVariation.next({'title':'nope', speed: 1});
-    expect(val.speed).toBe(2);
+    const val = SpeedVariation.next({'title':'nope', acceleration: 1});
+    expect(val.acceleration).toBe(2);
   });
 
   it('should handle the next (for variation = 0.25)', () => {    
-    const val = SpeedVariation.next({'title':'nope', speed: 0.5});
-    expect(val.speed).toBe(1);
+    const val = SpeedVariation.next({'title':'nope', acceleration: 0.5});
+    expect(val.acceleration).toBe(1);
   });
 
 });
