@@ -411,10 +411,12 @@ export class SkylineService {
 
   public rotateVariation() {
     this.variation = SpeedVariation.next(this.variation);
-    this.speed = SkylineService.DEFAULT_SPEED * this.variation.acceleration;
-      if (this.DEBUG) {
-        console.log ('New variation %s produces the speed %d', this.variation.title, this.speed);
-      }
+    this.speed = SkylineService.DEFAULT_SPEED / this.variation.acceleration;
+    if (this.DEBUG) {
+      console.log ('New variation %s produces the speed %d', this.variation.title, this.speed);
+    }
+    clearInterval(this.intervalId);
+    this.riseSkyline();
   }
 
   getSpeed() {

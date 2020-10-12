@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { ColorService } from 'projects/skyline/src/lib/service/color.service';
 import { SkylineService } from 'projects/skyline/src/lib/skyline.service';
@@ -10,6 +10,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./footer-control.component.css']
 })
 export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  /**
+   * Background color of the control footer panel
+   */
+  @Input() backgroundColor;
 
   /**
    * The Skyline subscription.
@@ -70,8 +75,5 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
     }
     const episode = this.skylineService.extractSkylineEpisode(yw.year, yw.week);
     this.skylineService.drawEpisode(episode);
-    setTimeout(() => {
-      document.getElementById('slider').click();
-    }, 0);
   }
 }
