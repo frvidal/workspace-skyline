@@ -31,7 +31,7 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
   /**
    * __Debug__ mode YES/NO.
    */
-  private DEBUG = true;
+  private DEBUG = false;
 
   /**
    * __Verbose__ mode YES/NO.

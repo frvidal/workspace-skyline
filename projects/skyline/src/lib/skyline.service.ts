@@ -16,7 +16,7 @@ export class SkylineService {
   /**
    * Activate or Inactivate the **Debug** mode in this service.
    */
-  private DEBUG = true;
+  private DEBUG = false;
 
   /**
    * Activate or Inactivate the **Verbose** mode in this service.
