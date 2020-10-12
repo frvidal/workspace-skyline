@@ -3,6 +3,7 @@ import { MatSliderChange } from '@angular/material/slider';
 import { ColorService } from 'projects/skyline/src/lib/service/color.service';
 import { SkylineService } from 'projects/skyline/src/lib/skyline.service';
 import { Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-footer-control',
@@ -17,14 +18,25 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
   @Input() backgroundColor;
 
   /**
+   * This boolean saves the fact that the background color has already been set for this control panel.
+   * We keep this state for performance purpose.
+   */
+  private coloringDone = false;
+
+  /**
    * The Skyline subscription.
    */
   private skylineSubscription: Subscription = null;
 
   /**
-   * Debug mode YES/NO.
+   * __Debug__ mode YES/NO.
    */
-  private DEBUG = false;
+  private DEBUG = true;
+
+  /**
+   * __Verbose__ mode YES/NO.
+   */
+  private VERBOSE = false;
 
   constructor(public skylineService: SkylineService, public colorService: ColorService) { }
 
@@ -38,25 +50,39 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
 
 
   ngAfterViewInit(): void {
-    this.skylineService.episode$.subscribe(
-      floors => {
-        if (floors.length > 0) {
-          const allIndex = floors.filter(floor => floor.height > 0).map(floor => floor.index).reduce((theSum, index) => { return theSum + index; }, 0 );
-          const meanIndex = Math.floor(allIndex / floors.filter(floor => floor.height > 0).length);
-          if (this.DEBUG) {
-            console.log ('Index of color used for the thumb coin', meanIndex);
-          }
-
-          const htmlThumbLabelCoin = document.getElementsByClassName('mat-slider-thumb-label').item(0);
-          if (htmlThumbLabelCoin) {
-            const color =  this.colorService.color(meanIndex);
-            if (this.DEBUG) {
-              console.log ('Index of color used for the thumb coin %d is processing the color %s', meanIndex, color);
+    this.skylineService.episode$
+      .pipe(tap( floors => { if (!this.coloringDone) { setTimeout (() => this.setBackgroundColor(), 0);}  }))
+      .subscribe(
+        floors => {
+          if (floors.length > 0) {
+            const allIndex = floors.filter(floor => floor.height > 0).map(floor => floor.index).reduce((theSum, index) => { return theSum + index; }, 0 );
+            const meanIndex = Math.floor(allIndex / floors.filter(floor => floor.height > 0).length);
+            if ((this.DEBUG) && (this.VERBOSE)) {
+              console.log ('Index of color used for the thumb coin', meanIndex);
             }
-            htmlThumbLabelCoin.setAttribute('style', 'background-color:'+color);
-          } 
-      } 
+
+            const htmlThumbLabelCoin = document.getElementsByClassName('mat-slider-thumb-label').item(0);
+            if (htmlThumbLabelCoin) {
+              const color =  this.colorService.color(meanIndex);
+              if ((this.DEBUG) && (this.VERBOSE)) {
+                console.log ('Index of color used for the thumb coin %d is processing the color %s', meanIndex, color);
+              }
+              htmlThumbLabelCoin.setAttribute('style', 'background-color:'+color);
+            } 
+        } 
       });
+
+  }
+
+  private setBackgroundColor() {
+    const slider = document.getElementById('controlPanel');
+    if (slider) {
+      slider.setAttribute('style', 'background-color:' + this.backgroundColor);
+    }
+    if (this.DEBUG) {
+      console.log ('Background color for the control Panel has been set to %s', this.backgroundColor);
+    }
+    this.coloringDone = true;
   }
 
   ngOnDestroy(): void {

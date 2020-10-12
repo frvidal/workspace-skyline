@@ -14,9 +14,14 @@ import './date.extension';
 export class SkylineService {
 
   /**
-   * Activate or Inactivate the Debug mode for this service __True__ or __False__
+   * Activate or Inactivate the **Debug** mode in this service.
    */
   private DEBUG = true;
+
+  /**
+   * Activate or Inactivate the **Verbose** mode in this service.
+   */
+  private VERBOSE = false;
 
   /**
    * Date when the first floor of the first building has been created.
@@ -154,7 +159,7 @@ export class SkylineService {
       if (this.episode.length > 0) {
         this.currentYear = this.episode[0].year;
         this.currentWeek = this.episode[0].week;
-        if (this.DEBUG) {
+        if ((this.DEBUG) && (this.VERBOSE)) {
           console.log ('Week', this.currentYear + '/' + this.currentWeek)
         }
       }
