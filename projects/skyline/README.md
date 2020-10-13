@@ -39,26 +39,24 @@ Parameter | Decorator | Comment
 ------------ | ------------- | -------------
 **height** | INPUT | The height of the container hosting the skyline
 **width** | INPUT | The width of the container hosting the skyline
-**skyline$** | INPUT | An observable which emits an array of episodes of the skylines. Each episode ties on a week in a year and contains an array of buildings, which are described below.
+**skyline$** | INPUT | An observable which emits an array of episodes in the rising. Each episode ties on a week in a year and contains an array of buildings, which are described below.
 **speed** | INPUT | The speed of the animation in ms. 
-**startingColor** | INPUT | The starting color in the index-range.
-(Each building has a property named **index**). This index determines the color.    
-**endingColor** | INPUT | The ending color in the index-range
-(Each building has a property named **index**). This index determines the color.    
+**startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**). This index determines the color.    
+**endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**). This index determines the color.    
 
 
 ## What is a building ?
 
-For this component, the skyline is an array of buildings.
+In this component, the skyline is an array of buildings.
 
 A building is a piece of the skyline. 
 
 Property | type | Comment
 ------------ | ------------- | -------------
-id | number | the identifier
-width | number | the width of the building
-height | number | the height of the building
-year | number | the year of the building corresponding to this state of building 
-week | number | the week of the building corresponding to this state of building
-index | number | the index in the building in the range of colors
-title | string | the title of the building
+**id** | number | the identifier
+**width** | number | the width of the building
+**height** | number | the height of the building
+**year** | number | the year of the building corresponding to this state of building 
+**week** | number | the week of the building corresponding to this state of building
+**index** | number | the index in the building in the range of colors
+**title** | string | the title of the building
