@@ -1,8 +1,7 @@
 # The Skyline chart
 
 This library provides a rising skyline chart, i.e. a skyline widget, which is linked to a dynamic history of buildings.
-This chart has been created for the project Fitzhì.
-
+This chart has been created for the project Fitzhì. And the aim of this component 
 
 
 ![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/Build_and_test/badge.svg)
@@ -21,7 +20,7 @@ location :
 
 ## Using this library in your application ?
 
-To include this component into a container, you just have to declare this section into the HTML template.
+To include this component into a container, you just have to declare this section into your HTML template.
 
 ```
 <rising-skyline
@@ -38,12 +37,15 @@ The parameters are :
 
 Parameter | Decorator | Comment
 ------------ | ------------- | -------------
-height | INPUT | the height of the skyline container
-width | INPUT | the width of the skyline container
-skyline$ | INPUT | an observable which publishes an array of buildings to be drawn.
-speed | INPUT | the speed of the animation
-startingColor | INPUT | the starting color
-endingColor | INPUT | the ending color
+**height** | INPUT | The height of the container hosting the skyline
+**width** | INPUT | The width of the container hosting the skyline
+**skyline$** | INPUT | An observable which emits an array of episodes of the skylines. 
+Each episode ties on a week in a year and contains an array of buildings, which are described below.
+**speed** | INPUT | The speed of the animation in ms. 
+**startingColor** | INPUT | The starting color in the index-range.
+(Each building has a property named **index**). This index determines the color.    
+**endingColor** | INPUT | The ending color in the index-range
+(Each building has a property named **index**). This index determines the color.    
 
 
 ## What is a building ?
@@ -54,14 +56,10 @@ A building is a piece of the skyline.
 
 Property | type | Comment
 ------------ | ------------- | -------------
-id | number | the identifier of the slice, un unique number per pie
-type | number | the type of slice
-angle | number | the angle of this slice **in degree**
-offset | number | the offset (in degrees) of this slice within the pie. This property is there for internal use. Its value will be processed by the component. 
-color | string | the color of this slice
-data | any | the data object associated to this child.
-children | array of any | an array of data which can be considered as the children linked to this slice
-activated | boolean | `true` or `false` if this slice is activated (the end-user has moved the mouse on it)
-selected | boolean | `true` or `false` if this slice is selected (the end-user has clicked on it)
-
-
+id | number | the identifier of the building
+width | number | the width of the building
+height | number | the height of the building
+year | number | the year of the building corresponding to this state of building 
+week | number | the week of the building corresponding to this state of building
+index | number | the index in the building in the range of colors
+title | string | the title of the building
