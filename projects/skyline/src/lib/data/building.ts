@@ -6,10 +6,11 @@ export class Building {
         public week: number,
         public width: number,
         public height: number,
-        public index: number) {}
+        public index: number,
+        public title: string) {}
 
     public clone(): Building {
-        return new Building(this.id, this.year, this.week, this.width, this.height, this.index);
+        return new Building(this.id, this.year, this.week, this.width, this.height, this.index, this.title);
     }
 
     /**

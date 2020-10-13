@@ -271,11 +271,11 @@ export class SkylineService {
       const lastDate = this.getDateOfWeek(lastFloor.year, lastFloor.week).addDays(7);
 
       for (let d = this.firstDate.clone(); d < startDate; d.addDays(7)) {
-        this.history.push(new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, 0, 0));
+        this.history.push(new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, 0, 0, firstFloor.title));
       }
 
       for (let d = lastDate.clone(); d <= this.lastDate; d.addDays(7, true)) {
-        const b = new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, lastFloor.height, lastFloor.index);
+        const b = new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, lastFloor.height, lastFloor.index, lastFloor.title);
         this.history.push(b);
       }
 

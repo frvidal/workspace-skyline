@@ -7,7 +7,7 @@
       [style]="style(building)">
       <div *ngIf="((buildingSelected) && (building.id === buildingSelected.id))" 
             style="position: relative; top: -40px; border: 1px; border-color: black; border-style: solid; background-color: #FFFF66; width:fit-content; overflow: visible; padding-left: 2px; padding: 5px; z-index: 5">
-            Building {{building.id}}
+            {{building.title}}
       </div>
       <div *ngIf="((!buildingSelected) || (building.id !== buildingSelected.id))" 
             style="position: relative; top: -40px; left: -20px; padding: 5px;">

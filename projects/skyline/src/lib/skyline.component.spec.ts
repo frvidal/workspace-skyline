@@ -49,16 +49,16 @@ describe('SkylineComponent', () => {
 
     const buildings = [];
     
-    buildings.push(new Building(1, 2019, 51, 10, 5, 1));
-    buildings.push(new Building(1, 2019, 52, 10, 10, 1));
+    buildings.push(new Building(1, 2019, 51, 10, 5, 1, 'Building 1'));
+    buildings.push(new Building(1, 2019, 52, 10, 10, 1, 'Building 1'));
 
     let step = 1;
-    buildings.push(new Building(2, 2019, 49, 10, 5  * step++, 1));
-    buildings.push(new Building(2, 2019, 50, 10, 5  * step++, 1));
-    buildings.push(new Building(2, 2019, 51, 10, 5  * step++, 1));
-    buildings.push(new Building(2, 2019, 52, 10, 5  * step++, 1));
-    buildings.push(new Building(2, 2020, 1, 10, 5  * step++, 1));
-    buildings.push(new Building(2, 2020, 2, 10, 5  * step++, 1));
+    buildings.push(new Building(2, 2019, 49, 10, 5  * step++, 1, 'Building 2'));
+    buildings.push(new Building(2, 2019, 50, 10, 5  * step++, 1, 'Building 2'));
+    buildings.push(new Building(2, 2019, 51, 10, 5  * step++, 1, 'Building 2'));
+    buildings.push(new Building(2, 2019, 52, 10, 5  * step++, 1, 'Building 2'));
+    buildings.push(new Building(2, 2020, 1, 10, 5  * step++, 1, 'Building 2'));
+    buildings.push(new Building(2, 2020, 2, 10, 5  * step++, 1, 'Building 2'));
 
     component.skyline$.next(buildings);
     fixture.detectChanges();

@@ -69,7 +69,7 @@ export class AppComponent implements OnInit, OnDestroy  {
       }
      
       for (let d = startDate.clone(), stepHeight = 1; d <= endDate; d.addDays(7), stepHeight++) {
-        buildings.push(new Building(id, this.skylineService.toYearWeek(d).year, this.skylineService.toYearWeek(d).week, 40, stepHeight*2, randomInteger(0, 100)));
+        buildings.push(new Building(id, this.skylineService.toYearWeek(d).year, this.skylineService.toYearWeek(d).week, 40, stepHeight*2, randomInteger(0, 100), 'Building ' + id));
       }
 
     }
