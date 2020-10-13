@@ -8,6 +8,10 @@ import { SpeedVariation } from './speed-variation';
 
 import './date.extension';
 
+
+/**
+ * The SkylineService is in charge of the animation of the skyline rising. 
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -342,8 +346,12 @@ export class SkylineService {
     }    
   }
 
-  public takeInAccount(buildings: Building[]) {
-    this.history = buildings;
+  /**
+   * Take in account the full history of the skyline.
+   * @param history the history received by the component.
+   */
+  public takeInAccount(history: Building[]) {
+    this.history = history;
     const firstBuilding = this.history.reduce((eligibleBuilding, building) => {
       return ( (building.year * 100 + building.week) < (eligibleBuilding.year * 100 + eligibleBuilding.week) ) ?
         building : eligibleBuilding;
@@ -381,7 +389,7 @@ export class SkylineService {
   }
 
   /**
-   * Return the couple year/week corresponding to the given date
+   * Return the couple year/week corresponding to the given date.
    * @param date the given date
    */
   public toYearWeek(date: Date): YearWeek {
@@ -428,6 +436,11 @@ export class SkylineService {
     this.riseSkyline();
   }
 
+  /**
+   * Rotate the variation of the animation speed. 
+   * 
+   * There are 5 levels : __1/4__, __1/2__, __1__, __2__, __4__.
+   */
   public rotateVariation() {
     this.variation = SpeedVariation.next(this.variation);
     this.speed = SkylineService.DEFAULT_SPEED / this.variation.acceleration;
@@ -438,7 +451,10 @@ export class SkylineService {
     this.riseSkyline();
   }
 
-  getSpeed() {
+  /**
+   * Return the actual speed of the animation.
+   */
+  public getSpeed(): number {
     return this.speed;
   }
 }
