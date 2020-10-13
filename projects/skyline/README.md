@@ -39,8 +39,7 @@ Parameter | Decorator | Comment
 ------------ | ------------- | -------------
 **height** | INPUT | The height of the container hosting the skyline
 **width** | INPUT | The width of the container hosting the skyline
-**skyline$** | INPUT | An observable which emits an array of episodes of the skylines. 
-Each episode ties on a week in a year and contains an array of buildings, which are described below.
+**skyline$** | INPUT | An observable which emits an array of episodes of the skylines. Each episode ties on a week in a year and contains an array of buildings, which are described below.
 **speed** | INPUT | The speed of the animation in ms. 
 **startingColor** | INPUT | The starting color in the index-range.
 (Each building has a property named **index**). This index determines the color.    
@@ -56,7 +55,7 @@ A building is a piece of the skyline.
 
 Property | type | Comment
 ------------ | ------------- | -------------
-id | number | the identifier of the building
+id | number | the identifier
 width | number | the width of the building
 height | number | the height of the building
 year | number | the year of the building corresponding to this state of building 
