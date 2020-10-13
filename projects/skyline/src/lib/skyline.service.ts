@@ -302,30 +302,44 @@ export class SkylineService {
 
   /**
    * Zoom IN or OUT the skyline
-   * @param buildings the skyline
+   * @param episode the skyline rising episode
    */
-  zoom(buildings: Building[]) {
-    buildings.forEach(building => building.zoom(this.levelOfZoom));
+  zoom(episode: Building[]) {
+    episode.forEach(building => building.zoom(this.levelOfZoom));
   }
 
   /**
-   * Zoom-in the graph.
+   * Zoom-in the chart.
    */
   public zoomIn() {
     if (this.DEBUG) {
-      console.log ('Zoom IN');
+      console.log ('Zoom IN from %d', this.levelOfZoom);
     }
     this.levelOfZoom = this.levelOfZoom * 1.1;
+    this.forceRedrawAfterZoomIfNecessary();
   }
 
   /**
-   * Zoom-our the graph.
+   * Zoom-out the chart.
    */
   public zoomOut() {
     if (this.DEBUG) {
-      console.log ('Zoom OUT');
+      console.log ('Zoom OUT to %d', this.levelOfZoom);
     }
     this.levelOfZoom = this.levelOfZoom / 1.1;
+    this.forceRedrawAfterZoomIfNecessary();
+  }
+
+  /**
+   * Force the redraw of the episode if it's necessary.
+   */
+  forceRedrawAfterZoomIfNecessary() {
+    // The animation is paused. Therefore we force the redraw of the SAME episode.
+    if ((this.pause) && (this.episode.length > 0)) {
+      const b = this.episode[0];
+      const episode = this.extractSkylineEpisode(b.year, b.week);
+      this.drawEpisode(episode);
+    }    
   }
 
   public takeInAccount(buildings: Building[]) {
