@@ -1,10 +1,20 @@
 <div class="container" [style]="skylineStyle()">
   <div class="scrolling-wrapper">
-    <div *ngFor="let building of skylineService.episode$|async; index as index" class="card" 
+    <div *ngFor="let building of skylineService.episode$|async; index as index" 
+      class="card" 
+      (mouseover)="mouseOverBuilding(building)"
+      (mouseout)="mouseOutBuilding(building)"
       [style]="style(building)">
-      &nbsp;
+      <div *ngIf="((buildingSelected) && (building.id === buildingSelected.id))" 
+            style="position: relative; top: -40px; border: 1px; border-color: black; border-style: solid; background-color: #FFFF66; width:fit-content; overflow: visible; padding-left: 2px; padding: 5px; z-index: 5">
+            Building {{building.id}}
+      </div>
+      <div *ngIf="((!buildingSelected) || (building.id !== buildingSelected.id))" 
+            style="position: relative; top: -40px; left: -20px; padding: 5px;">
+            &nbsp;
+      </div>
     </div>
   </div>
-  <button id="zoomIn" (click)="skylineService.zoomIn()">&uarr;</button>
+  <button mdTooltip="Tooltip Does work!" id="zoomIn" (click)="skylineService.zoomIn()">&uarr;</button>
   <button id="zoomOut" (click)="skylineService.zoomOut()">&darr;</button>
 </div>

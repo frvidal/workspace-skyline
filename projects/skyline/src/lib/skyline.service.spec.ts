@@ -78,8 +78,8 @@ describe('SkylineService', () => {
     service.fillTheHoles();
 
     console.groupCollapsed('history content');
-    service.history.forEach(floor => {
-      console.log (floor.id + ' ' + floor.year + ' ' + floor.week + ' ' + floor.height);
+    service.history.forEach(building => {
+      console.log (building.id + ' ' + building.year + ' ' + building.week + ' ' + building.height);
     });
     console.groupEnd();
 

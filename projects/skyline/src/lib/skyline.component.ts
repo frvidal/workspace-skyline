@@ -52,7 +52,12 @@ export class SkylineComponent implements OnInit, OnDestroy {
   private DEBUG = false;
 
   /**
-   * The subscription reading the flow of floors.
+   * Building hightlighted by the mouse
+   */
+  private buildingSelected = null;
+
+  /**
+   * The subscription reading the flow of episodes in the animation.
    */
   private subscription: Subscription;
 
@@ -82,13 +87,28 @@ export class SkylineComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Mouse is over the building.
+   */
+  public mouseOverBuilding(building: Building) {
+    this.buildingSelected = building;
+  }
+
+  /**
+   * Mouse is out of the building.
+   */
+  public mouseOutBuilding() {
+    this.buildingSelected = null;
+  }
+
+  /**
    * Return the style of the bulding, based on this floor.
    * @param building 
    */
-  style(floor: Building) {
-    const style = 'width:' + floor.width + 'px; height:' + floor.height + 'px;' + 
-      'background-color: ' + this.color(floor.index) + 
-      '; margin-left: 2px; position: relative;top:'+ (this.height*0.99-floor.height) + 'px'; 
+  style(building: Building) {
+    const style = 
+      'width:' + building.width + 'px; height:' + building.height + 'px;' + 
+      'background-color: ' + this.color(building.index) + 
+      '; margin-left: 2px; position: relative;top:'+ (this.height*0.99-building.height) + 'px'
     return style;
   }
 

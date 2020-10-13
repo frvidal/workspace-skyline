@@ -17,12 +17,12 @@ export class AppComponent implements OnInit, OnDestroy  {
   private DEBUG = false;
 
   /**
-   * The number of floors involved in the skyline, starting from skyline.startDate to skyline.lastDate
+   * The number of floors _(or episodes)_ involved in the skyline, starting from skyline.startDate to skyline.lastDate
    */
   public numberOfFloors;
 
   /**
-   * The current position of floor being drawn.
+   * The current position of floor _(or episode)_ being drawn.
    */
   public positionOfFloor = 0;
 

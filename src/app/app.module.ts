@@ -6,13 +6,13 @@ import { SkylineComponent } from '../../projects/skyline/src/lib/skyline.compone
 import { AppComponent } from './app.component';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterControlComponent } from './footer-control/footer-control.component';
+import { PanelControlComponent } from './footer-control/panel-control.component';
 import { ColorService } from 'projects/skyline/src/lib/service/color.service';
 import { SkylineService } from 'projects/skyline/src/lib/skyline.service';
 
 @NgModule({
   declarations: [
-    AppComponent, SkylineComponent, FooterControlComponent
+    AppComponent, SkylineComponent, PanelControlComponent
   ],
   imports: [
     BrowserModule,

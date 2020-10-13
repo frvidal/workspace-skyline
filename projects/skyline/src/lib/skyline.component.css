@@ -13,6 +13,18 @@ div.scrolling-wrapper {
 
 div.scrolling-wrapper > div.card {
     display: inline-block;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 1px;
+    opacity: 0.9;
+}  
+
+div.scrolling-wrapper > div.card:hover {
+    opacity: 1;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+
 }  
 
 div.container > button {
@@ -38,4 +50,10 @@ div.container > button {
 ::-webkit-scrollbar {
     height: 0px;
     background:-webkit-linear-gradient(0, green, red);
+}
+
+div.tooltip {
+    border: 1px; 
+    border-color: black; 
+    border-style: solid;
 }

@@ -4,12 +4,13 @@ import { SkylineComponent } from './skyline.component';
 import { SkylineService } from './skyline.service';
 
 
-
 @NgModule({
   declarations: [SkylineComponent],
   providers: [
     ColorService,
     SkylineService,
+  ],
+  imports: [
   ],
   exports: [SkylineComponent]
 })

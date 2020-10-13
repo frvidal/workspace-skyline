@@ -10,7 +10,7 @@
 
     <div id="slider" class="col-6 my-auto">
       <mat-slider class="cdk-focused" 
-        min="1" max="{{this.skylineService.countFloors}}" [value]="this.skylineService.currentFloor"
+        min="1" max="{{this.skylineService.countEpisodes}}" [value]="this.skylineService.currentEpisode"
         thumbLabel [displayWith]="formatYearWeek"
         (change)="onSliderChange($event)" >
       </mat-slider>

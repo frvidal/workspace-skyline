@@ -24,12 +24,12 @@ export class SkylineService {
   private VERBOSE = false;
 
   /**
-   * Date when the first floor of the first building has been created.
+   * Date when the first episode of the skyline rising _(the first building has been created)_.
    */
   public firstDate: Date;
   
   /**
-   * Date when the last floor of the last building has been created.
+   * Date when the last episode of the skyline rising _(the last building has been ended)_.
    */
   public lastDate: Date;
   
@@ -89,14 +89,14 @@ export class SkylineService {
   public variation: Variation = SpeedVariation.first(); 
   
   /**
-   * Number of floors currently present in the history.
+   * Number of episodes _(floors)_ currently present in the history.
    */
-  public countFloors: number;
+  public countEpisodes: number;
 
   /**
    * Curent floor index currently handled in **riseSkyline**.
    */
-  public currentFloor: number = 0;
+  public currentEpisode: number = 0;
 
   /**
    * Curent year processed in **riseSkyline**.
@@ -146,7 +146,7 @@ export class SkylineService {
 
     this.intervalId = setInterval( () => {
       // We add one floor in the animation.
-      this.currentFloor++;
+      this.currentEpisode++;
 
       //
       // We filter & clone the subset of the history.
@@ -285,9 +285,9 @@ export class SkylineService {
     });
     
     // The save the number of floors in the history. 
-    this.countFloors = this.numberOfFloors();
+    this.countEpisodes = this.numberOfFloors();
     this.initArrayYearWeeks();
-    this.currentFloor = 0;
+    this.currentEpisode = 0;
   }
 
   /**

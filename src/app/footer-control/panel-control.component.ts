@@ -6,11 +6,11 @@ import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-footer-control',
-  templateUrl: './footer-control.component.html',
-  styleUrls: ['./footer-control.component.css']
+  selector: 'app-panel-control',
+  templateUrl: './panel-control.component.html',
+  styleUrls: ['./panel-control.component.css']
 })
-export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
 
   /**
    * Background color of the control footer panel
@@ -95,7 +95,7 @@ export class FooterControlComponent implements OnInit, AfterViewInit, OnDestroy 
     const yw = this.skylineService.yearWeeks[Math.max(0, $event.value-2)];
     this.skylineService.currentYear = yw.year;
     this.skylineService.currentWeek = yw.week;
-    this.skylineService.currentFloor = $event.value-2;
+    this.skylineService.currentEpisode = $event.value-2;
     if (this.DEBUG) {
       console.log ('Position %d points to (%d; %d)', $event.value, yw.year, yw.week);
     }
