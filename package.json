@@ -1,6 +1,6 @@
 {
   "name": "workspace-skyline",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,9 @@
     "test": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "test:watch": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy:internal": "ng build skyline && cd dist/skyline && npm pack && cd ../.. && npm i ./dist/skyline/skyline-1.0.0.tgz",
+    "deploy:external": "ng build skyline && cd dist/skyline && npm publish"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "chrome-headless-launcher": "^0.1.5",
     "jquery": "^3.5.1",
     "rxjs": "~6.5.5",
+    "skyline": "file:dist/skyline/skyline-1.0.0.tgz",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
