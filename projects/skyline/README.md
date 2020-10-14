@@ -4,8 +4,14 @@ This library provides a rising skyline chart, i.e. a skyline widget, which is li
 This chart has been created for the project Fitzhì. And the aim of this component 
 
 
+
 ![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/Build_and_test/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
+
+![Rising Skyine](https://frvidal.github.io/workspace-skyline/projects/skyline/img/rising-skyline.gif)
+
 
 ## Installing this library in your project ?
 
