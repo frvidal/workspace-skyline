@@ -3,6 +3,7 @@
 This library provides a rising skyline chart, i.e. a skyline widget, which is linked to a dynamic history of buildings.
 This chart has been created for the project Fitzhì. And the aim of this component 
 
+Two buttons, with one up and one down arrays, in the top right corner, allow the end-user to zoom-in, or zoom-out the view. 
 
 
 ![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/Build_and_test/badge.svg)
@@ -45,7 +46,7 @@ Parameter | Decorator | Comment
 ------------ | ------------- | -------------
 **height** | INPUT | The height of the container hosting the skyline
 **width** | INPUT | The width of the container hosting the skyline
-**skyline$** | INPUT | An observable which emits an array of episodes in the rising. Each episode ties on a week in a year and contains an array of buildings, which are described below.
+**skyline$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week on a year and is presenting an array of buildings, of different heights. The **Building** object is described below.
 **speed** | INPUT | The speed of the animation in ms. 
 **startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**). This index determines the color.    
 **endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**). This index determines the color.    
@@ -55,7 +56,7 @@ Parameter | Decorator | Comment
 
 In this component, the skyline is an array of buildings.
 
-A building is a piece of the skyline. 
+So a building is a piece of the skyline. 
 
 Property | type | Comment
 ------------ | ------------- | -------------
