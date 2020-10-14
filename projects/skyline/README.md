@@ -1,9 +1,11 @@
 # The Skyline chart
 
 This library provides a rising skyline chart, i.e. a skyline widget, which is linked to a dynamic history of buildings.
-This chart has been created for the project Fitzhì. And the aim of this component 
 
-Two buttons, with one up and one down arrays, in the top right corner, allow the end-user to zoom-in, or zoom-out the view. 
+This chart has been created for the project [Fitzhì](http://www.fitzhi.com). 
+The goal in Fitzhì is to display the history of an IT portfolio, and the turn-over risk on these applications.
+
+On the top right corner, two buttons, with one up and one down arrays, allow the end-user to zoom-in, or zoom-out the view. 
 
 
 ![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/Build_and_test/badge.svg)
@@ -46,10 +48,10 @@ Parameter | Decorator | Comment
 ------------ | ------------- | -------------
 **height** | INPUT | The height of the container hosting the skyline
 **width** | INPUT | The width of the container hosting the skyline
-**skyline$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week on a year and is presenting an array of buildings, of different heights. The **Building** object is described below.
-**speed** | INPUT | The speed of the animation in ms. 
-**startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**). This index determines the color.    
-**endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**). This index determines the color.    
+**skyline$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week in a year and contains an array of buildings, of different heights. The **Building** object is described below.
+**speed** | INPUT | The speed of the animation in ms.
+**startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
+**endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**, and this index determines the color).
 
 
 ## What is a building ?
