@@ -24,6 +24,12 @@
     },
     {
       "path": "./projects/test-npm-skyline/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/controlled-rising-skyline/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/controlled-rising-skyline/tsconfig.spec.json"
     }
   ]
 }

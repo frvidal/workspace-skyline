@@ -515,6 +515,46 @@
           }
         }
       }
+    },
+    "controlled-rising-skyline": {
+      "projectType": "library",
+      "root": "projects/controlled-rising-skyline",
+      "sourceRoot": "projects/controlled-rising-skyline/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/controlled-rising-skyline/tsconfig.lib.json",
+            "project": "projects/controlled-rising-skyline/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/controlled-rising-skyline/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/controlled-rising-skyline/src/test.ts",
+            "tsConfig": "projects/controlled-rising-skyline/tsconfig.spec.json",
+            "karmaConfig": "projects/controlled-rising-skyline/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/controlled-rising-skyline/tsconfig.lib.json",
+              "projects/controlled-rising-skyline/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "workspace-skyline"

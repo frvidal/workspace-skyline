@@ -19,6 +19,10 @@
       "my-first-lib": [
         "dist/skyline/skyline",
         "dist/skyline"
+      ],
+      "controlled-rising-skyline": [
+        "dist/controlled-rising-skyline/controlled-rising-skyline",
+        "dist/controlled-rising-skyline"
       ]
     }
   }
