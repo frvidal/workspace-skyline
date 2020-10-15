@@ -29,7 +29,6 @@
     "chrome-headless-launcher": "^0.1.5",
     "jquery": "^3.5.1",
     "rxjs": "~6.5.5",
-    "skyline": "file:dist/skyline/skyline-1.0.0.tgz",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
