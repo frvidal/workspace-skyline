@@ -281,6 +281,240 @@
           }
         }
       }
+    },
+    "test-internal-skyline": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/test-internal-skyline",
+      "sourceRoot": "projects/test-internal-skyline/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/test-internal-skyline",
+            "index": "projects/test-internal-skyline/src/index.html",
+            "main": "projects/test-internal-skyline/src/main.ts",
+            "polyfills": "projects/test-internal-skyline/src/polyfills.ts",
+            "tsConfig": "projects/test-internal-skyline/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/test-internal-skyline/src/favicon.ico",
+              "projects/test-internal-skyline/src/assets"
+            ],
+            "styles": [
+              "projects/test-internal-skyline/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/test-internal-skyline/src/environments/environment.ts",
+                  "with": "projects/test-internal-skyline/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "test-internal-skyline:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "test-internal-skyline:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "test-internal-skyline:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/test-internal-skyline/src/test.ts",
+            "polyfills": "projects/test-internal-skyline/src/polyfills.ts",
+            "tsConfig": "projects/test-internal-skyline/tsconfig.spec.json",
+            "karmaConfig": "projects/test-internal-skyline/karma.conf.js",
+            "assets": [
+              "projects/test-internal-skyline/src/favicon.ico",
+              "projects/test-internal-skyline/src/assets"
+            ],
+            "styles": [
+              "projects/test-internal-skyline/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/test-internal-skyline/tsconfig.app.json",
+              "projects/test-internal-skyline/tsconfig.spec.json",
+              "projects/test-internal-skyline/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/test-internal-skyline/e2e/protractor.conf.js",
+            "devServerTarget": "test-internal-skyline:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "test-internal-skyline:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "test-npm-skyline": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/test-npm-skyline",
+      "sourceRoot": "projects/test-npm-skyline/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/test-npm-skyline",
+            "index": "projects/test-npm-skyline/src/index.html",
+            "main": "projects/test-npm-skyline/src/main.ts",
+            "polyfills": "projects/test-npm-skyline/src/polyfills.ts",
+            "tsConfig": "projects/test-npm-skyline/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/test-npm-skyline/src/favicon.ico",
+              "projects/test-npm-skyline/src/assets"
+            ],
+            "styles": [
+              "projects/test-npm-skyline/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/test-npm-skyline/src/environments/environment.ts",
+                  "with": "projects/test-npm-skyline/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "test-npm-skyline:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "test-npm-skyline:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "test-npm-skyline:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/test-npm-skyline/src/test.ts",
+            "polyfills": "projects/test-npm-skyline/src/polyfills.ts",
+            "tsConfig": "projects/test-npm-skyline/tsconfig.spec.json",
+            "karmaConfig": "projects/test-npm-skyline/karma.conf.js",
+            "assets": [
+              "projects/test-npm-skyline/src/favicon.ico",
+              "projects/test-npm-skyline/src/assets"
+            ],
+            "styles": [
+              "projects/test-npm-skyline/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/test-npm-skyline/tsconfig.app.json",
+              "projects/test-npm-skyline/tsconfig.spec.json",
+              "projects/test-npm-skyline/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/test-npm-skyline/e2e/protractor.conf.js",
+            "devServerTarget": "test-npm-skyline:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "test-npm-skyline:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "workspace-skyline"

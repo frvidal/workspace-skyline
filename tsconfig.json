@@ -18,6 +18,18 @@
     },
     {
       "path": "./projects/skyline/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/test-internal-skyline/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/test-internal-skyline/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/test-npm-skyline/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/test-npm-skyline/tsconfig.spec.json"
     }
   ]
 }

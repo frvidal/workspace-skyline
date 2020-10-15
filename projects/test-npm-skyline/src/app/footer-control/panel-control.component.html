@@ -1,0 +1,36 @@
+<div id="controlPanel" class="container footer" *ngIf="(skylineService.episode$|async).length > 0">
+
+  <div class="row">
+
+    <div class="col-1"></div>
+
+    <div id="firstDate" class="col-1 my-auto">
+        {{skylineService.toYearWeek(skylineService.firstDate).year}}/{{skylineService.toYearWeek(skylineService.firstDate).week | number : '2.0-0'}}
+    </div>
+
+    <div id="slider" class="col-6 my-auto">
+      <mat-slider class="cdk-focused" 
+        min="1" max="{{this.skylineService.countEpisodes}}" [value]="this.skylineService.currentEpisode"
+        thumbLabel [displayWith]="formatYearWeek"
+        (change)="onSliderChange($event)" >
+      </mat-slider>
+    </div>
+
+    <div id="lastDate" class="col-2 my-auto">
+      <span>
+        {{skylineService.toYearWeek(skylineService.lastDate).year}}/{{skylineService.toYearWeek(skylineService.lastDate).week  | number : '2.0-0'}}
+      </span>
+      <button *ngIf="!skylineService.pause" class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.pauseRising()">
+        <em class="fas fa-pause"></em>
+      </button>
+      <button *ngIf="skylineService.pause" class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.playRising()">
+        <i class="fas fa-play"></i>
+      </button>
+      <button class="btn btn-outline-primary btn-circle control-button" (click)="skylineService.rotateVariation()">
+        <span class="speed number" innerHTML = "{{skylineService.variation.title}}"></span><span class="speed x">x</span>
+      </button>
+    </div>
+
+  </div>
+
+</div>

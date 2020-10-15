@@ -1,11 +1,22 @@
 {
-  "name": "skyline",
-  "version": "1.0.0",
+  "name": "rising-skyline",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^10.0.14",
     "@angular/core": "^10.0.14"
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frvidal/workspace-skyline/tree/master/projects/skyline"
+  },
+  "homepage": "https://github.com/frvidal/workspace-skyline/tree/master/projects/skyline#readme",
+  "author": {
+    "name": "Frédéric VIDAL",
+    "email": "frederic.vidal@fitzhi.com"
+  },
+  "keywords": ["angular", "lib", "dynamic", "animation", "animated", "rising", "skyline", "chart", "tag"]
 }

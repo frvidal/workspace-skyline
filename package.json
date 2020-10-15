@@ -9,8 +9,8 @@
     "test:watch": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy:internal": "ng build skyline && cd dist/skyline && npm pack && cd ../.. && npm i ./dist/skyline/skyline-1.0.0.tgz",
-    "deploy:external": "ng build skyline && cd dist/skyline && npm publish"
+    "deploy:internal": "ng build skyline",
+    "deploy:external": "ng build --prod skyline && cd dist/skyline && npm publish"
   },
   "private": true,
   "dependencies": {

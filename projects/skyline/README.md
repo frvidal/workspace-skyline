@@ -3,7 +3,7 @@
 This library provides a rising skyline chart, i.e. a skyline widget, which is linked to a dynamic history of buildings.
 
 This chart has been created for the project [Fitzhì](http://www.fitzhi.com). 
-The goal in Fitzhì is to display the history of an IT portfolio, and the turn-over risk on these applications.
+In Fitzhì, the goal is to display the history of a rising applications portfolio, confronted to the turn-over risk on these applications.
 
 On the top right corner, two buttons, with one up and one down arrays, allow the end-user to zoom-in, or zoom-out the view. 
 
