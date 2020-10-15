@@ -16,7 +16,7 @@
       "dom"
     ],
     "paths": {
-      "skyline": [
+      "my-first-lib": [
         "dist/skyline/skyline",
         "dist/skyline"
       ]

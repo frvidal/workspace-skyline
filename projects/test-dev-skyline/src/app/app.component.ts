@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Building } from 'projects/skyline/src/lib/data/building';
-import { SkylineService } from 'projects/skyline/src/lib/skyline.service';
+import { Building } from '../../../skyline/src/lib/data/building';
+import { SkylineService } from '../../../skyline/src/lib/skyline.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import './date.extension';
 

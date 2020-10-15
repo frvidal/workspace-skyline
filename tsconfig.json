@@ -8,10 +8,10 @@
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./projects/test-dev-skyline/tsconfig.app.json"
     },
     {
-      "path": "./tsconfig.spec.json"
+      "path": "./projects/test-dev-skyline/tsconfig.spec.json"
     },
     {
       "path": "./projects/skyline/tsconfig.lib.json"
@@ -19,5 +19,5 @@
     {
       "path": "./projects/skyline/tsconfig.spec.json"
     }
-]
+  ]
 }
