@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-controlled-rising-skyline',
-  template: `
-    <p>
-      The controlled-rising-skyline works!
-    </p>
-  `,
-  styles: [
-  ]
+  selector: 'controlled-rising-skyline',
+  templateUrl: './controlled-rising-skyline.html',
+  styleUrls: ['./controlled-rising-skyline.css']
 })
 export class ControlledRisingSkylineComponent implements OnInit {
 

@@ -1,22 +1,22 @@
 import { DatePipe } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ControlledRisingSkylineComponent } from './controlled-rising-skyline.component';
+import { PanelControlComponent } from './panel-control.component';
 
-describe('ControlledRisingSkylineComponent', () => {
-  let component: ControlledRisingSkylineComponent;
-  let fixture: ComponentFixture<ControlledRisingSkylineComponent>;
+describe('PanelControlComponent', () => {
+  let component: PanelControlComponent;
+  let fixture: ComponentFixture<PanelControlComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ControlledRisingSkylineComponent ],
+      declarations: [ PanelControlComponent ],
       providers: [ DatePipe ],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ControlledRisingSkylineComponent);
+    fixture = TestBed.createComponent(PanelControlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
