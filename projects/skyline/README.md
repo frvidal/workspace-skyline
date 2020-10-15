@@ -13,7 +13,7 @@ On the top right corner, two buttons, with one up and one down arrays, allow the
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
 
-![Rising Skyine](https://frvidal.github.io/workspace-skyline/projects/skyline/img/rising-skyline.gif)
+![Rising Skyline](https://frvidal.github.io/workspace-skyline/projects/skyline/img/rising-skyline.gif)
 
 
 ## Installing this library in your project ?
@@ -23,7 +23,7 @@ The most simple command `npm install rising-skyline` will install this library
 To import the module inside your application, just add the module **RisingSkylineModule** in your `app.module.ts`.
 
 location :
-> import {RisingSkyline} from 'rising_skyline';
+> import {RisingSkyline} from 'rising-skyline';
 
 
 
