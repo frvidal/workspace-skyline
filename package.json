@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy:internal": "ng build skyline",
-    "deploy:external": "ng build skyline && cd dist/skyline && npm publish"
+    "deploy:external": "ng build --prod skyline && cd dist/skyline && npm publish"
   },
   "private": true,
   "dependencies": {
@@ -50,7 +50,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^10.0.0",
     "protractor": "~7.0.0",
-    "rising-skyline": "^1.0.2",
+    "rising-skyline": "^1.0.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"

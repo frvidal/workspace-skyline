@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ColorService } from './service/color.service';
 import { SkylineComponent } from './skyline.component';
@@ -11,6 +12,7 @@ import { SkylineService } from './skyline.service';
     SkylineService,
   ],
   imports: [
+    CommonModule
   ],
   exports: [SkylineComponent]
 })
