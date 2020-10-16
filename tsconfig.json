@@ -30,6 +30,12 @@
     },
     {
       "path": "./projects/controlled-rising-skyline/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/test-dev-controlled-skyline/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/test-dev-controlled-skyline/tsconfig.spec.json"
     }
   ]
 }

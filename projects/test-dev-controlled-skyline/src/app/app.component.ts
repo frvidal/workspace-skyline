@@ -1,40 +1,29 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Building } from '../../../skyline/src/lib/data/building';
-import { SkylineService } from '../../../skyline/src/lib/skyline.service';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import './date.extension';
+import { Component, OnInit } from '@angular/core';
+import { Building, SkylineService } from 'rising-skyline';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy  {
-  
+export class AppComponent {
+
+  /**
+   * This observable emits a testing generated array of building.
+   */
   public skyline$ = new BehaviorSubject<Building[]>([]);
   
+  /**
+   * Debug mode __TRUE__, __FALSE__.
+   */
   private DEBUG = false;
 
-  /**
-   * The number of floors _(or episodes)_ involved in the skyline, starting from skyline.startDate to skyline.lastDate
-   */
-  public numberOfFloors;
-
-  /**
-   * The current position of floor _(or episode)_ being drawn.
-   */
-  public positionOfFloor = 0;
-
-  /**
-   * The subscription on the skyline rising.
-   */
-  private subscriptionSkyline: Subscription;
-
-  constructor(
+  public constructor(
     public datePipe: DatePipe, 
     public skylineService: SkylineService) {
-    
+
     const upperYear = 2020;
     const upperWeek = 45;
 
@@ -73,16 +62,7 @@ export class AppComponent implements OnInit, OnDestroy  {
 
     }
     this.skyline$.next(buildings);
-  }
-  
-  ngOnInit(): void {
-    this.subscriptionSkyline = this.skylineService.episode$.subscribe(floors => {
-      this.positionOfFloor++;
-    });
-  }
 
-  ngOnDestroy(): void {
-    this.subscriptionSkyline.unsubscribe();
   }
 
 }

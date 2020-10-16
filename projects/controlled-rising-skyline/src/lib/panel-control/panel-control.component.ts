@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
-import { ColorService } from 'projects/skyline/src/lib/service/color.service';
-import { SkylineService } from 'projects/skyline/src/lib/skyline.service';
+import { ColorService, SkylineService } from 'rising-skyline';
 import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
