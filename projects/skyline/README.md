@@ -47,9 +47,9 @@ The parameters are :
 Parameter | Decorator | Comment
 ------------ | ------------- | -------------
 **height** | INPUT | The height of the container hosting the skyline
-**unitMeasureHeight** | INPUT | _(Optional) the unit of measure of the height. it might be either 'px", or '%', or 'em'.__ Default is **'px'**
+**umHeight** | INPUT | _(Optional) The unit of measure for the height. It might be either 'px", or '%', or 'em'._ Default is **'px'**
 **width** | INPUT | The width of the container hosting the skyline
-**unitMeasureHeight** | INPUT | _(Optional) the unit of measure of the width. it might be either 'px", or '%', or 'em'.__ Default is **'px'**
+**umWidth** | INPUT | _(Optional) The unit of measure for the width. It might be either 'px", or '%', or 'em'._ Default is **'px'**
 **risingSkylineHistory$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week in a year and contains an array of buildings, of different heights. The **Building** object is described below.
 **speed** | INPUT | The speed of the animation in ms.
 **startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
