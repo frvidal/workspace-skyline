@@ -22,10 +22,12 @@ export class SkylineComponent implements OnInit, OnDestroy {
    */
   @Input() height: number;
 
-  /** 
-   * The partial, or complete, history of the skyline rising
+  /**
+   * This observable emits the complete story of the rising skyline.
+   * 
+   * This reveived array will be completed and passed to the __SkylineService__. 
    */
-  @Input() skyline$;
+  @Input() risingSkylineHistory$;
 
   /**
    * Animation speed in milliseconds
@@ -72,7 +74,7 @@ export class SkylineComponent implements OnInit, OnDestroy {
     }
     this.colorService.initBoundaryColors(this.startingColor, this.endingColor);
     
-    this.subscription = this.skyline$.subscribe({
+    this.subscription = this.risingSkylineHistory$.subscribe({
       next: buildings => {
         if (buildings.length !== 0) {
           this.skylineService.injectSpeed(this.speed);

@@ -35,7 +35,7 @@ To include this component into a container, you just have to declare this sectio
 <rising-skyline
     [height] = 370
     [width] = 1200
-    [skyline$] = skyline$
+    [risingSkylineHistory$] = risingSkylineHistory$
     [speed] = 30
     [startingColor] = "'#28a745'"
     [endingColor] = "'#8B0000'">
@@ -48,7 +48,7 @@ Parameter | Decorator | Comment
 ------------ | ------------- | -------------
 **height** | INPUT | The height of the container hosting the skyline
 **width** | INPUT | The width of the container hosting the skyline
-**skyline$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week in a year and contains an array of buildings, of different heights. The **Building** object is described below.
+**risingSkylineHistory$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week in a year and contains an array of buildings, of different heights. The **Building** object is described below.
 **speed** | INPUT | The speed of the animation in ms.
 **startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
 **endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**, and this index determines the color).

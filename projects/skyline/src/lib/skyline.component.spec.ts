@@ -19,7 +19,7 @@ describe('SkylineComponent', () => {
               [height] = 370
               [width] = 1200
               [speed] = 100
-              [skyline$] = skyline$
+              [risingSkylineHistory$] = skyline$
               [startingColor] = "'#FFFFFF'"
               [endingColor] = "'#000000'"
             >

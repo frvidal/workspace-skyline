@@ -74,6 +74,7 @@ button.control-button {
     border-radius: 50%;
     border-color: grey;
     margin-left: 4px;
+    padding-bottom: 5px;
 }
 
 button.control-button:hover {
