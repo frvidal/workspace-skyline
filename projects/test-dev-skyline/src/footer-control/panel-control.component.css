@@ -41,7 +41,8 @@ div.footer {
 }
 
 :host /deep/ .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
-    border-radius: 50% 
+    border-radius: 50%; 
+    color: white;
 }
 
 :host /deep/ .mat-slider.mat-slider-horizontal .mat-slider-track-fill {

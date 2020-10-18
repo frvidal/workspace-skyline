@@ -1,6 +1,7 @@
-div.container {
+div.container-fluid {
     position: relative;
-    margin: 10px auto;
+    margin: 0px auto;
+    padding: 0;
 }
 
 div.scrolling-wrapper {
@@ -27,7 +28,7 @@ div.scrolling-wrapper > div.card:hover {
 
 }  
 
-div.container > button {
+div.container-fluid > button {
     position: absolute;
     right: 10px;
     width: 30px;

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {Building} from './data/building';
 import {ColorService} from './service/color.service';
@@ -10,17 +10,31 @@ import { take } from 'rxjs/operators';
 	templateUrl: './skyline.component.html',
 	styleUrls: ['./skyline.component.css']
 })
-export class SkylineComponent implements OnInit, OnDestroy {
+export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 
   /** 
-   * The width of the container
+   * The width of the container, with its units of mesure (px, %, em...).
    */
   @Input() width: number;
   
   /** 
+   * The unit of measure for the width.
+   * 
+   * Default value is _'px'_
+   */
+  @Input() umWidth = 'px';
+
+  /** 
    * The height of the container
    */
   @Input() height: number;
+
+  /** 
+   * The unit of measure for the height.
+   * 
+   * Default value is _'px'_
+   */
+  @Input() umHeight = 'px';
 
   /**
    * This observable emits the complete story of the rising skyline.
@@ -52,6 +66,13 @@ export class SkylineComponent implements OnInit, OnDestroy {
    * Component is setup in DEBUG mode
    */
   private DEBUG = false;
+
+  /**
+   * Computed heighted in __px__.
+   * This number is used to locate verticaly the buildings inside the container. 
+   * If the given unit of measure for height is not 'px', but '%' for example, then we need to compute this height.  
+   */
+  private computedHeightInPx = 0;
 
   /**
    * Building hightlighted by the mouse
@@ -89,6 +110,22 @@ export class SkylineComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * After viw processing.
+   */
+  ngAfterViewInit(): void {
+    const htmlContainer = document.getElementsByClassName('container-fluid').item(0);
+    if (htmlContainer) {
+      this.computedHeightInPx = htmlContainer.clientHeight;
+      if (this.DEBUG) {
+        console.log ('Computed heigth', this.computedHeightInPx);
+      }
+    } else {
+      console.error('INTERNAL ERROR : Cannot retrieve the div container');
+    }
+
+}
+
+  /**
    * Mouse is over the building.
    */
   public mouseOverBuilding(building: Building) {
@@ -110,7 +147,7 @@ export class SkylineComponent implements OnInit, OnDestroy {
     const style = 
       'width:' + building.width + 'px; height:' + building.height + 'px;' + 
       'background-color: ' + this.color(building.index) + 
-      '; margin-left: 2px; position: relative;top:'+ (this.height*0.99-building.height) + 'px'
+      '; margin-left: 2px; position: relative;top:'+ (this.computedHeightInPx*0.99-building.height) + 'px'
     return style;
   }
 
@@ -126,7 +163,7 @@ export class SkylineComponent implements OnInit, OnDestroy {
    * the style and more particularly the width & height of the skykine container
    */
   skylineStyle() {
-    const style = 'width:'+this.width+'px; height:'+this.height+'px';
+    const style = 'width:' + this.width + this.umWidth + '; height:' + this.height + this.umHeight;
     return style;
   }
 
