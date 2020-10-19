@@ -672,6 +672,46 @@
           }
         }
       }
+    },
+    "rising-skyline": {
+      "projectType": "library",
+      "root": "projects/rising-skyline",
+      "sourceRoot": "projects/rising-skyline/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/rising-skyline/tsconfig.lib.json",
+            "project": "projects/rising-skyline/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/rising-skyline/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rising-skyline/src/test.ts",
+            "tsConfig": "projects/rising-skyline/tsconfig.spec.json",
+            "karmaConfig": "projects/rising-skyline/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rising-skyline/tsconfig.lib.json",
+              "projects/rising-skyline/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "workspace-skyline"

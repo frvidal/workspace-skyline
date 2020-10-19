@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Building, SkylineService } from 'rising-skyline';
+import { Building, RisingSkylineService } from 'rising-skyline';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
@@ -96,7 +96,7 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit {
    */
   public heightSkyline: number;
 
-  constructor(public skylineService: SkylineService) {
+  constructor(public skylineService: RisingSkylineService) {
   }
   
   

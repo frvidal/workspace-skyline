@@ -15,7 +15,7 @@ import './date.extension';
 @Injectable({
   providedIn: 'root'
 })
-export class SkylineService {
+export class RisingSkylineService {
 
   /**
    * Activate or Inactivate the **Debug** mode in this service.
@@ -83,7 +83,7 @@ export class SkylineService {
   /**
    * Current speed of the animation.
    */
-  private speed = SkylineService.DEFAULT_SPEED;
+  private speed = RisingSkylineService.DEFAULT_SPEED;
 
   /**
    * Variation of speed. 
@@ -125,8 +125,8 @@ export class SkylineService {
    */
   injectSpeed(speed: number) {
     if (speed) {
-      SkylineService.DEFAULT_SPEED = speed;
-      this.speed = SkylineService.DEFAULT_SPEED;
+      RisingSkylineService.DEFAULT_SPEED = speed;
+      this.speed = RisingSkylineService.DEFAULT_SPEED;
     }
   }
 
@@ -443,7 +443,7 @@ export class SkylineService {
    */
   public rotateVariation() {
     this.variation = SpeedVariation.next(this.variation);
-    this.speed = SkylineService.DEFAULT_SPEED / this.variation.acceleration;
+    this.speed = RisingSkylineService.DEFAULT_SPEED / this.variation.acceleration;
     if (this.DEBUG) {
       console.log ('New variation %s produces the speed %d', this.variation.title, this.speed);
     }

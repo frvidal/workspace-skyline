@@ -1,18 +1,18 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ControlledRisingSkylineComponent } from './controlled-rising-skyline.component';
-import {ColorService, SkylineModule, SkylineService} from 'rising-skyline'
 import { PanelControlComponent } from './panel-control/panel-control.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { RisingSkylineModule } from 'rising-skyline';
+import { ControlledRisingSkylineComponent } from './controlled-rising-skyline.component';
 
 @NgModule({
   declarations: [ControlledRisingSkylineComponent, PanelControlComponent],
   imports: [
     CommonModule,
-    SkylineModule,
+    RisingSkylineModule,
     MatSliderModule
   ],
-  providers: [DatePipe, ColorService, SkylineService],
+  providers: [DatePipe],
   exports: [ControlledRisingSkylineComponent]
 })
 export class ControlledRisingSkylineModule { }

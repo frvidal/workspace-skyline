@@ -2,16 +2,16 @@ import { DatePipe } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { Building } from './data/building';
 
-import { SkylineService } from './skyline.service';
+import { RisingSkylineService } from './rising-skyline.service';
 
-describe('SkylineService', () => {
-  let service: SkylineService;
+describe('RisingSkylineService', () => {
+  let service: RisingSkylineService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [DatePipe]
     });
-    service = TestBed.inject(SkylineService);
+    service = TestBed.inject(RisingSkylineService);
   });
 
   it('should be calculate the year/week 2020/40', () => {

@@ -2,13 +2,13 @@ import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/cor
 import { Subscription } from 'rxjs';
 import {Building} from './data/building';
 import {ColorService} from './service/color.service';
-import {SkylineService} from './skyline.service';
+import {RisingSkylineService} from './rising-skyline.service';
 import { take } from 'rxjs/operators';
 
 @Component({
 	selector: 'rising-skyline',
-	templateUrl: './skyline.component.html',
-	styleUrls: ['./skyline.component.css']
+	templateUrl: './rising-skyline.component.html',
+	styleUrls: ['./rising-skyline.component.css']
 })
 export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 
@@ -86,7 +86,7 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private colorService: ColorService,
-    public skylineService: SkylineService) { 
+    public skylineService: RisingSkylineService) { 
   }
   
   ngOnInit(): void {

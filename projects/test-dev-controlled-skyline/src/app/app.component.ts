@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Building, SkylineService } from 'rising-skyline';
+import { ControlledRisingSkylineService } from 'controlled-rising-skyline';
+import { Building, RisingSkylineService } from 'rising-skyline';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -22,7 +23,7 @@ export class AppComponent {
 
   public constructor(
     public datePipe: DatePipe, 
-    public skylineService: SkylineService) {
+    public skylineService: RisingSkylineService) {
 
     const upperYear = 2020;
     const upperWeek = 45;

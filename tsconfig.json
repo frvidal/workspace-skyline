@@ -14,12 +14,6 @@
       "path": "./projects/test-dev-skyline/tsconfig.spec.json"
     },
     {
-      "path": "./projects/skyline/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/skyline/tsconfig.spec.json"
-    },
-    {
       "path": "./projects/test-npm-skyline/tsconfig.app.json"
     },
     {
@@ -36,6 +30,12 @@
     },
     {
       "path": "./projects/test-dev-controlled-skyline/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/rising-skyline/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/rising-skyline/tsconfig.spec.json"
     }
   ]
 }

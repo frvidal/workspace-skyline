@@ -11,9 +11,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/frvidal/workspace-skyline/tree/master/projects/skyline"
+    "url": "https://github.com/frvidal/workspace-skyline/tree/master/projects/rising-skyline"
   },
-  "homepage": "https://github.com/frvidal/workspace-skyline/tree/master/projects/skyline#readme",
+  "homepage": "https://github.com/frvidal/workspace-skyline/tree/master/projects/rising-skyline#readme",
   "author": {
     "name": "Frédéric VIDAL",
     "email": "frederic.vidal@fitzhi.com"

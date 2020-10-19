@@ -5,9 +5,9 @@ import { BehaviorSubject } from 'rxjs';
 import { Building } from './data/building';
 import { ColorService } from './service/color.service';
 
-import { SkylineComponent } from './skyline.component';
+import { SkylineComponent } from './rising-skyline.component';
 
-describe('SkylineComponent', () => {
+describe('RisingSkylineComponent', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 

@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ColorService } from './service/color.service';
-import { SkylineComponent } from './skyline.component';
-import { SkylineService } from './skyline.service';
+import { SkylineComponent } from './rising-skyline.component';
+import { RisingSkylineService } from './rising-skyline.service';
 
 
 @NgModule({
   declarations: [SkylineComponent],
   providers: [
     ColorService,
-    SkylineService,
+    RisingSkylineService,
   ],
   imports: [
     CommonModule
   ],
   exports: [SkylineComponent]
 })
-export class SkylineModule { }
+export class RisingSkylineModule { }

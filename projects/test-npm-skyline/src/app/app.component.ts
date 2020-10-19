@@ -1,7 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SkylineService } from 'rising-skyline';
-import { Building } from 'rising-skyline';
+import { SkylineService, Building } from 'rising-skyline';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import './date.extension';
 
@@ -76,8 +75,8 @@ export class AppComponent implements OnInit, OnDestroy  {
     this.skyline$.next(buildings);
   }
   ngOnInit(): void {
-    this.subscriptionSkyline = this.skylineService.episode$.subscribe(floors => {
-      this.positionOfFloor++;
+    this.subscriptionSkyline = this.skylineService.episode$.subscribe({
+      next: floors => this.positionOfFloor++
     });
   }
 
