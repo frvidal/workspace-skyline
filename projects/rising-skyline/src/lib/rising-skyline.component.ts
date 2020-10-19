@@ -6,9 +6,9 @@ import {RisingSkylineService} from './rising-skyline.service';
 import { take } from 'rxjs/operators';
 
 @Component({
-	selector: 'rising-skyline',
-	templateUrl: './rising-skyline.component.html',
-	styleUrls: ['./rising-skyline.component.css']
+  selector: 'rising-skyline',
+  templateUrl: './rising-skyline.component.html',
+  styleUrls: ['./rising-skyline.component.css']
 })
 export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 
