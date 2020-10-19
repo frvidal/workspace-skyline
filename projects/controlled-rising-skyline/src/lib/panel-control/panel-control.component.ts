@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { ColorService, RisingSkylineService } from 'rising-skyline';
 import { Subscription } from 'rxjs';
@@ -15,6 +15,12 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
    * Background color of the control footer panel
    */
   @Input() backgroundColor;
+
+  /**
+   * Slider color of the panel control
+   */
+  @HostBinding("style.--slider-color")
+  @Input() sliderColor = 'violet';
 
   /**
    * This boolean saves the fact that the background color has already been set for this control panel.

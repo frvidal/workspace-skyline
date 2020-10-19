@@ -1,3 +1,4 @@
+
 div.footer {
     height: 60px;
     width: 100%;
@@ -14,6 +15,7 @@ div.footer {
     width: 42px;
     height: 42px;
     transform: translateY(20px) scale(1) rotate(45deg);
+    color: white;
 }
 
 :host /deep/ .mat-slider-thumb-label-text {
@@ -27,6 +29,7 @@ div.footer {
     margin-top: 20px;
     right: -20px;
     background-color: darkgreen;
+    color: white;
 }
 
 
@@ -46,7 +49,7 @@ div.footer {
 }
 
 :host /deep/ .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
-    background-color: blue;
+    background-color: var(--slider-color);
 }
 
 button.pause {
@@ -72,14 +75,17 @@ button.pause {
 }
 
 button.control-button {
-    border-radius: 50%;
+    color: var(--slider-color);
     border-color: grey;
+    border-radius: 50%;
     margin-left: 4px;
-    padding-bottom: 5px;
+    padding-bottom: 7px;
+    padding-left: 12px;
 }
 
 button.control-button:hover {
     color: white;
+    background-color: var(--slider-color);
 }
 
 span.speed {
