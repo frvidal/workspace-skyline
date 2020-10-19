@@ -57,10 +57,10 @@ describe('RisingSkylineService', () => {
     expect(service.firstDate).toEqual(service.getDateOfWeek(2019, 21));
     expect(service.lastDate).toEqual(service.getDateOfWeek(2021, 1));
   });
-  
+
   it ('should "FillTheHoles()" in this FIRST example of skyline', () => {
     const buildings = [];
-    
+
     buildings.push(new Building(1, 2019, 51, 10, 5, 1, 'Building 1'));
     buildings.push(new Building(1, 2019, 52, 10, 10, 1, 'Building 1'));
 
@@ -85,7 +85,7 @@ describe('RisingSkylineService', () => {
 
     expect(service.history.length).toBe(12);
 
-  }); 
+  });
 
   it('should correctly "FillTheHoles()" in this SECOND skyline.', () => {
     expect(service).toBeTruthy();
@@ -106,30 +106,30 @@ describe('RisingSkylineService', () => {
     expect(floor(2, 2020, 20).height).toBe(0);
 
     let previousFloor = null;
-    service.sortedHistory().forEach(floor => {
+    service.sortedHistory().forEach(entry => {
       if (previousFloor) {
-        if ((previousFloor.year === floor.year) && (previousFloor.week === floor.week)) {
-          throw new Error('Doublon record for ' + floor.id + ' ' + floor.year + ' ' + floor.week);
+        if ((previousFloor.year === entry.year) && (previousFloor.week === entry.week)) {
+          throw new Error('Doublon record for ' + entry.id + ' ' + entry.year + ' ' + entry.week);
         }
       }
-      previousFloor = floor;
-    })
+      previousFloor = entry;
+    });
 
   });
 
   /**
-   * Return the floor associated to a week. 
+   * Return the floor associated to a week.
    * @param id the project identifier
    * @param year the given year
    * @param week the given week
    */
-  function floor(id: number, year: number, week: number):Building {
-    const floor = service.history
+  function floor(id: number, year: number, week: number): Building {
+    const foundFloor = service.history
       .filter(
-        floor => ((floor.id === id) && (floor.year === year) && (floor.week === week)));
-    if (!floor) {
+        entry => ((entry.id === id) && (entry.year === year) && (entry.week === week)));
+    if (!foundFloor) {
       throw new Error('Floor (' + id + ',' + year + ',' + week + ') not found');
     }
-    return floor[0];
+    return foundFloor[0];
   }
 });

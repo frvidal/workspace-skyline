@@ -10,12 +10,19 @@ import './date.extension';
 
 
 /**
- * The SkylineService is in charge of the animation of the skyline rising. 
+ * The SkylineService is in charge of the animation of the skyline rising.
  */
 @Injectable({
   providedIn: 'root'
 })
 export class RisingSkylineService {
+
+  constructor(private datePipe: DatePipe) { }
+
+  /**
+   * Default speed of the animation.
+   */
+  private static DEFAULT_SPEED = 1000;
 
   /**
    * Activate or Inactivate the **Debug** mode in this service.
@@ -31,12 +38,12 @@ export class RisingSkylineService {
    * Date when the first episode of the skyline rising _(the first building has been created)_.
    */
   public firstDate: Date;
-  
+
   /**
    * Date when the last episode of the skyline rising _(the last building has been ended)_.
    */
   public lastDate: Date;
-  
+
   /**
    * **BehaviorSubject** emitting the partial or complete history of the skyline rising.
    */
@@ -51,20 +58,20 @@ export class RisingSkylineService {
    * The active episode of the rising skyline for the current year/week.
    */
   public episode: Building[] = [];
-  
+
  /**
-   * For performance purpose :
-   * 
-   * This array contains an ordered list of YearWeek object. 
-   * Its prime goal is to synchronize the slider position and the corresponding YearWeek location
-   */
-  public yearWeeks: YearWeek[] = []; 
+  * For performance purpose :
+  *
+  * This array contains an ordered list of YearWeek object.
+  * Its prime goal is to synchronize the slider position and the corresponding YearWeek location
+  */
+  public yearWeeks: YearWeek[] = [];
 
   /**
    * The complete history of the skyline : all floors by year/week are stored in this array.
    */
   public history: Building[] = [];
-  
+
   /**
    * Identifier for the rising loop interval.
    */
@@ -73,12 +80,7 @@ export class RisingSkylineService {
   /**
    * the Level of zoom.
    */
-  private levelOfZoom: number = 0.5;
-
-  /**
-   * Default speed of the animation.
-   */
-  private static DEFAULT_SPEED = 1000;
+  private levelOfZoom = 0.5;
 
   /**
    * Current speed of the animation.
@@ -86,12 +88,12 @@ export class RisingSkylineService {
   private speed = RisingSkylineService.DEFAULT_SPEED;
 
   /**
-   * Variation of speed. 
-   * 
-   * This variation number increase, or decrease, the speed of the animation. 
+   * Variation of speed.
+   *
+   * This variation number increase, or decrease, the speed of the animation.
    */
-  public variation: Variation = SpeedVariation.first(); 
-  
+  public variation: Variation = SpeedVariation.first();
+
   /**
    * Number of episodes _(floors)_ currently present in the history.
    */
@@ -100,30 +102,28 @@ export class RisingSkylineService {
   /**
    * Curent floor index currently handled in **riseSkyline**.
    */
-  public currentEpisode: number = 0;
+  public currentEpisode = 0;
 
   /**
    * Curent year processed in **riseSkyline**.
    */
-  public currentYear: number = 0;
-
-    /**
-   * Curent week processed in **riseSkyline**.
-   */
-  public currentWeek: number = 0;
+  public currentYear = 0;
 
   /**
-   * This boolean is set to true when the animation is paused. 
+   * Curent week processed in **riseSkyline**.
+   */
+  public currentWeek = 0;
+
+  /**
+   * This boolean is set to true when the animation is paused.
    */
   public pause = false;
 
-  constructor(private datePipe: DatePipe) { }
-  
   /**
-   * Inject the speed of the animation, received by the component. 
+   * Inject the speed of the animation, received by the component.
    * @param speed the speed of the animation
    */
-  injectSpeed(speed: number) {
+  injectSpeed(speed: number): void {
     if (speed) {
       RisingSkylineService.DEFAULT_SPEED = speed;
       this.speed = RisingSkylineService.DEFAULT_SPEED;
@@ -133,7 +133,7 @@ export class RisingSkylineService {
   /**
    * Start the rising animation from the first day in history.
    */
-  startSkylineRising() {
+  startSkylineRising(): void {
     this.currentYear = this.toYearWeek(this.firstDate).year;
     this.currentWeek = this.toYearWeek(this.firstDate).week;
     this.riseSkyline();
@@ -142,8 +142,8 @@ export class RisingSkylineService {
   /**
    * Produce the stupendous rising of skyline.
    */
-  riseSkyline() {
-    
+  riseSkyline(): void {
+
     const floor = (building: Building) => {
       return (building.year === this.currentYear) && (building.week === this.currentWeek);
     };
@@ -154,8 +154,8 @@ export class RisingSkylineService {
 
       //
       // We filter & clone the subset of the history.
-      // We'll probably change the scale of the building, and we don't want to override the orginal data 
-      // 
+      // We'll probably change the scale of the building, and we don't want to override the orginal data
+      //
       this.episode = [];
       this.history.filter(floor).forEach(building => this.episode.push(building.clone()));
 
@@ -164,7 +164,7 @@ export class RisingSkylineService {
         this.currentYear = this.episode[0].year;
         this.currentWeek = this.episode[0].week;
         if ((this.DEBUG) && (this.VERBOSE)) {
-          console.log ('Week', this.currentYear + '/' + this.currentWeek)
+          console.log ('Week', this.currentYear + '/' + this.currentWeek);
         }
       }
 
@@ -176,16 +176,16 @@ export class RisingSkylineService {
       */
 
       const date = this.getDateOfWeek(this.currentYear, this.currentWeek);
-      const dateNextWeek = date.addDays(7); 
+      const dateNextWeek = date.addDays(7);
       if ((dateNextWeek > this.lastDate) || (this.pause)) {
         if (this.DEBUG) {
           console.log ('Rising ends at ' + this.toYearWeek(dateNextWeek).year + ' ' + this.toYearWeek(dateNextWeek).week);
         }
         setTimeout(() => clearInterval(this.intervalId), 0);
-        // We set to TRUE pause if we reached the end of the history (> lastDate). 
+        // We set to TRUE pause if we reached the end of the history (> lastDate).
         this.pause = true;
       } else {
-        this.currentWeek = this.toYearWeek(dateNextWeek).week;        
+        this.currentWeek = this.toYearWeek(dateNextWeek).week;
         this.currentYear = this.toYearWeek(dateNextWeek).year;
         this.episode$.next(this.episode);
       }
@@ -196,7 +196,7 @@ export class RisingSkylineService {
    * Draw the given episode.
    * @param episode the given epise
    */
-  public drawEpisode(episode: Building[]) {
+  public drawEpisode(episode: Building[]): void {
     if (this.DEBUG) {
       console.log ('The episode contains %d building', episode.length);
     }
@@ -207,7 +207,7 @@ export class RisingSkylineService {
   /**
    * Extract and return an episode of the skyline for a given week
    * @param year the year of the week
-   * @param week the week 
+   * @param week the week
    */
   extractSkylineEpisode(year: number, week: number): Building[] {
     const floor = (building: Building) => {
@@ -231,13 +231,13 @@ export class RisingSkylineService {
 
   /**
    * Initiliaze the content of an array of __Year/Weeks__
-   * 
+   *
    * This array is synchronized with the position of the coin moving on the slider.
    */
-  initArrayYearWeeks() {
-    const setYearWeeks = new Set(this.history.map(building => building.year*100+building.week))
+  initArrayYearWeeks(): void {
+    const setYearWeeks = new Set(this.history.map(building => building.year * 100 + building.week));
     this.yearWeeks = [];
-    setYearWeeks.forEach(item => this.yearWeeks.push(new YearWeek(Math.floor(item/100), item%100)));
+    setYearWeeks.forEach(item => this.yearWeeks.push(new YearWeek(Math.floor(item / 100), item % 100)));
     if (this.DEBUG) {
       console.groupCollapsed ('Array of year/weeks contains %d entries', this.yearWeeks.length);
       this.yearWeeks.forEach(yw => console.log (yw.toString()));
@@ -248,13 +248,13 @@ export class RisingSkylineService {
   /**
    * Complete the skyline perspective by filling the holes.
    */
-  public fillTheHoles() {
+  public fillTheHoles(): void {
     if (this.DEBUG) {
       console.log ('Entering fillTheHoles()');
     }
     const ids = [... new Set(this.history.map(building => building.id))];
     const buildings = this.history.sort((a, b) => {
-      return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
+      return (a.id * 100000 + a.year * 100 + a.week)  - (b.id * 100000 + b.year * 100 + b.week);
     });
     ids.forEach(id => {
 
@@ -265,7 +265,7 @@ export class RisingSkylineService {
             building : eligibleBuilding;
       });
       const startDate = this.getDateOfWeek(firstFloor.year, firstFloor.week);
-      
+
       const lastFloor = this.history
         .filter(building => building.id === id)
         .reduce((eligibleBuilding, building) => {
@@ -274,21 +274,27 @@ export class RisingSkylineService {
       });
       const lastDate = this.getDateOfWeek(lastFloor.year, lastFloor.week).addDays(7);
 
-      for (let d = this.firstDate.clone(); d < startDate; d.addDays(7)) {
+      for (const d = this.firstDate.clone(); d < startDate; d.addDays(7)) {
         this.history.push(new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, 0, 0, firstFloor.title));
       }
 
-      for (let d = lastDate.clone(); d <= this.lastDate; d.addDays(7, true)) {
-        const b = new Building(id, this.toYearWeek(d).year, this.toYearWeek(d).week, 40, lastFloor.height, lastFloor.index, lastFloor.title);
+      for (const d = lastDate.clone(); d <= this.lastDate; d.addDays(7, true)) {
+        const b = new Building(id,
+          this.toYearWeek(d).year,
+          this.toYearWeek(d).week,
+          40,
+          lastFloor.height,
+          lastFloor.index,
+          lastFloor.title);
         this.history.push(b);
       }
 
     });
     this.history = this.history.sort((a, b) => {
-      return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
+      return (a.id * 100000 + a.year * 100 + a.week)  - (b.id * 100000 + b.year * 100 + b.week);
     });
-    
-    // The save the number of floors in the history. 
+
+    // The save the number of floors in the history.
     this.countEpisodes = this.numberOfFloors();
     this.initArrayYearWeeks();
     this.currentEpisode = 0;
@@ -300,7 +306,7 @@ export class RisingSkylineService {
    */
   sortedHistory(): Building[] {
     return this.history.sort((a, b) => {
-      return (a.id*100000 + a.year*100 + a.week)  - (b.id*100000 + b.year*100 + b.week);
+      return (a.id * 100000 + a.year * 100 + a.week)  - (b.id * 100000 + b.year * 100 + b.week);
     });
   }
 
@@ -308,14 +314,14 @@ export class RisingSkylineService {
    * Zoom IN or OUT the skyline
    * @param episode the skyline rising episode
    */
-  zoom(episode: Building[]) {
+  zoom(episode: Building[]): void {
     episode.forEach(building => building.zoom(this.levelOfZoom));
   }
 
   /**
    * Zoom-in the chart.
    */
-  public zoomIn() {
+  public zoomIn(): void {
     if (this.DEBUG) {
       console.log ('Zoom IN from %d', this.levelOfZoom);
     }
@@ -326,7 +332,7 @@ export class RisingSkylineService {
   /**
    * Zoom-out the chart.
    */
-  public zoomOut() {
+  public zoomOut(): void {
     if (this.DEBUG) {
       console.log ('Zoom OUT to %d', this.levelOfZoom);
     }
@@ -337,30 +343,30 @@ export class RisingSkylineService {
   /**
    * Force the redraw of the episode if it's necessary.
    */
-  forceRedrawAfterZoomIfNecessary() {
+  forceRedrawAfterZoomIfNecessary(): void {
     // The animation is paused. Therefore we force the redraw of the SAME episode.
     if ((this.pause) && (this.episode.length > 0)) {
       const b = this.episode[0];
       const episode = this.extractSkylineEpisode(b.year, b.week);
       this.drawEpisode(episode);
-    }    
+    }
   }
 
   /**
    * Take in account the full history of the skyline.
    * @param history the history received by the component.
    */
-  public takeInAccount(history: Building[]) {
+  public takeInAccount(history: Building[]): void {
     this.history = history;
     const firstBuilding = this.history.reduce((eligibleBuilding, building) => {
       return ( (building.year * 100 + building.week) < (eligibleBuilding.year * 100 + eligibleBuilding.week) ) ?
         building : eligibleBuilding;
-      
+
     });
     const lastBuilding = this.history.reduce((eligibleBuilding, building) => {
       return ( (building.year * 100 + building.week) > (eligibleBuilding.year * 100 + eligibleBuilding.week) ) ?
         building : eligibleBuilding;
-      
+
     });
     if (this.DEBUG) {
       console.log ('FIRST Building has been placed on week %d year %d', firstBuilding.week, firstBuilding.year);
@@ -373,17 +379,17 @@ export class RisingSkylineService {
 
   /**
    * Return the date of the first week day : a **MONDAY** in this implementation.
-   * 
+   *
    * **Should you use later :** const todayFormated = this.datepipe.transform(today, 'w');.
-   * 
+   *
    * @param year the year of the date
-   * @param week the week the week of the date 
+   * @param week the week the week of the date
    */
-  public getDateOfWeek(year: number, week: number) {
+  public getDateOfWeek(year: number, week: number): Date {
     // The week number 1 of a year, has to contain the first civil thursday of this year.
     const firstWeekOffset =  (new Date(year, 0, 1).getDay() <= 4) ? 0 : 1;
 
-    let date = new Date(year, 0, (1 + (firstWeekOffset + week - 1) * 7)); 
+    const date = new Date(year, 0, (1 + (firstWeekOffset + week - 1) * 7));
     date.setDate(date.getDate() + (1 - date.getDay())); // 0 - Sunday, 1 - Monday etc
     return date;
   }
@@ -402,7 +408,7 @@ export class RisingSkylineService {
       const day = date.getDay();
       //
       // The turnaround :
-      //  If the thursday on the same week as the given date is new year, 
+      //  If the thursday on the same week as the given date is new year,
       //  then we are exactly in the case of the bug, and we return '1' instead of '53'
       //
       if (day < 4) {
@@ -416,9 +422,9 @@ export class RisingSkylineService {
   }
 
   /**
-   * Pause the skyline rising 
+   * Pause the skyline rising
    */
-  public pauseRising() {
+  public pauseRising(): void {
     if (this.DEBUG) {
       console.log ('Rising is paused');
     }
@@ -428,7 +434,7 @@ export class RisingSkylineService {
   /**
    * Re-play the skyline rising from when it has been paused.
    */
-  public playRising() {
+  public playRising(): void {
     if (this.DEBUG) {
       console.log ('Rising is restarted...');
     }
@@ -437,11 +443,11 @@ export class RisingSkylineService {
   }
 
   /**
-   * Rotate the variation of the animation speed. 
-   * 
+   * Rotate the variation of the animation speed.
+   *
    * There are 5 levels : __1/4__, __1/2__, __1__, __2__, __4__.
    */
-  public rotateVariation() {
+  public rotateVariation(): void {
     this.variation = SpeedVariation.next(this.variation);
     this.speed = RisingSkylineService.DEFAULT_SPEED / this.variation.acceleration;
     if (this.DEBUG) {

@@ -12,7 +12,7 @@ describe('RisingSkylineComponent', () => {
   let fixture: ComponentFixture<TestHostComponent>;
 
   @Component({
-		selector: 'app-host-component',
+    selector: 'app-host-component',
     template: `
             <p>Test</p>
             <rising-skyline
@@ -26,9 +26,9 @@ describe('RisingSkylineComponent', () => {
             </rising-skyline>
           `
   })
-	class TestHostComponent {
+  class TestHostComponent {
     public skyline$ = new BehaviorSubject<Building[]>([]);
-	}
+  }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -44,11 +44,11 @@ describe('RisingSkylineComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', async() => {
+  it('should create', async () => {
     expect(component).toBeTruthy();
 
     const buildings = [];
-    
+
     buildings.push(new Building(1, 2019, 51, 10, 5, 1, 'Building 1'));
     buildings.push(new Building(1, 2019, 52, 10, 10, 1, 'Building 1'));
 

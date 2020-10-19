@@ -1,4 +1,4 @@
-export {}
+export {};
 
 // DATE EXTENSIONS
 // ================
@@ -14,15 +14,15 @@ declare global {
    }
 }
 
-Date.prototype.addDays = function (days: number) {
-   if (!days) return this;
-   let date = this;
+Date.prototype.addDays = function(days: number): Date {
+   if (!days) { return this; }
+   const date = this;
    date.setDate(date.getDate() + days);
    return date;
 };
 
-Date.prototype.isToday = function (): boolean {
-   let today = new Date();
+Date.prototype.isToday = function(): boolean {
+   const today = new Date();
    return this.isSameDate(today);
 };
 
@@ -38,7 +38,7 @@ Date.prototype.isWeekend = function(): boolean {
    return this.getDay() === 0 || this.getDay() === 6;
 };
 
-Date.prototype.isSameDate = function (date: Date): boolean {
+Date.prototype.isSameDate = function(date: Date): boolean {
    return date && this.getFullYear() === date.getFullYear() && this.getMonth() === date.getMonth() && this.getDate() === date.getDate();
 };
 

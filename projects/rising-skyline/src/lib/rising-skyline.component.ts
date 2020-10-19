@@ -12,34 +12,34 @@ import { take } from 'rxjs/operators';
 })
 export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  /** 
+  /**
    * The width of the container, with its units of mesure (px, %, em...).
    */
   @Input() width: number;
-  
-  /** 
+
+  /**
    * The unit of measure for the width.
-   * 
+   *
    * Default value is _'px'_
    */
   @Input() umWidth = 'px';
 
-  /** 
+  /**
    * The height of the container
    */
   @Input() height: number;
 
-  /** 
+  /**
    * The unit of measure for the height.
-   * 
+   *
    * Default value is _'px'_
    */
   @Input() umHeight = 'px';
 
   /**
    * This observable emits the complete story of the rising skyline.
-   * 
-   * This reveived array will be completed and passed to the __SkylineService__. 
+   *
+   * This reveived array will be completed and passed to the __SkylineService__.
    */
   @Input() risingSkylineHistory$;
 
@@ -48,16 +48,15 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   @Input() speed;
 
-  /** 
+  /**
    * The starting color
-   * 
+   *
    * The building is drawn between 2 colors : This color is the starting one.
    */
   @Input() startingColor: string;
 
-  /** 
+  /**
    * The ending color
-
    * The building is drawn between 2 colors : This color is the ending one.
    */
   @Input() endingColor: string;
@@ -69,8 +68,8 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 
   /**
    * Computed heighted in __px__.
-   * This number is used to locate verticaly the buildings inside the container. 
-   * If the given unit of measure for height is not 'px', but '%' for example, then we need to compute this height.  
+   * This number is used to locate verticaly the buildings inside the container.
+   * If the given unit of measure for height is not 'px', but '%' for example, then we need to compute this height.
    */
   private computedHeightInPx = 0;
 
@@ -86,27 +85,27 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private colorService: ColorService,
-    public skylineService: RisingSkylineService) { 
+    public skylineService: RisingSkylineService) {
   }
-  
+
   ngOnInit(): void {
     if (this.DEBUG) {
       console.log ('Colors start from %s to %s', this.startingColor, this.endingColor);
     }
     this.colorService.initBoundaryColors(this.startingColor, this.endingColor);
-    
+
     this.subscription = this.risingSkylineHistory$.subscribe({
       next: buildings => {
         if (buildings.length !== 0) {
           this.skylineService.injectSpeed(this.speed);
           this.skylineService.takeInAccount(buildings);
           this.skylineService.fillTheHoles();
-          
+
           this.skylineService.startSkylineRising();
         }
       }
     });
-   
+
   }
 
   /**
@@ -128,26 +127,26 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
   /**
    * Mouse is over the building.
    */
-  public mouseOverBuilding(building: Building) {
+  public mouseOverBuilding(building: Building): void {
     this.buildingSelected = building;
   }
 
   /**
    * Mouse is out of the building.
    */
-  public mouseOutBuilding() {
+  public mouseOutBuilding(): void {
     this.buildingSelected = null;
   }
 
   /**
    * Return the style of the bulding, based on this floor.
-   * @param building 
+   * @param building the given building
    */
-  style(building: Building) {
-    const style = 
-      'width:' + building.width + 'px; height:' + building.height + 'px;' + 
-      'background-color: ' + this.color(building.index) + 
-      '; margin-left: 2px; position: relative;top:'+ (this.computedHeightInPx*0.99-building.height) + 'px'
+  style(building: Building): string {
+    const style =
+      'width:' + building.width + 'px; height:' + building.height + 'px;' +
+      'background-color: ' + this.color(building.index) +
+      '; margin-left: 2px; position: relative;top:' + (this.computedHeightInPx * 0.99 - building.height) + 'px';
     return style;
   }
 
@@ -155,14 +154,14 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
    * Each DIV is drawn in a color corresponding to a level in a range of colors.
    * @param level the level of the measure
    */
-  color(level: number) {
+  color(level: number): string {
     return '#' + this.colorService.red(level) + this.colorService.green(level) + this.colorService.blue(level);
   }
 
   /**
    * the style and more particularly the width & height of the skykine container
    */
-  skylineStyle() {
+  skylineStyle(): string {
     const style = 'width:' + this.width + this.umWidth + '; height:' + this.height + this.umHeight;
     return style;
   }

@@ -12,10 +12,10 @@ export class Color {
         if (color.length !== 7) {
             throw new Error(this.errorFormatMessage);
         }
-        const red = parseInt(color.substring(1,3), 16);
-        const green = parseInt(color.substring(3,5), 16);
+        const red = parseInt(color.substring(1, 3), 16);
+        const green = parseInt(color.substring(3, 5), 16);
         const blue = parseInt(color.substring(5), 16);
-        return new Color(red,green,blue);
+        return new Color(red, green, blue);
     }
 
     constructor(

@@ -17,7 +17,7 @@ export class Building {
      * Zoom this level to the given level.
      * @param level the level of zoom
      */
-    public zoom(level: number) {
+    public zoom(level: number): void {
         this.height = this.height * level;
         this.width = this.width * level;
     }

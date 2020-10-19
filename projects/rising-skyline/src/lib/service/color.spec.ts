@@ -3,7 +3,6 @@ import { ColorService } from './color.service';
 import { Color } from './color';
 
 describe('ColorService', () => {
-  let service: ColorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -31,7 +30,7 @@ describe('ColorService', () => {
   });
 
   it('should handle only 6 chars', () => {
-    expect(function() { Color.fromCssColor('#1234567') } ).toThrow(new Error(Color.errorFormatMessage));
+    expect( () => Color.fromCssColor('#1234567')).toThrow(new Error(Color.errorFormatMessage));
   });
 
 });
