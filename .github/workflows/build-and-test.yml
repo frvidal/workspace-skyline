@@ -26,5 +26,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: set -e
     - run: npm ci
-    - run: npm run build skyline
+    - run: npm run build rising-skyline
     - run: npm test skyline
