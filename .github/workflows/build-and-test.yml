@@ -27,4 +27,4 @@ jobs:
     - run: set -e
     - run: npm ci
     - run: npm run build rising-skyline
-    - run: npm test skyline
+    - run: npm test rising-skyline
