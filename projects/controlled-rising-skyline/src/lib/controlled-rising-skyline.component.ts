@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Building, RisingSkylineService } from 'rising-skyline';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -7,18 +7,18 @@ import { BehaviorSubject, Subscription } from 'rxjs';
   templateUrl: './controlled-rising-skyline.html',
   styleUrls: ['./controlled-rising-skyline.css']
 })
-export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit {
+export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, OnDestroy {
 
   /**
    * The width of the component, with its unit of measure.
    * Defaut value is __600__;
    */
   @Input()
-  public width = 600; 
+  public width = 600;
 
-  /** 
+  /**
    * The unit of measure for the width.
-   * 
+   *
    * Default value is _'px'_
    */
   @Input() umWidth = 'px';
@@ -28,22 +28,22 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit {
    * Defaut value is _400_;
    */
   @Input()
-  public height = 400; 
+  public height = 400;
 
-  /** 
+  /**
    * The unit of measure for the height.
-   * 
+   *
    * Default value is _'px'_
    */
   @Input() umHeight = 'px';
 
   /**
    * This behaviorSubject emits the complete story of the rising skyline.
-   * 
-   * This reveived array will be passed to the __SkylineService__. 
+   *
+   * This reveived array will be passed to the __SkylineService__.
    */
   @Input()
-  public risingSkylineHistory$ = new BehaviorSubject<Building[]>([]); 
+  public risingSkylineHistory$ = new BehaviorSubject<Building[]>([]);
 
   /**
    * Starting speed of the animation in ms.
@@ -98,22 +98,18 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit {
 
   constructor(public skylineService: RisingSkylineService) {
   }
-  
-  
+
+
   ngOnInit(): void {
     this.widthSkyline = this.width;
     this.heightSkyline = Math.floor(this.height * 0.8);
-    console.log('Skyline w '+ this.widthSkyline + ' ' + this.heightSkyline);
+    console.log('Skyline w ' + this.widthSkyline + ' ' + this.heightSkyline);
 
     this.subscriptionSkyline = this.skylineService.episode$.subscribe(floors => {
       this.positionOfFloor++;
     });
   }
 
-  ngOnDestroy(): void {
-    this.subscriptionSkyline.unsubscribe();
-  }
- 
   /**
    * After view initialization : Here, we set the width of the container.
    */
@@ -125,7 +121,11 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit {
         console.log(mainDiv.getAttribute('style'));
       }
     } else {
-      console.error('INTERNAL ERROR : Did not retrieve the main div')
+      console.error('INTERNAL ERROR : Did not retrieve the main div');
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionSkyline.unsubscribe();
   }
 }
