@@ -7,24 +7,28 @@ In Fitzhì, the goal is to display the history of a rising applications portfoli
 
 On the top right corner of the skyline, two buttons, with one up and one down arrays, allow the end-user to zoom-in, or zoom-out the view. 
 
+A panel control is associated with the skyline. You will be able to :
+
+* Pause, and restart the animation.
+* Accelerate or decelate the animation
+* Move the cursor, along the timeline.
 
 ![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/CI%20controlled%20rising%20skyline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
 
-![Rising Skyline](https://frvidal.github.io/workspace-skyline/projects/controlled-rising-skyline/img/controlled-rising-skyline.gif)
+![Controlled rising Skyline](https://frvidal.github.io/workspace-skyline/projects/controlled-rising-skyline/img/controlled-rising-skyline.gif)
 
 
 ## Installing this library in your project ?
 
-The most simple command `npm install rising-skyline` will install this library
+The most simple command `npm install controlled-rising-skyline` will install this library
 
-To import the module inside your application, just add the module **RisingSkylineModule** in your `app.module.ts`.
+To import the module inside your application, just add the module **ControlledRisingSkylineModule** in your `app.module.ts`.
 
 location :
-> import {RisingSkyline} from 'rising-skyline';
-
+> import {ControlledRisingSkyline} from 'controlled-rising-skyline';
 
 
 ## Using this library in your application ?
@@ -32,14 +36,15 @@ location :
 To include this component into a container, you just have to declare this section into your HTML template.
 
 ```
-<rising-skyline
+<controlled-rising-skyline
     [height] = 370
     [width] = 1200
     [risingSkylineHistory$] = risingSkylineHistory$
     [speed] = 30
     [startingColor] = "'#28a745'"
-    [endingColor] = "'#8B0000'">
-</rising-skyline>
+    [endingColor] = "'#8B0000'"
+    [sliderColor] = "'#0000FF'">
+</controlled-rising-skyline>
 ```
 
 The parameters are :
@@ -54,7 +59,7 @@ Parameter | Decorator | Comment
 **speed** | INPUT | The speed of the animation in ms.
 **startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
 **endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**, and this index determines the color).
-
+**sliderColor** | INPUT | The color of the slider.
 
 ## What is a building ?
 
