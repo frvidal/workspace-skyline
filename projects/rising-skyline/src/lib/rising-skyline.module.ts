@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ColorService } from './service/color.service';
 import { SkylineComponent } from './rising-skyline.component';
@@ -10,10 +10,11 @@ import { RisingSkylineService } from './rising-skyline.service';
   providers: [
     ColorService,
     RisingSkylineService,
+    DatePipe
   ],
   imports: [
     CommonModule
   ],
-  exports: [SkylineComponent]
+  exports: [SkylineComponent, DatePipe]
 })
 export class RisingSkylineModule { }
