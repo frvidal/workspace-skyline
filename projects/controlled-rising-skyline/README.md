@@ -32,7 +32,6 @@ This library requires these peer dependencies :
 The most simple command `npm install controlled-rising-skyline@latest` will install this latest release
 
 To import the module inside your application, just add the module **ControlledRisingSkylineModule** in your `app.module.ts`.
-The widget is using as well the DatePipe service from *@Angular/common* 
 
 location :
 > import {ControlledRisingSkyline} from 'controlled-rising-skyline';
@@ -41,7 +40,8 @@ Install (if necessary) the fonts and the bootstrap styles in your project
 > @import '@fortawesome/fontawesome-free/css/all.css';
 > @import "bootstrap/dist/css/bootstrap.css";
 
-
+For testing purpose, the service `ControlledRisingSkylineService` provides a random generator for testing purpose, 
+named `randomSkylineHistory(skyline$: BehaviorSubject<Building[]>)` 
 
 ## Using this library in your application ?
 
