@@ -1,17 +1,17 @@
 {
   "name": "controlled-rising-skyline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^10.0.14",
     "@angular/core": "^10.0.14",
     "@angular/material": "^10.2.2",
-    "rising-skyline": "^1.0.11",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "rising-skyline": "^1.0.11"
   },
   "license": "MIT",
   "repository": {
