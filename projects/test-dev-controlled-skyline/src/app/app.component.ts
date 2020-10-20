@@ -34,7 +34,7 @@ export class AppComponent {
 
     function addDays(theDate, days) {
       return new Date(theDate.getTime() + days*24*60*60*1000);
-  }
+    }
     
     const buildings: Building[] = []
     for (let id = 0; id < 100; id++) {

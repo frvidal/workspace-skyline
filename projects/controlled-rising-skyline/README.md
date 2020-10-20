@@ -1,4 +1,4 @@
-# The Skyline chart
+# The controlled rising Skyline chart
 
 This library provides a rising skyline chart with an horizotal panel control. This widget is linked to a dynamic history of buildings.
 
@@ -16,14 +16,20 @@ A panel control is associated with the skyline. With this panel, you will be abl
 ![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/CI%20controlled%20rising%20skyline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
+This library requires these peer dependencies :
+
+* @angular/material@^10.2.2
+* @fortawesome/fontawesome-free@^5.15.1
+* bootstrap@^4.5.2
+* jquery@^3.5.1
+* rising-skyline@^1.0.11
 
 ![Controlled rising Skyline](https://frvidal.github.io/workspace-skyline/projects/controlled-rising-skyline/img/controlled-rising-skyline.gif)
 
 
 ## Installing this library in your project ?
 
-The most simple command `npm install controlled-rising-skyline` will install this library
+The most simple command `npm install controlled-rising-skyline@latest` will install this latest release
 
 To import the module inside your application, just add the module **ControlledRisingSkylineModule** in your `app.module.ts`.
 

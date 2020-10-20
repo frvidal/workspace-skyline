@@ -10,9 +10,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-skyline:internal": "ng build rising-skyline",
-    "deploy-skyline:external": "ng build --prod rising-skyline && cd dist/rising-skyline && npm publish && cd .. && npm i rising-skyline",
+    "deploy-skyline:external": "ng build --prod rising-skyline && cd dist/rising-skyline && npm publish",
     "build-controlled-skyline:internal": "ng build controlled-rising-skyline",
-    "deploy-controlled-skyline:external": "ng build --prod controlled-rising-skyline && cd dist/controlled-rising-skyline && npm publish && cd .. && npm i controlled-rising-skyline"
+    "deploy-controlled-skyline:external": "ng build --prod controlled-rising-skyline && cd dist/controlled-rising-skyline && npm publish"
   },
   "private": true,
   "dependencies": {

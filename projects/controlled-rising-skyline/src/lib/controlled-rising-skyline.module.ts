@@ -12,7 +12,7 @@ import { ControlledRisingSkylineComponent } from './controlled-rising-skyline.co
     RisingSkylineModule,
     MatSliderModule
   ],
-  providers: [DatePipe],
+  providers: [],
   exports: [ControlledRisingSkylineComponent]
 })
 export class ControlledRisingSkylineModule { }
