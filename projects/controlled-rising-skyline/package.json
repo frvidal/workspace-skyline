@@ -1,6 +1,6 @@
 {
   "name": "controlled-rising-skyline",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^10.0.14",
     "@angular/core": "^10.0.14",
@@ -12,5 +12,16 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frvidal/workspace-skyline/tree/master/projects/controlled-rising-skyline"
+  },
+  "homepage": "https://github.com/frvidal/workspace-skyline/tree/master/projects/controlled-rising-skyline#readme",
+  "author": {
+    "name": "Frédéric VIDAL",
+    "email": "frederic.vidal@fitzhi.com"
+  },
+  "keywords": ["angular", "lib", "dynamic", "animation", "animated", "rising", "skyline", "monitor", "control", "chart", "tag"]
 }

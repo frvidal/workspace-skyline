@@ -7,7 +7,7 @@ In Fitzhì, the goal is to display the history of a rising applications portfoli
 
 On the top right corner of the skyline, two buttons, with one up and one down arrays, allow the end-user to zoom-in, or zoom-out the view. 
 
-A panel control is associated with the skyline. You will be able to :
+A panel control is associated with the skyline. With this panel, you will be able to :
 
 * Pause, and restart the animation.
 * Accelerate or decelate the animation
