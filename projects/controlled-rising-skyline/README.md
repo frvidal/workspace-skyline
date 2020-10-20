@@ -1,19 +1,19 @@
 # The Skyline chart
 
-This library provides a rising skyline chart, i.e. a skyline widget, which is linked to a dynamic history of buildings.
+This library provides a rising skyline chart with an horizotal panel control. This widget is linked to a dynamic history of buildings.
 
 This chart has been created for the project [Fitzhì](http://www.fitzhi.com). 
 In Fitzhì, the goal is to display the history of a rising applications portfolio, confronted to the turn-over risk on these applications.
 
-On the top right corner, two buttons, with one up and one down arrays, allow the end-user to zoom-in, or zoom-out the view. 
+On the top right corner of the skyline, two buttons, with one up and one down arrays, allow the end-user to zoom-in, or zoom-out the view. 
 
 
-![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/Build_and_test/badge.svg)
+![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/Build_and_test_controlled_rising_skyline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
 
-![Rising Skyline](https://frvidal.github.io/workspace-skyline/projects/rising-skyline/img/rising-skyline.gif)
+![Rising Skyline](https://frvidal.github.io/workspace-skyline/projects/controlled-rising-skyline/img/controlled-rising-skyline.gif)
 
 
 ## Installing this library in your project ?

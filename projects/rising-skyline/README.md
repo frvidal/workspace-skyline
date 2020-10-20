@@ -8,7 +8,7 @@ In Fitzhì, the goal is to display the history of a rising applications portfoli
 On the top right corner, two buttons, with one up and one down arrays, allow the end-user to zoom-in, or zoom-out the view. 
 
 
-![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/Build_and_test/badge.svg)
+![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/Build_and_test_rising_skyline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
