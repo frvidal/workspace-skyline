@@ -40,7 +40,7 @@ Install (if necessary) the fonts and the bootstrap styles in your project
 > @import '@fortawesome/fontawesome-free/css/all.css';
 > @import "bootstrap/dist/css/bootstrap.css";
 
-For testing purpose, the service `ControlledRisingSkylineService` provides a random generator for testing purpose. +
+For testing purpose, the service `ControlledRisingSkylineService` provides a random generator for testing purpose.
 Its name is `randomSkylineHistory(skyline$: BehaviorSubject<Building[]>)` 
 
 ## Using this library in your application ?
