@@ -1,5 +1,8 @@
 # The controlled rising Skyline chart
 
+![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/CI%20controlled%20rising%20skyline/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This library provides a rising skyline chart with an horizotal panel control. This widget is linked to a dynamic history of buildings.
 
 This chart has been created for the project [Fitzhì](http://www.fitzhi.com). 
@@ -12,9 +15,6 @@ A panel control is associated with the skyline. With this panel, you will be abl
 * Pause, and restart the animation.
 * Accelerate or decelate the animation
 * Move the cursor, along the timeline.
-
-![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/CI%20controlled%20rising%20skyline/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This library requires these peer dependencies :
 
@@ -40,8 +40,8 @@ Install (if necessary) the fonts and the bootstrap styles in your project
 > @import '@fortawesome/fontawesome-free/css/all.css';
 > @import "bootstrap/dist/css/bootstrap.css";
 
-For testing purpose, the service `ControlledRisingSkylineService` provides a random generator for testing purpose, 
-named `randomSkylineHistory(skyline$: BehaviorSubject<Building[]>)` 
+For testing purpose, the service `ControlledRisingSkylineService` provides a random generator for testing purpose. +
+Its name is `randomSkylineHistory(skyline$: BehaviorSubject<Building[]>)` 
 
 ## Using this library in your application ?
 
