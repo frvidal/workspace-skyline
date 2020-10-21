@@ -1,9 +1,11 @@
 # The controlled rising Skyline chart
 
+This library provides a rising skyline chart with an horizontal control panel control. This widget is linked to a dynamic history of buildings.
+An animation displays the rising of the skyline.
+
 ![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/CI%20controlled%20rising%20skyline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This library provides a rising skyline chart with an horizotal panel control. This widget is linked to a dynamic history of buildings.
 
 This chart has been created for the project [Fitzhì](http://www.fitzhi.com). 
 In Fitzhì, the goal is to display the history of a rising applications portfolio, confronted to the turn-over risk on these applications.
