@@ -19,7 +19,7 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Slider color of the panel control
    */
-  @HostBinding("style.--slider-color")
+  @HostBinding('style.--slider-color')
   @Input() sliderColor = 'violet';
 
   /**

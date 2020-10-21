@@ -13,20 +13,20 @@ export class ControlledRisingSkylineService {
    * Generate a random Skyline history with 100 buildings for testing purpose.
    * @param skyline$ the observable whch will emit the array of buildings
    */
-  public randomSkylineHistory(skyline$: BehaviorSubject<Building[]>) {
+  public randomSkylineHistory(skyline$: BehaviorSubject<Building[]>): void {
 
     const upperYear = 2020;
     const upperWeek = 45;
 
-    function randomInteger(min, max) {
+    function randomInteger(min, max): number {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    function addDays(theDate, days) {
+    function addDays(theDate, days): Date {
       return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000);
     }
 
-    const buildings: Building[] = []
+    const buildings: Building[] = [];
 
 
     for (let id = 0; id < 100; id++) {
@@ -38,7 +38,8 @@ export class ControlledRisingSkylineService {
       const endDate = new Date(randomInteger(2019, 2020), randomInteger(1, 12), randomInteger(1, 27));
 
       for (let d = startDate.clone(), stepHeight = 1; d <= endDate; d.addDays(7), stepHeight++) {
-        buildings.push(new Building(id, this.skylineService.toYearWeek(d).year, this.skylineService.toYearWeek(d).week, 40, stepHeight * 2, randomInteger(0, 100), 'Building ' + id));
+        buildings.push(new Building(id,
+            this.skylineService.toYearWeek(d).year, this.skylineService.toYearWeek(d).week, 40, stepHeight * 2, randomInteger(0, 100), 'Building ' + id));
       }
     }
 
