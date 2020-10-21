@@ -15,7 +15,7 @@ import {ControlledRisingSkylineModule} from 'controlled-rising-skyline'
     BrowserModule, BrowserAnimationsModule, MatSliderModule, ControlledRisingSkylineModule
 
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

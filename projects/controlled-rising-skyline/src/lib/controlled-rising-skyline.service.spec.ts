@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { RisingSkylineModule } from 'rising-skyline';
 
 import { ControlledRisingSkylineService } from './controlled-rising-skyline.service';
 
@@ -6,7 +7,10 @@ describe('ControlledRisingSkylineService', () => {
   let service: ControlledRisingSkylineService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [RisingSkylineModule],
+      providers: []
+    });
     service = TestBed.inject(ControlledRisingSkylineService);
   });
 
