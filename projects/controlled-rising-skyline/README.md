@@ -3,7 +3,7 @@
 This library provides a rising skyline chart with an horizontal control panel control. This widget is linked to a dynamic history of buildings.
 An animation displays the rising of the skyline.
 
-![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/CI%20controlled%20rising%20skyline/badge.svg)
+![CI rising skyline](https://github.com/frvidal/workspace-skyline/workflows/CI%20controlled%20rising%20skyline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
