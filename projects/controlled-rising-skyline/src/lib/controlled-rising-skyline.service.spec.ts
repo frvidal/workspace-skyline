@@ -1,3 +1,5 @@
+import { DatePipe } from '@angular/common';
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RisingSkylineModule } from 'rising-skyline';
 
