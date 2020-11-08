@@ -57,7 +57,8 @@ To include this component into a container, you just have to declare this sectio
     [speed] = 30
     [startingColor] = "'#28a745'"
     [endingColor] = "'#8B0000'"
-    [sliderColor] = "'#0000FF'">
+    [sliderColor] = "'#0000FF'"
+    [backgroundColor] = "'whiteSmoke'">
 </controlled-rising-skyline>
 ```
 
@@ -74,6 +75,7 @@ Parameter | Decorator | Comment
 **startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
 **endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**, and this index determines the color).
 **sliderColor** | INPUT | The color of the slider.
+**backgroundColor** | INPUT | The background color of the panel. Default color is *lightGrey*
 
 ## What is a building ?
 

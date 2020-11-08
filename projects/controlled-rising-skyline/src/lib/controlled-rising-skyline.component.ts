@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { Building, RisingSkylineService } from 'rising-skyline';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -65,6 +65,12 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
    */
   @Input()
   public endingColor = 'blue';
+
+  /**
+   * Slider color of the panel control
+   */
+  @HostBinding('style.--panel-background-color')
+  @Input() backgroundColor = 'lightGrey';
 
   /**
    *  __Slider__ color.

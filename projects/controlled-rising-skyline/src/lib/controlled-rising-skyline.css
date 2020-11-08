@@ -2,3 +2,6 @@
 @import '@fortawesome/fontawesome-free/css/all.css';
 @import "bootstrap/dist/css/bootstrap.css";
 */
+#mainDiv {
+    background-color: var(--panel-background-color);
+}
