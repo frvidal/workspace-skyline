@@ -71,12 +71,12 @@ Parameter | Decorator | Comment
 **width** | INPUT | The width of the container hosting the skyline
 **umWidth** | INPUT | _(Optional) The unit of measure for the width. It might be either 'px", or '%', or 'em'._ Default is **'px'**
 **risingSkylineHistory$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week in a year and contains an array of buildings, of different heights. The **Building** object is described below.
-**speed** | INPUT | The speed of the animation in ms.
-**startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is *red*_
-**endingColor** | INPUT | _(Optional) The ending color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is *green*_
-**sliderColor** | INPUT | _(Optional) The color of the slider. Default color is *violet*_
-**skylineBackgroundColor** | INPUT | _(Optional) The background color of the skyline container. Default color is *transparent*_
-**controlBackgroundColor** | INPUT | _(Optional) The background color of the control panel. Default color is *lightGrey*_
+**speed** | INPUT | _The speed of the animation in ms. Default value is **30** ms per step_
+**startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is **red**_
+**endingColor** | INPUT | _(Optional) The ending color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is **green**_
+**sliderColor** | INPUT | _(Optional) The color of the slider. Default color is **violet**_
+**skylineBackgroundColor** | INPUT | _(Optional) The background color of the skyline container. Default color is **transparent**_
+**controlBackgroundColor** | INPUT | _(Optional) The background color of the control panel. Default color is **lightGrey**_
 
 ## What is a building ?
 
