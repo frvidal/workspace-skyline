@@ -75,7 +75,8 @@ Parameter | Decorator | Comment
 **startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
 **endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**, and this index determines the color).
 **sliderColor** | INPUT | The color of the slider.
-**backgroundColor** | INPUT | The background color of the panel. Default color is *lightGrey*
+**skylineBackgroundColor** | INPUT | The background color of the skyline container. Default color is *transparent*
+**controlBackgroundColor** | INPUT | The background color of the control panel. Default color is *lightGrey*
 
 ## What is a building ?
 

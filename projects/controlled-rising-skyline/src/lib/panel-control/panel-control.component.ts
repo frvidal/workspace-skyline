@@ -14,6 +14,7 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Background color of the control footer panel
    */
+  @HostBinding('style.--control-background-color')
   @Input() backgroundColor;
 
   /**
@@ -21,12 +22,6 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   @HostBinding('style.--slider-color')
   @Input() sliderColor = 'violet';
-
-  /**
-   * This boolean saves the fact that the background color has already been set for this control panel.
-   * We keep this state for performance purpose.
-   */
-  private coloringDone = false;
 
   /**
    * The Skyline subscription.
@@ -56,7 +51,6 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.skylineService.episode$
-      .pipe(tap( floors => { if (!this.coloringDone) { setTimeout (() => this.setBackgroundColor(), 0); }  }))
       .subscribe(
         floors => {
           if (floors.length > 0) {
@@ -80,17 +74,6 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
 
-  }
-
-  private setBackgroundColor(): void {
-    const slider = document.getElementById('controlPanel');
-    if (slider) {
-      slider.setAttribute('style', 'background-color:' + this.backgroundColor);
-    }
-    if (this.DEBUG) {
-      console.log ('Background color for the control Panel has been set to %s', this.backgroundColor);
-    }
-    this.coloringDone = true;
   }
 
   ngOnDestroy(): void {

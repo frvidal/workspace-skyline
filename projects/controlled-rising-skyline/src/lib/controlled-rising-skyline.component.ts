@@ -67,10 +67,15 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
   public endingColor = 'blue';
 
   /**
-   * Slider color of the panel control
+   * Color of the skyline container
    */
-  @HostBinding('style.--panel-background-color')
-  @Input() backgroundColor = 'lightGrey';
+  @HostBinding('style.--skyline-background-color')
+  @Input() skylineBackgroundColor = 'transparent';
+
+  /**
+   * Color of the skyline control panel
+   */
+  @Input() controlBackgroundColor = 'lightGrey';
 
   /**
    *  __Slider__ color.

@@ -3,5 +3,5 @@
 @import "bootstrap/dist/css/bootstrap.css";
 */
 #mainDiv {
-    background-color: var(--panel-background-color);
+    background-color: var(--skyline-background-color);
 }
