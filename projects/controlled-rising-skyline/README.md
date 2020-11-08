@@ -72,11 +72,11 @@ Parameter | Decorator | Comment
 **umWidth** | INPUT | _(Optional) The unit of measure for the width. It might be either 'px", or '%', or 'em'._ Default is **'px'**
 **risingSkylineHistory$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week in a year and contains an array of buildings, of different heights. The **Building** object is described below.
 **speed** | INPUT | The speed of the animation in ms.
-**startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
-**endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**, and this index determines the color).
-**sliderColor** | INPUT | The color of the slider.
-**skylineBackgroundColor** | INPUT | The background color of the skyline container. Default color is *transparent*
-**controlBackgroundColor** | INPUT | The background color of the control panel. Default color is *lightGrey*
+**startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is *red*_
+**endingColor** | INPUT | _(Optional) The ending color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is *green*_
+**sliderColor** | INPUT | _(Optional) The color of the slider. Default color is *violet*_
+**skylineBackgroundColor** | INPUT | _(Optional) The background color of the skyline container. Default color is *transparent*_
+**controlBackgroundColor** | INPUT | _(Optional) The background color of the control panel. Default color is *lightGrey*_
 
 ## What is a building ?
 
@@ -91,5 +91,5 @@ Property | type | Comment
 **height** | number | the height of the building
 **year** | number | the year of the building corresponding to this state of building 
 **week** | number | the week of the building corresponding to this state of building
-**index** | number | the index in the building in the range of colors
+**index** | number | the index of the building in the range of colors. Index range is from 0 to 100.
 **title** | string | the title of the building

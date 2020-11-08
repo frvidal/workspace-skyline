@@ -53,18 +53,18 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
   public speed = 30;
 
   /**
-   * __Starting__ color of he gradation speed of the animation in ms.
+   * __Starting__ color of the color gradation.
    * Default value is _ping_
    */
   @Input()
-  public startingColor = 'pink';
+  public startingColor = 'red';
 
   /**
-   *  __Ending__ color of he gradation speed of the animation in ms.
+   *  __Ending__ color of the color gradation.
    * Default value is _blue_
    */
   @Input()
-  public endingColor = 'blue';
+  public endingColor = 'green';
 
   /**
    * Color of the skyline container
@@ -121,9 +121,9 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
 
   ngOnInit(): void {
     this.widthSkyline = this.width;
-    this.heightSkyline = Math.floor(this.height * 0.8);
+    this.heightSkyline = this.height;
     if (this.DEBUG) {
-      console.log('Skyline w ' + this.widthSkyline + ' ' + this.heightSkyline);
+      console.log('Skyline w ' + this.widthSkyline + ', h ' + this.heightSkyline);
     }
 
     this.subscriptionSkyline = this.skylineService.episode$.subscribe(floors => {

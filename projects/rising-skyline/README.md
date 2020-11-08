@@ -69,5 +69,5 @@ Property | type | Comment
 **height** | number | the height of the building
 **year** | number | the year of the building corresponding to this state of building 
 **week** | number | the week of the building corresponding to this state of building
-**index** | number | the index in the building in the range of colors
+**index** | number | the index of the building in the range of colors. Index range is from 0 to 100.
 **title** | string | the title of the building
