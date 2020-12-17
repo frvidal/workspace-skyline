@@ -84,6 +84,12 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
   @Input()
   public sliderColor = 'violet';
 
+  /**
+   *  (_Internal_) debug mode.
+   * Default value is **false**
+   */
+  @Input()
+  public debug = false;
 
   /**
    * The number of floors _(or episodes)_ involved in the skyline, starting from skyline.startDate to skyline.lastDate
@@ -99,11 +105,6 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
    * The subscription on the skyline rising.
    */
   private subscriptionSkyline: Subscription;
-
-  /**
-   * DEBUG mode _True_, _False_
-   */
-  private DEBUG = false;
 
   /**
    * The width of the skyline
@@ -122,7 +123,7 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
   ngOnInit(): void {
     this.widthSkyline = this.width;
     this.heightSkyline = this.height;
-    if (this.DEBUG) {
+    if (this.debug) {
       console.log('Skyline w ' + this.widthSkyline + ', h ' + this.heightSkyline);
     }
 
@@ -138,7 +139,7 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
     const mainDiv = document.getElementById('mainDiv');
     if (mainDiv) {
       mainDiv.setAttribute('style', 'width:' + this.width + 'px;height:' + this.height + 'px');
-      if (this.DEBUG) {
+      if (this.debug) {
         console.log(mainDiv.getAttribute('style'));
       }
     } else {

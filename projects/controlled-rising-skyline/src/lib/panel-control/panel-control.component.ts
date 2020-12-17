@@ -24,19 +24,14 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() sliderColor = 'violet';
 
   /**
+   * __Debug__ mode default value is **False**.
+   */
+  @Input() debug = false;
+
+  /**
    * The Skyline subscription.
    */
   private skylineSubscription: Subscription = null;
-
-  /**
-   * __Debug__ mode YES/NO.
-   */
-  private DEBUG = false;
-
-  /**
-   * __Verbose__ mode YES/NO.
-   */
-  private VERBOSE = false;
 
   constructor(public skylineService: RisingSkylineService, public colorService: ColorService) { }
 
@@ -59,14 +54,14 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
               .map(floor => floor.index)
               .reduce((theSum, index) => theSum + index, 0 );
             const meanIndex = Math.floor(allIndex / floors.filter(floor => floor.height > 0).length);
-            if ((this.DEBUG) && (this.VERBOSE)) {
+            if (this.debug)  {
               console.log ('Index of color used for the thumb coin', meanIndex);
             }
 
             const htmlThumbLabelCoin = document.getElementsByClassName('mat-slider-thumb-label').item(0);
             if (htmlThumbLabelCoin) {
               const color =  this.colorService.color(meanIndex);
-              if ((this.DEBUG) && (this.VERBOSE)) {
+              if (this.debug) {
                 console.log ('Index of color used for the thumb coin %d is processing the color %s', meanIndex, color);
               }
               htmlThumbLabelCoin.setAttribute('style', 'background-color:' + color);
@@ -87,7 +82,7 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
     this.skylineService.currentYear = yw.year;
     this.skylineService.currentWeek = yw.week;
     this.skylineService.currentEpisode = $event.value - 2;
-    if (this.DEBUG) {
+    if (this.debug) {
       console.log ('Position %d points to (%d; %d)', $event.value, yw.year, yw.week);
     }
     const episode = this.skylineService.extractSkylineEpisode(yw.year, yw.week);
