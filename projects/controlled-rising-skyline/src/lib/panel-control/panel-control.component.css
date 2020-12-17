@@ -23,6 +23,7 @@
 :host /deep/ .mat-slider-thumb-label-text {
     opacity: 1;
     font-size: 10px;
+    color: white;
 }
 
 :host /deep/ .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
@@ -98,4 +99,3 @@ span.x {
     position:relative;
     bottom: 1px;
 }
-

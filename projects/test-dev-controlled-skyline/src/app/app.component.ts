@@ -1,8 +1,8 @@
-import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ControlledRisingSkylineService } from 'controlled-rising-skyline';
 import { Building, RisingSkylineService } from 'rising-skyline';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, onErrorResumeNext } from 'rxjs';
+import dataOfSingleProject from './json_files/rising-skyline-data-of-single-project.json';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +16,24 @@ export class AppComponent {
    */
   public skyline$ = new BehaviorSubject<Building[]>([]);
   
+  public skyline = [];
+  
   public constructor(
     public controlledSkylineService: ControlledRisingSkylineService,
     public skylineService: RisingSkylineService) {
+      dataOfSingleProject.forEach(b => {
+        this.skyline.push(new Building(b.id, b.year, b.week, b.week, b.height, b.index, b.title));
+      });
+    // this.controlledSkylineService.randomSkylineHistory(this.skyline$);
+    this.skyline$.next(this.skyline);
 
-    this.controlledSkylineService.randomSkylineHistory(this.skyline$);
+    this.skyline$.subscribe({
+      next: skyline => {
+        console.groupCollapsed('in Subscribe');
+        console.table(skyline);
+        console.groupEnd();
+      }
+    });
 
   }
 
