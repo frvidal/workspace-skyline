@@ -24,6 +24,13 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
   public height = '400px';
 
   /**
+   * The margin around the container.
+   * Defaut value is _'1px'_;
+   */
+  @Input()
+  public margin = '1px';
+
+  /**
   /**
    * The width of each building on the skyline without the unit of measure.
    * Defaut value is __40__;

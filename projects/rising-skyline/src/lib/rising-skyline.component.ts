@@ -25,6 +25,12 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() height: string;
 
   /**
+   * The margin of the container with the unit of mesure such as ('px', 'em', '%')
+   */
+  @HostBinding('style.--container-margin')
+  @Input() margin: string;
+
+  /**
    * This observable emits the complete story of the rising skyline.
    *
    * This reveived array will be completed and passed to the __SkylineService__.

@@ -33,12 +33,13 @@ To include this component into a container, you just have to declare this sectio
 
 ```
 <rising-skyline
-    [height] = "'370px'"
-    [width] = "'90%'"
-    [risingSkylineHistory$] = risingSkylineHistory$
-    [speed] = 30
-    [startingColor] = "'#28a745'"
-    [endingColor] = "'#8B0000'">
+	[height] = "'370px'"
+	[width] = "'90%'"
+	[margin] = "'10px'"
+	[risingSkylineHistory$] = risingSkylineHistory$
+	[speed] = 30
+	[startingColor] = "'#28a745'"
+	[endingColor] = "'#8B0000'">
 </rising-skyline>
 ```
 
@@ -49,6 +50,7 @@ Parameter | Decorator | Comment
 **height** | INPUT | The height of the container, with its unit of measure, hosting the skyline (_such as '100px'_).
 **width** | INPUT | The width of the container, with its unit of measure, hosting the skyline (_such as '100px'_).
 **speed** | INPUT | The speed of the animation in ms.
+**margin** | INPUT | The margin around the container.
 **startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
 **endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**, and this index determines the color).
 
