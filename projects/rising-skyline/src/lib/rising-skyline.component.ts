@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {Building} from './data/building';
 import {ColorService} from './service/color.service';
@@ -15,26 +15,14 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
   /**
    * The width of the container, with its units of mesure (px, %, em...).
    */
-  @Input() width: number;
+  @HostBinding('style.--container-width')
+  @Input() width: string;
 
   /**
-   * The unit of measure for the width.
-   *
-   * Default value is _'px'_
+   * The height of the container with the unit of mesure such as ('px', 'em', '%')
    */
-  @Input() umWidth = 'px';
-
-  /**
-   * The height of the container
-   */
-  @Input() height: number;
-
-  /**
-   * The unit of measure for the height.
-   *
-   * Default value is _'px'_
-   */
-  @Input() umHeight = 'px';
+  @HostBinding('style.--container-height')
+  @Input() height: string;
 
   /**
    * This observable emits the complete story of the rising skyline.
@@ -156,14 +144,6 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   color(level: number): string {
     return '#' + this.colorService.red(level) + this.colorService.green(level) + this.colorService.blue(level);
-  }
-
-  /**
-   * the style and more particularly the width & height of the skykine container
-   */
-  skylineStyle(): string {
-    const style = 'width:' + this.width + this.umWidth + '; height:' + this.height + this.umHeight;
-    return style;
   }
 
   ngOnDestroy(): void {

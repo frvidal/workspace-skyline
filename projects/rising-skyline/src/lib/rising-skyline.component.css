@@ -58,3 +58,8 @@ div.tooltip {
     border-color: black; 
     border-style: solid;
 }
+
+#container-skyline {
+    height: var(--container-height);
+    width: var(--container-width);
+}

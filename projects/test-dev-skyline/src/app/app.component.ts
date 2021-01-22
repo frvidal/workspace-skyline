@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Building } from '../../../skyline/src/lib/data/building';
-import { SkylineService } from '../../../skyline/src/lib/skyline.service';
+import { Building } from '../../../rising-skyline/src/lib/data/building';
+import { RisingSkylineService } from '../../../rising-skyline/src/lib/rising-skyline.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import './date.extension';
 
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy  {
 
   constructor(
     public datePipe: DatePipe, 
-    public skylineService: SkylineService) {
+    public skylineService: RisingSkylineService) {
     
     const upperYear = 2020;
     const upperWeek = 45;

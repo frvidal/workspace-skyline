@@ -10,32 +10,33 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, OnDestroy {
 
   /**
-   * The width of the component, with its unit of measure.
-   * Defaut value is __600__;
+   * The width of the container, with its units of mesure (px, %, em...).
+   * Defaut value is __'600px'__;
    */
   @Input()
-  public width = 600;
+  public width = '600px';
+
+  /**
+   * The height of the container, with its units of mesure (px, %, em...).
+   * Defaut value is _'400px'_;
+   */
+  @Input()
+  public height = '400px';
+
+  /**
+  /**
+   * The width of each building on the skyline without the unit of measure.
+   * Defaut value is __40__;
+   */
+  @Input()
+  public buildingWidth = 40;
 
   /**
    * The unit of measure for the width.
    *
    * Default value is _'px'_
    */
-  @Input() umWidth = 'px';
-
-  /**
-   * The height of the component, with its unit of measure.
-   * Defaut value is _400_;
-   */
-  @Input()
-  public height = 400;
-
-  /**
-   * The unit of measure for the height.
-   *
-   * Default value is _'px'_
-   */
-  @Input() umHeight = 'px';
+  @Input() umBuildingWidth = 'px';
 
   /**
    * This behaviorSubject emits the complete story of the rising skyline.
@@ -106,25 +107,13 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
    */
   private subscriptionSkyline: Subscription;
 
-  /**
-   * The width of the skyline
-   */
-  public widthSkyline: number;
-
-  /**
-   * The height of the skyline
-   */
-  public heightSkyline: number;
-
   constructor(public skylineService: RisingSkylineService) {
   }
 
 
   ngOnInit(): void {
-    this.widthSkyline = this.width;
-    this.heightSkyline = this.height;
     if (this.debug) {
-      console.log('Skyline w ' + this.widthSkyline + ', h ' + this.heightSkyline);
+      console.log('Skyline w ' + this.width + ', h ' + this.height);
     }
 
     this.subscriptionSkyline = this.skylineService.episode$.subscribe(floors => {

@@ -1,4 +1,4 @@
-<div class="container-fluid" [style]="skylineStyle()">
+<div class="container-fluid" id="container-skyline">
   <div class="scrolling-wrapper">
     <div *ngFor="let building of skylineService.episode$|async; index as index" 
       class="card" 

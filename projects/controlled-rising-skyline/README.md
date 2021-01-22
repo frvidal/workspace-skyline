@@ -51,8 +51,8 @@ To include this component into a container, you just have to declare this sectio
 
 ```
 <controlled-rising-skyline
-    [height] = 370
-    [width] = 1200
+    [height] = "'370px'"
+    [width] = "'1200px'"
     [risingSkylineHistory$] = risingSkylineHistory$
     [speed] = 30
     [startingColor] = "'#28a745'"
@@ -66,10 +66,8 @@ The parameters are :
 
 Parameter | Decorator | Comment
 ------------ | ------------- | -------------
-**height** | INPUT | The height of the container hosting the skyline
-**umHeight** | INPUT | _(Optional) The unit of measure for the height. It might be either 'px", or '%', or 'em'. Default is **'px'**_
-**width** | INPUT | The width of the container hosting the skyline
-**umWidth** | INPUT | _(Optional) The unit of measure for the width. It might be either 'px", or '%', or 'em'. Default is **'px'**_
+**height** | INPUT | The height of the component, with its unit of measure, hosting the skyline (_such as '100px'_).
+**width** | INPUT | The width of the component, with its unit of measure, hosting the skyline (_such as '100px'_).
 **risingSkylineHistory$** | INPUT | An observable which emits an unordered array of episodes of the skyline rising. This list will be ordered by default **by id**. Each episode is associated to a week in a year and contains an array of buildings, of different heights. The **Building** object is described below.
 **speed** | INPUT | _(Optional) The speed of the animation in ms. Default value is **30** ms per step_
 **startingColor** | INPUT | _(Optional) The starting color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is **red**_
