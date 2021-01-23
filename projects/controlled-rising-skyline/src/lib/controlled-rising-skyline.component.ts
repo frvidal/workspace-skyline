@@ -25,10 +25,10 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
 
   /**
    * The margin around the container.
-   * Defaut value is _'1px'_;
+   * Defaut value is _'10px'_;
    */
   @Input()
-  public margin = '1px';
+  public margin = '10px';
 
   /**
   /**

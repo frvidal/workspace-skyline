@@ -17,6 +17,11 @@ export class AppComponent implements OnInit, OnDestroy  {
   private DEBUG = false;
 
   /**
+   * The margin of the container
+   */
+  public margin = '10px';
+
+  /**
    * The number of floors _(or episodes)_ involved in the skyline, starting from skyline.startDate to skyline.lastDate
    */
   public numberOfFloors;
