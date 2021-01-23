@@ -11,8 +11,9 @@
     "e2e": "ng e2e",
     "build-skyline:internal": "ng build rising-skyline",
     "deploy-skyline:external": "ng build --prod rising-skyline && cd dist/rising-skyline && npm publish",
-    "build-controlled-skyline:internal": "ng build controlled-rising-skyline",
-    "deploy-controlled-skyline:external": "ng build --prod controlled-rising-skyline && cd dist/controlled-rising-skyline && npm publish"
+    "build-controlled-skyline:internal": "npm run test controlled-rising-skyline && ng build controlled-rising-skyline",
+    "deploy-controlled-skyline:external": "npm run test controlled-rising-skyline && ng build --prod controlled-rising-skyline && cd dist/controlled-rising-skyline && npm publish",
+    "test-cntr-skyline": "ng serve test-dev-controlled-skyline"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +30,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@popperjs/core": "^2.5.3",
     "bootstrap": "^4.5.2",
-    "controlled-rising-skyline": "^1.0.14",
+    "controlled-rising-skyline": "^1.0.15",
     "err": "^2.1.12",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
