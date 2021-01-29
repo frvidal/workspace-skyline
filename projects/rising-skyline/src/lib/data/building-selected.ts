@@ -5,7 +5,7 @@ import { Building } from "./building";
  * 
  * This class is used by the mouse Event messenger 
  */
-export class buildingSelected {
+export class BuildingSelected {
     constructor(
         public building: Building,
         public event: MouseEvent

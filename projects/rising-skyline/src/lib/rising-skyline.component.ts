@@ -4,7 +4,7 @@ import {Building} from './data/building';
 import {ColorService} from './service/color.service';
 import {RisingSkylineService} from './rising-skyline.service';
 import { take } from 'rxjs/operators';
-import { buildingSelected } from './data/building-selected';
+import { BuildingSelected } from './data/building-selected';
 
 @Component({
 	selector: 'rising-skyline',
@@ -72,17 +72,17 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 	/**
 	 * This messenger wil inform the parent container that the user has clicked a building.
 	 */
-	@Output() onClickBuilding = new EventEmitter<buildingSelected>();
+	@Output() onClickBuilding = new EventEmitter<BuildingSelected>();
 
 	/**
 	 * This messenger will inform the parent container that the user is entering on a building.
 	 */
-	@Output() onEnterBuilding = new EventEmitter<buildingSelected>();
+	@Output() onEnterBuilding = new EventEmitter<BuildingSelected>();
 
 	/**
 	 * This messenger wil inform the parent container that the user is entering on a building.
 	 */
-	@Output() onLeaveBuilding = new EventEmitter<buildingSelected>();
+	@Output() onLeaveBuilding = new EventEmitter<BuildingSelected>();
 	 
 	/**
 	 * Component is setup in DEBUG mode
@@ -151,7 +151,7 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 	 */
 	public mouseEnterBuilding(event: MouseEvent, building: Building): void {
 		this.buildingSelected = building;
-		this.onEnterBuilding.emit(new buildingSelected(building, event));
+		this.onEnterBuilding.emit(new BuildingSelected(building, event));
 	}
 	
 	/**
@@ -159,14 +159,14 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 	 */
 	public mouseLeaveBuilding(event: MouseEvent, building: Building): void {
 		this.buildingSelected = null;
-		this.onLeaveBuilding.emit(new buildingSelected(building, event));
+		this.onLeaveBuilding.emit(new BuildingSelected(building, event));
 	}
 
 	/**
 	 * Mouse is clicking the building.
 	 */
 	public mouseClickBuilding(event: MouseEvent, building: Building): void {
-		this.onClickBuilding.emit(new buildingSelected(building, event));
+		this.onClickBuilding.emit(new BuildingSelected(building, event));
 	}
 
 	/**
