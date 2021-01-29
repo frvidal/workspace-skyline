@@ -1,66 +1,78 @@
+#container-skyline {
+	height: var(--container-height);
+	width: var(--container-width);
+	margin: var(--container-margin);
+}
+
 div.container-fluid {
-    position: relative;
-    margin: 0px auto;
-    padding: 0;
+	position: relative;
+	margin: 0px auto;
+	padding: 0;
 }
 
 div.scrolling-wrapper {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    width: 100%;
-    height: 100%;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	width: 100%;
+	height: 100%;
 }
 
 div.scrolling-wrapper > div.card {
-    display: inline-block;
-    border-style: solid;
-    border-color: transparent;
-    border-width: 1px;
-    opacity: 0.9;
+	display: inline-block;
+	border-style: solid;
+	border-color: transparent;
+	border-width: 1px;
+	opacity: 1;
 }  
 
 div.scrolling-wrapper > div.card:hover {
-    opacity: 1;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-
+	border-color: black;
+	opacity: 0.5;
 }  
 
 div.container-fluid > button {
-    position: absolute;
-    right: 10px;
-    width: 30px;
-    height: 30px;
+	position: absolute;
+	right: 10px;
+	width: 30px;
+	height: 30px;
 }
 
 #zoomIn {
-    top: 10px;
+	top: 10px;
 }
 
 #zoomOut {
-    top: 45px;
+	top: 45px;
 }
 
 :root {
-    --color-selected: #28a745;
-    --color-error: darkred;
+	--color-selected: #28a745;
+	--color-error: darkred;
 }
   
 ::-webkit-scrollbar {
-    height: 0px;
-    background:-webkit-linear-gradient(0, green, red);
+	height: 0px;
+	background:-webkit-linear-gradient(0, green, red);
 }
 
 div.tooltip {
-    border: 1px; 
-    border-color: black; 
-    border-style: solid;
+	border: 1px; 
+	border-color: black; 
+	border-style: solid;
 }
 
-#container-skyline {
-    height: var(--container-height);
-    width: var(--container-width);
-    margin: var(--container-margin);
+p.title {
+	position: absolute; 
+	bottom: 0px;
+	writing-mode: vertical-rl;
+	text-orientation: sideways;
+	margin: 0 0 5px 0;
+}
+
+div.title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font: var(--font)
 }

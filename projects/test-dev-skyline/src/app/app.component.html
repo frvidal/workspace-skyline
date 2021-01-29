@@ -1,12 +1,17 @@
-<div style="width: 99%; height: 600px;margin: 0 auto">
+<div style="width: 1000px; height: 600px; margin: 0 auto">
 	<rising-skyline
 		[width] = "'1000px'"
-		[height] = "'80%'"
+		[height] = "'600px'"
 		[margin] = margin
 		[risingSkylineHistory$] = skyline$
 		[speed] = 30
+		[displayVerticalTitle] = true
 		[startingColor] = "'#28a745'"
-		[endingColor] = "'#8B0000'">
+		[endingColor] = "'#8B0000'"
+		[font] = "'20px/1 Arial'"
+		(onClickBuilding)="onClickBuilding($event)"
+		(onEnterBuilding)="onEnterBuilding($event)"
+		(onLeaveBuilding)="onLeaveBuilding($event)">
 	</rising-skyline>
 	<app-panel-control [backgroundColor] = "'transparent'"></app-panel-control>
 </div>

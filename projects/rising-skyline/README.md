@@ -53,6 +53,11 @@ Parameter | Decorator | Comment
 **margin** | INPUT | The margin around the container.
 **startingColor** | INPUT | The starting color in the index-range. (Each building has a property named **index**, and this index determines the color).
 **endingColor** | INPUT | The ending color in the index-range. (Each building has a property named **index**, and this index determines the color).
+**displayVerticalTitle** | boolean | Should the vertical title on top of each building be drawn ? Or not ?
+**font** | INPUT | This setting is used by the vertical title. This is Shorthand property for setting **'font-style'**, **'font-variant'**, **'font-weight'**, **'font-size'**, **'line-height'**, and **'font-family'**. _"italic 2em "Open Sans", sans-serif'" is a possible example_.
+**onClickBuilding** | OUTPUT | The component will emit an event containing a BuildingSelected object, each time the user is clicking on a building.
+**onEnterBuilding** | OUTPUT | The component will emit an event containing a BuildingSelected object, each time the user is entering in a building.
+**onLeaveBuilding** | OUTPUT | The component will emit an event containing a BuildingSelected object, each time the user is leaving a building.
 
 
 ## What is a building ?
@@ -70,3 +75,12 @@ Property | type | Comment
 **week** | number | the week of the building corresponding to this state of building
 **index** | number | the index of the building in the range of colors. Index range is from 0 to 100.
 **title** | string | the title of the building
+
+## What is a selected building ?
+
+This component is emetting this object during mouse interaction. 
+
+Property | type | Comment
+------------ | ------------- | -------------
+**building** | Building | the building under the mouse pointer
+**event** | MouseEvent | the underlying mouse event
