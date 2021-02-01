@@ -1,19 +1,24 @@
 <h4>Testing the library component ControlledRisingSkyline V2</h4>
 <div id="host">
 
-	<div style="margin: auto; width: fit-content">
+	<div style="margin: auto; width: 800px; height: 600px">
 		<controlled-rising-skyline 
 			[width] = "'800px'"
-			[height] = "'220px'"
-			[margin] = "'50px'"
+			[height] = "'500px'"
+			[margin] = "'3px'"
 			[speed] = 10
 			[risingSkylineHistory$] = skyline$
 			[startingColor] = "'#FF0000'"
 			[endingColor] = "'#00FF00'"
+			[displayVerticalTitle] = true
+			[font] = "'20px/1 Arial'"
 			[sliderColor]="'#0000FF'"
 			[skylineBackgroundColor]="'lightYellow'"
-			[controlBackgroundColor]="'lightGreen'">
-		</controlled-rising-skyline>
+			[controlBackgroundColor]="'lightGreen'"
+			(onClickBuilding)="onClickBuilding($event)"
+			(onEnterBuilding)="onEnterBuilding($event)"
+			(onLeaveBuilding)="onLeaveBuilding($event)">		
+			</controlled-rising-skyline>
 	</div>
 
 </div>

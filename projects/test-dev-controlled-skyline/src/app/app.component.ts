@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ControlledRisingSkylineService } from 'controlled-rising-skyline';
-import { Building, RisingSkylineService } from 'rising-skyline';
+import { Building, BuildingSelected, RisingSkylineService } from 'rising-skyline';
 import { BehaviorSubject } from 'rxjs';
 import dataOfSingleProject from './json_files/rising-skyline-data-of-single-project.json';
 import dataProd from './json_files/prod.json';
@@ -17,7 +17,7 @@ export class AppComponent {
 	 */
 	public skyline$ = new BehaviorSubject<Building[]>([]);
 	
-	private RANDOM = false;
+	private RANDOM = true;
 
 	private PROD = !this.RANDOM;
 
@@ -62,4 +62,17 @@ export class AppComponent {
 			}
 		});
 	}
+
+	public onEnterBuilding($event: BuildingSelected) {
+		console.log ('Entering', $event.building.title);
+	}
+
+	public onLeaveBuilding($event: BuildingSelected) {
+		console.log ('Leave', $event.building.title);
+	}
+
+	public onClickBuilding($event: BuildingSelected) {
+		console.log ('Click', $event.building.title);
+	}
+
 }

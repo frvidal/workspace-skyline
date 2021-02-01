@@ -6,8 +6,13 @@
 		[margin] = margin
 		[risingSkylineHistory$] = risingSkylineHistory$
 		[speed] = speed
+		[displayVerticalTitle] = true
 		[startingColor] = startingColor
-		[endingColor] = endingColor>
+		[endingColor] = endingColor
+		[font] = font
+		(onClickBuilding)="mouseClickBuilding($event)"
+		(onEnterBuilding)="mouseEnterBuilding($event)"
+		(onLeaveBuilding)="mouseLeaveBuilding($event)">		
 	</rising-skyline>
 
 	<app-panel-control 

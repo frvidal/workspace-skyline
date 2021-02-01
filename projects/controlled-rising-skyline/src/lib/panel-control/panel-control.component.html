@@ -17,7 +17,7 @@
       </mat-slider>
     </div>
 
-    <div id="lastDate" class="col-2 my-auto">
+    <div id="lastDate" class="col-4 my-auto">
       <span>
         {{skylineService.toYearWeek(skylineService.lastDate).year}}/{{skylineService.toYearWeek(skylineService.lastDate).week  | number : '2.0-0'}}
       </span>
@@ -27,6 +27,7 @@
         aria-label="Pause the animation">
         <em class="fas fa-pause"></em>
       </button>
+      
       <button 
         *ngIf="skylineService.pause" 
         class="btn btn-outline-primary btn-circle control-button" 
@@ -34,6 +35,7 @@
         aria-label="Start or restart the animation">
         <i class="fas fa-play"></i>
       </button>
+
       <button 
         class="btn btn-outline-primary btn-circle control-button" 
         (click)="skylineService.rotateVariation()"

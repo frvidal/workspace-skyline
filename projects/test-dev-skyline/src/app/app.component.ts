@@ -4,7 +4,7 @@ import { Building } from '../../../rising-skyline/src/lib/data/building';
 import { RisingSkylineService } from '../../../rising-skyline/src/lib/rising-skyline.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import './date.extension';
-import { buildingSelected } from 'projects/rising-skyline/src/lib/data/building-selected';
+import { BuildingSelected } from 'projects/rising-skyline/src/lib/data/building-selected';
 
 @Component({
 	selector: 'app-root',
@@ -98,15 +98,15 @@ export class AppComponent implements OnInit, OnDestroy  {
 		this.subscriptionSkyline.unsubscribe();
 	}
 
-	public onClickBuilding(buildingSelected: buildingSelected) {
+	public onClickBuilding(buildingSelected: BuildingSelected) {
 		console.log('Click on ' + buildingSelected.building.title);
 	}
 
-	public onEnterBuilding(buildingSelected: buildingSelected) {
+	public onEnterBuilding(buildingSelected: BuildingSelected) {
 		console.log('Entering in ' + buildingSelected.building.title);
 	}
 
-	public onLeaveBuilding(buildingSelected: buildingSelected) {
+	public onLeaveBuilding(buildingSelected: BuildingSelected) {
 		console.log('Leaving ' + buildingSelected.building.title);
 	}
 }

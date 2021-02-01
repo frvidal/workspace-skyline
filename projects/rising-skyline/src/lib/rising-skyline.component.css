@@ -1,21 +1,21 @@
-#container-skyline {
-	height: var(--container-height);
-	width: var(--container-width);
-	margin: var(--container-margin);
-}
-
 div.container-fluid {
-	position: relative;
-	margin: 0px auto;
-	padding: 0;
+    position: relative;
+    margin: 0px auto;
+    padding: 0;
 }
 
 div.scrolling-wrapper {
-	overflow-x: scroll;
-	overflow-y: hidden;
-	white-space: nowrap;
-	width: 100%;
-	height: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+#container-skyline {
+    height: var(--container-height);
+    width: var(--container-width);
+    margin: var(--container-margin);
 }
 
 div.scrolling-wrapper > div.card {

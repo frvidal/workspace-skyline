@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { ControlledRisingSkylineComponent } from './controlled-rising-skyline.component';
 import { ControlledRisingSkylineService } from './controlled-rising-skyline.service';
+import { PanelControlComponent } from './panel-control/panel-control.component';
 
 describe('ControlledRisingSkylineComponent', () => {
   let component: TestHostComponent;
@@ -13,26 +14,36 @@ describe('ControlledRisingSkylineComponent', () => {
   @Component({
     selector: 'lib-app-host-component',
     template: `
-      <controlled-rising-skyline 
-          [width] = 1200
-          [height] = 400
-          [risingSkylineHistory$] = skyline$
-          [startingColor] = "'#FF0000'"
-          [endingColor] = "'#00FF00'"
-          [sliderColor]="'#0000FF'">
-          `
+      <div style="width:1200px; height: 600px">
+        <controlled-rising-skyline 
+            [debug] = true
+            [width] = "'1200px'"
+            [height] = "'400px'"
+            [displayVerticalTitle] = true
+            [risingSkylineHistory$] = skyline$
+            [startingColor] = "'#FF0000'"
+            [endingColor] = "'#00FF00'"
+            [sliderColor]="'#0000FF'">
+        </controlled-rising-skyline>
+      </div>
+      `
   })
   class TestHostComponent implements OnInit {
     public skyline$ = new BehaviorSubject<Building[]>([]);
     constructor(public controlledSkyline: ControlledRisingSkylineService) {}
     ngOnInit(): void {
       this.controlledSkyline.randomSkylineHistory(this.skyline$)
+      this.skyline$.subscribe({
+        next: buildings => {
+          buildings.forEach(b => console.log(b.title));
+        }
+      })
     }
   }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ControlledRisingSkylineComponent ],
+      declarations: [ ControlledRisingSkylineComponent, TestHostComponent, PanelControlComponent ],
       imports: [RisingSkylineModule],
       providers: [RisingSkylineService],
     })

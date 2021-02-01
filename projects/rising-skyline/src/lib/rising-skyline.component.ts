@@ -179,16 +179,19 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 		const width = building.width;
 		const height = building.height;
 		const color = this.color(building.index);
-		const left = building.id * (building.width + MARGIN);
+		const left = building.id * MARGIN;
+		const top = this.computedHeightInPx - building.height;
+	
 		const style =
 			`
 			width: ${width}px; 
 			height: ${height}px;
 			background-color: ${color};
-			position: absolute; 
-			bottom: 0px; 
+			position: relative; 
+			top: ${top}px; 
 			left: ${left}px;
 			`
+
 		return style;
 	}
 
@@ -200,18 +203,23 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 		// The separation between each building
 		const MARGIN = 3;
 		const width = building.width;
-		const bottom = building.height;
-		const left = building.id * (building.width + MARGIN);
+		const height = 200;
+		const left = 0;
+		const top = -height;
+		const color = this.color(building.index);
 		const style =
 			`
 			width: ${width}px; 
-			height: 200px;
+			height: ${height}px;
+			
 			background-color: transparent;
 			border: 1;
 			border-color: whiteSmoke;
 			border-style: none; 
-			position: absolute; 
-			bottom: ${bottom}px; 
+			color: ${color};
+
+			position: relative; 
+			top: ${top}px;
 			left: ${left}px;
 			`
 		return style;

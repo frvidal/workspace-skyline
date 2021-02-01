@@ -3,5 +3,7 @@
 @import "bootstrap/dist/css/bootstrap.css";
 */
 #mainDiv {
-    background-color: var(--skyline-background-color);
+	background-color: var(--skyline-background-color);
+	width: var(--mainDiv-width);
+	height: var(--mainDiv-height);
 }
