@@ -74,6 +74,12 @@ Parameter | Decorator | Comment
 **speed** | INPUT | _(Optional) The speed of the animation in ms. Default value is **30** ms per step_
 **startingColor** | INPUT | _(Optional) The starting color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is **red**_
 **endingColor** | INPUT | _(Optional) The ending color in the index-range. (Each building has a property named **index**, and this index determines the color). Default color is **green**_
+**displayVerticalTitle** | INPUT | _boolean_ Should the vertical title on top of each building be drawn ? Or not ? Default value is _false_.
+**buildingMinimumHeightVerticalTitle** | INPUT | Display the vertical title when the height of buildings reaches this value.
+**font** | INPUT | This setting is used by the vertical title. This is Shorthand property for setting **'font-style'**, **'font-variant'**, **'font-weight'**, **'font-size'**, **'line-height'**, and **'font-family'**. _"italic 2em "Open Sans", sans-serif'" is a possible example_.
+**onClickBuilding** | OUTPUT | The component will emit an event containing a **BuildingSelected** object, each time the user is clicking on a building.
+**onEnterBuilding** | OUTPUT | The component will emit an event containing a **BuildingSelected** object, each time the user is entering in a building.
+**onLeaveBuilding** | OUTPUT | The component will emit an event containing a **BuildingSelected** object, each time the user is leaving a building.
 **sliderColor** | INPUT | _(Optional) The color of the slider. Default color is **violet**_
 **skylineBackgroundColor** | INPUT | _(Optional) The background color of the skyline container. Default color is **transparent**_
 **controlBackgroundColor** | INPUT | _(Optional) The background color of the control panel. Default color is **lightGrey**_
@@ -93,3 +99,12 @@ Property | type | Comment
 **week** | number | the week of the building corresponding to this state of building
 **index** | number | the index of the building in the range of colors. Index range is from 0 to 100.
 **title** | string | the title of the building
+
+## What is a selected building ?
+
+This component is emetting this object during mouse interaction. 
+
+Property | type | Comment
+------------ | ------------- | -------------
+**building** | Building | the building under the mouse pointer
+**event** | MouseEvent | the underlying mouse event

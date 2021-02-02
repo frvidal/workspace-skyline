@@ -70,6 +70,13 @@ export class SkylineComponent implements OnInit, OnDestroy, AfterViewInit {
 	@Input() displayVerticalTitle = false;
 
 	/**
+	 * Display the vertical title when the building height reaches this value.
+	 * 
+	 * Default value is **10**.
+	 */
+	@Input() buildingMinimumHeightVerticalTitle = 10;
+
+	/**
 	 * This messenger wil inform the parent container that the user has clicked a building.
 	 */
 	@Output() onClickBuilding = new EventEmitter<BuildingSelected>();

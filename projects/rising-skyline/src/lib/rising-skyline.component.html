@@ -7,7 +7,7 @@
 			on-click="mouseClickBuilding($event, building)"
 			[style]="styleBuilding(building)">
 			<div style="height: 0px">&nbsp;</div>
-			<div *ngIf="displayVerticalTitle && (building.height > 10)">
+			<div *ngIf="displayVerticalTitle && (building.height > buildingMinimumHeightVerticalTitle)">
 				<div class="title" [style]="styleTitle(building)">
 					<p class="title">{{building.title}}</p>
 				</div>

@@ -77,6 +77,13 @@ export class ControlledRisingSkylineComponent implements OnInit, AfterViewInit, 
 	@Input() displayVerticalTitle = false;
 
 	/**
+	 * Display the vertical title when the building height reaches this value.
+	 * 
+	 * Default value is **10**.
+	 */
+	@Input() buildingMinimumHeightVerticalTitle = 10;
+
+	/**
 	 * The font to use for the vertical title
 	 */
 	@Input() font: string;

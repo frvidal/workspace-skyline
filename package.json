@@ -34,7 +34,7 @@
     "err": "^2.1.12",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
-    "rising-skyline": "^1.0.18",
+    "rising-skyline": "^1.0.19",
     "rollup": "^2.22.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
