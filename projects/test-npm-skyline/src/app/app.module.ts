@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatSliderModule} from '@angular/material/slider';
-import {SkylineModule} from 'rising-skyline'
+import {RisingSkylineModule} from 'rising-skyline'
 import { AppComponent } from './app.component';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PanelControlComponent } from './footer-control/panel-control.component';
 
@@ -12,10 +12,11 @@ import { PanelControlComponent } from './footer-control/panel-control.component'
     AppComponent, PanelControlComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     MatSliderModule,
     BrowserAnimationsModule,
-    SkylineModule
+    RisingSkylineModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

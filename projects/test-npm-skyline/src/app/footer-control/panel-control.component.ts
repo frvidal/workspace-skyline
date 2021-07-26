@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
-import { ColorService, SkylineService } from 'rising-skyline';
+import { ColorService, RisingSkylineService } from 'rising-skyline';
 import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -37,7 +37,7 @@ export class PanelControlComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   private VERBOSE = false;
 
-  constructor(public skylineService: SkylineService, public colorService: ColorService) { }
+  constructor(public skylineService: RisingSkylineService, public colorService: ColorService) { }
 
   formatYearWeek = (value: number) => {
     return this.skylineService.currentYear + '/' 

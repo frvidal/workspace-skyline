@@ -1,41 +1,29 @@
-/*
-  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
-  It is not intended to be used to perform a compilation.
-
-  To learn more about this file see: https://angular.io/config/solution-tsconfig.
-*/
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./projects/test-dev-skyline/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/test-dev-skyline/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/test-npm-skyline/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/test-npm-skyline/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/controlled-rising-skyline/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/controlled-rising-skyline/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/test-dev-controlled-skyline/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/test-dev-controlled-skyline/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/rising-skyline/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/rising-skyline/tsconfig.spec.json"
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "rising-skyline": [
+        "dist/rising-skyline/rising-skyline",
+        "dist/rising-skyline"
+      ],
+      "controlled-rising-skyline": [
+        "dist/controlled-rising-skyline/controlled-rising-skyline",
+        "dist/controlled-rising-skyline"
+      ],
     }
-  ]
+  }
 }

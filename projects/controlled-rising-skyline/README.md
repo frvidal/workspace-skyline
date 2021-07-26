@@ -20,11 +20,11 @@ A panel control is associated with the skyline. With this panel, you will be abl
 
 This library requires these peer dependencies :
 
-* @angular/material@^10.2.2
-* @fortawesome/fontawesome-free@^5.15.1
-* bootstrap@^4.5.2
-* jquery@^3.5.1
-* rising-skyline@^1.0.11
+* @angular/materia
+* @fortawesome/fontawesome-free
+* bootstrap
+* jquery@
+* rising-skyline
 
 ![Controlled rising Skyline](https://frvidal.github.io/workspace-skyline/projects/controlled-rising-skyline/img/controlled-rising-skyline.gif)
 

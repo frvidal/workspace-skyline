@@ -11,8 +11,6 @@ On the top right corner, two buttons, with one up and one down arrays, allow the
 ![Build_and_test](https://github.com/frvidal/workspace-skyline/workflows/CI%20rising%20skyline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
-
 ![Rising Skyline](https://frvidal.github.io/workspace-skyline/projects/rising-skyline/img/rising-skyline.gif)
 
 
@@ -24,8 +22,6 @@ To import the module inside your application, just add the module **RisingSkylin
 
 location :
 > import {RisingSkyline} from 'rising-skyline';
-
-
 
 ## Using this library in your application ?
 

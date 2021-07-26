@@ -59,7 +59,7 @@ export class RisingSkylineService {
 	 */
 	public episode: Building[] = [];
 
- /**
+	/**
 	* For performance purpose :
 	*
 	* This array contains an ordered list of YearWeek object.
@@ -75,7 +75,8 @@ export class RisingSkylineService {
 	/**
 	 * Identifier for the rising loop interval.
 	 */
-	private intervalId: number;
+	// private intervalId: number;
+	private timeout: NodeJS.Timeout;
 
 	/**
 	 * the Level of zoom.
@@ -148,13 +149,13 @@ export class RisingSkylineService {
 			return (building.year === this.currentYear) && (building.week === this.currentWeek);
 		};
 
-		this.intervalId = setInterval( () => {
+		this.timeout = setInterval( () => {
 			// We add one floor in the animation.
 			this.currentEpisode++;
 
 			//
 			// We filter & clone the subset of the history.
-			// We'll probably change the scale of the building, and we don't want to override the orginal data
+			// We'll probably change the scale of the building, and we don't want to override the original data
 			//
 			this.episode = [];
 			this.history.filter(floor).forEach(building => this.episode.push(building.clone()));
@@ -181,7 +182,7 @@ export class RisingSkylineService {
 				if (this.DEBUG) {
 					console.log ('Rising ends at ' + this.toYearWeek(dateNextWeek).year + ' ' + this.toYearWeek(dateNextWeek).week);
 				}
-				setTimeout(() => clearInterval(this.intervalId), 0);
+				setTimeout(() =>  clearInterval(this.timeout), 0);
 				// We set to TRUE pause if we reached the end of the history (> lastDate).
 				this.pause = true;
 			} else {
@@ -408,11 +409,12 @@ export class RisingSkylineService {
 	public toYearWeek(date: Date): YearWeek {
 
 		const week =  Number(this.datePipe.transform(date, 'w'));
-
+/*
 		// This is a bug from datePipe, and this is a possible turnaround
 		// https://github.com/angular/angular/issues/33961
 		if (week === 53) {
 			const day = date.getDay();
+
 			//
 			// The turnaround :
 			//  If the thursday on the same week as the given date is new year,
@@ -425,7 +427,10 @@ export class RisingSkylineService {
 				}
 			}
 		}
-		return new YearWeek(date.getFullYear(), week);
+*/
+		return ( (date.getMonth() === 11) && (week === 1) ) ?
+			new YearWeek(date.getFullYear() + 1, 1) : 
+			new YearWeek(date.getFullYear(), week); 
 	}
 
 	/**
@@ -460,7 +465,7 @@ export class RisingSkylineService {
 		if (this.DEBUG) {
 			console.log ('New variation %s produces the speed %d', this.variation.title, this.speed);
 		}
-		clearInterval(this.intervalId);
+		clearInterval(this.timeout);
 		this.riseSkyline();
 	}
 

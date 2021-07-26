@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SkylineService, Building } from 'rising-skyline';
+import { RisingSkylineService, Building, BuildingSelected } from 'rising-skyline';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import './date.extension';
 
@@ -30,10 +30,14 @@ export class AppComponent implements OnInit, OnDestroy  {
    */
   private subscriptionSkyline: Subscription;
 
+	/**
+	 * The margin of the container
+	 */
+   public margin = '10px';
 
   constructor(
     public datePipe: DatePipe, 
-    public skylineService: SkylineService) {
+    public skylineService: RisingSkylineService) {
     
     const upperYear = 2020;
     const upperWeek = 45;
@@ -83,5 +87,17 @@ export class AppComponent implements OnInit, OnDestroy  {
   ngOnDestroy(): void {
     this.subscriptionSkyline.unsubscribe();
   }
+
+	public onClickBuilding(buildingSelected: BuildingSelected) {
+		console.log('Click on ' + buildingSelected.building.title);
+	}
+
+	public onEnterBuilding(buildingSelected: BuildingSelected) {
+		console.log('Entering in ' + buildingSelected.building.title);
+	}
+
+	public onLeaveBuilding(buildingSelected: BuildingSelected) {
+		console.log('Leaving ' + buildingSelected.building.title);
+	}
 
 }

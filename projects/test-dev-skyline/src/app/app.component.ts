@@ -15,7 +15,7 @@ export class AppComponent implements OnInit, OnDestroy  {
 	
 	public skyline$ = new BehaviorSubject<Building[]>([]);
 	
-	private DEBUG = false;
+	private DEBUG = true;
 
 	/**
 	 * The margin of the container
@@ -75,7 +75,7 @@ export class AppComponent implements OnInit, OnDestroy  {
 					this.datePipe.transform(endDate, 'w'), 
 					id);
 				for (let d = startDate.clone(); d < endDate; d.addDays(7)) {
-					console.log (this.skylineService.toYearWeek(startDate).year + ' ' + this.skylineService.toYearWeek(startDate).week);
+					console.log (this.datePipe.transform(d, 'yyyy-MM-dd') + ' ' + this.skylineService.toYearWeek(d).year + ' ' + this.skylineService.toYearWeek(d).week);
 				}
 				console.groupEnd();
 			}
