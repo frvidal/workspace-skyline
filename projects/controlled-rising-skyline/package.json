@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/common": "^12.2.15",
     "@angular/core": "^12.2.15",
-    "@angular/material": "~11.2.13",
+    "@angular/material": "^12.2.13",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
