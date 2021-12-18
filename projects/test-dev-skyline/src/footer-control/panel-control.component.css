@@ -10,18 +10,18 @@ div.footer {
 }
 
 
-:host /deep/ .mat-slider-horizontal .mat-slider-thumb-label {
+:host ::ng-deep .mat-slider-horizontal .mat-slider-thumb-label {
     width: 42px;
     height: 42px;
     transform: translateY(20px) scale(1) rotate(45deg);
 }
 
-:host /deep/ .mat-slider-thumb-label-text {
+:host ::ng-deep .mat-slider-thumb-label-text {
     opacity: 1;
     font-size: 10px;
 }
 
-:host /deep/ .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
+:host ::ng-deep .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
     width: 42px;
     height: 42px;
     margin-top: 20px;
@@ -30,22 +30,22 @@ div.footer {
 }
 
 
-:host /deep/ .mat-slider.mat-slider-horizontal .mat-slider-track-background,
+:host ::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-background,
   .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
     height: 100%;
 }
 
-:host /deep/ .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label-text {
+:host ::ng-deep .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label-text {
     opacity: 1;
     font-size: 10px;
 }
 
-:host /deep/ .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
+:host ::ng-deep .mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
     border-radius: 50%; 
     color: white;
 }
 
-:host /deep/ .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+:host ::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
     background-color: blue;
 }
 

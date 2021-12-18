@@ -18,7 +18,6 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -27,7 +26,13 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -57,7 +62,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -139,7 +145,6 @@
             "main": "projects/test-dev-skyline/src/main.ts",
             "polyfills": "projects/test-dev-skyline/src/polyfills.ts",
             "tsConfig": "projects/test-dev-skyline/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/test-dev-skyline/src/favicon.ico",
               "projects/test-dev-skyline/src/assets"
@@ -147,7 +152,13 @@
             "styles": [
               "projects/test-dev-skyline/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -177,7 +188,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -255,7 +267,6 @@
             "main": "projects/test-internal-skyline/src/main.ts",
             "polyfills": "projects/test-internal-skyline/src/polyfills.ts",
             "tsConfig": "projects/test-internal-skyline/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/test-internal-skyline/src/favicon.ico",
               "projects/test-internal-skyline/src/assets"
@@ -263,7 +274,13 @@
             "styles": [
               "projects/test-internal-skyline/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -293,7 +310,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -371,7 +389,6 @@
             "main": "projects/test-npm-skyline/src/main.ts",
             "polyfills": "projects/test-npm-skyline/src/polyfills.ts",
             "tsConfig": "projects/test-npm-skyline/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/test-npm-skyline/src/favicon.ico",
               "projects/test-npm-skyline/src/assets"
@@ -379,7 +396,13 @@
             "styles": [
               "projects/test-npm-skyline/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -409,7 +432,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -527,7 +551,6 @@
             "main": "projects/test-dev-controlled-skyline/src/main.ts",
             "polyfills": "projects/test-dev-controlled-skyline/src/polyfills.ts",
             "tsConfig": "projects/test-dev-controlled-skyline/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/test-dev-controlled-skyline/src/favicon.ico",
               "projects/test-dev-controlled-skyline/src/assets"
@@ -535,7 +558,13 @@
             "styles": [
               "projects/test-dev-controlled-skyline/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -565,7 +594,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
